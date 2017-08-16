@@ -1,0 +1,44 @@
+<div style="margin-bottom: 20px;">
+  
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Select a single city</h3>
+      <form>
+        <ng-multiselect-dropdown name="city" [data]="cities" [(ngModel)]="selectedItem" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+          [disabled]="disabled">
+        </ng-multiselect-dropdown>
+      </form>
+    </div>
+     <div class="col-md-8">
+       <h3>Option</h3>
+       <div class="checkbox">
+          <label>
+              <input type="checkbox" [checked]="closeDropdownSelection" (change)="toggleCloseDropdownSelection()">Close Dropdown on selection
+          </label>
+        </div>
+        <div class="checkbox">
+           <label>
+              <input type="checkbox" [checked]="disabled" [(ngModel)]="disabled"> Disabled
+          </label> 
+        </div>
+    </div>
+  </div>
+  <p></p>
+  <pre>Selected: {{selectedItem}}</pre>
+  <div class="panel panel-default">
+    <div class="panel-heading">Settings</div>
+    <div class="panel-body">
+      <pre>
+        {{dropdownSettings | json}}
+      </pre>
+    </div>
+  </div>
+   <tabset>
+    <tab heading="Html">
+      <sh-code-viewer [code]="htmlCode" [language]="'html'"></sh-code-viewer>
+    </tab>
+    <tab heading="Typescript">
+      <sh-code-viewer [code]="typescriptCode" [language]="'typescript'"></sh-code-viewer>
+    </tab>
+  </tabset>
+</div>

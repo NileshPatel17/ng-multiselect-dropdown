@@ -1,0 +1,29 @@
+{
+  "name": "ng-multiselect-dropdown",
+  "version": "0.1.0",
+  "description": "Angular Multi-Select Dropdown",
+  "keywords": [
+    "angular2",
+    "angular4",
+    "angular multiselect dropdown",
+    "angular2 multiselect dropdown",
+    "angular4 multiselect dropdown",
+    "ng2 multiselect dropdown",
+    "ng4 multiselect dropdown"
+  ],
+  "author": "Nilesh Patel",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nileshpatel17/ng-multiselect-dropdown.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nileshpatel17/ng-multiselect-dropdown/issues"
+  },
+  "homepage": "nileshpatel17/ng-multiselect-dropdown#readme",
+  "peerDependencies": {
+    "@angular/common": "^2.3.1 || >=4.0.0",
+    "@angular/core": "^2.3.1 || >=4.0.0",
+    "@angular/forms": "^2.3.1 || >=4.0.0"
+  }
+}
