@@ -1,5 +1,5 @@
 {
-  "name": "ng-multiselect-dropdown",
+  "name": "ng-multiselect-dropdown-base",
   "version": "0.1.1",
   "private": true,
   "description": "Angular Multi-Select Dropdown",
