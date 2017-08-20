@@ -1,5 +1,5 @@
 {
-  "name": "ng-multiselect-dropdown-base",
+  "name": "ng-multiselect-dropdown",
   "version": "0.1.1",
   "private": true,
   "description": "Angular Multi-Select Dropdown",
@@ -10,7 +10,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "build:P": "ng build --prod --base-href https://nileshpatel17.github.io/ng-multiselect-dropdown/",
-    "build:lib": "nglb --rootDir src/ng-multiselect-dropdown/src --outDir lib-dist && node ./tools/updPackage.js"
+    "build:lib": "nglb --rootDir src/ng-multiselect-dropdown/src --outDir lib-dist && node ./tools/updPackage.js",
+    "prepublish": "ng build --prod --base-href \"https://nileshpatel17.github.io/ng-multiselect-dropdown/\"",
+    "publish":"ngh --no-silent false --name=\"nileshpatel17\" --email=\"nilesh.nvs@hotmail.com\""
   },
   "main": "lib-dist/ng-multiselect-dropdown.js",
   "module": "index.js",
