@@ -9,6 +9,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
+    "build:P": "ng build --prod --base-href https://nileshpatel17.github.io/ng-multiselect-dropdown/",
     "build:lib": "nglb --rootDir src/ng-multiselect-dropdown/src --outDir lib-dist && node ./tools/updPackage.js"
   },
   "main": "lib-dist/ng-multiselect-dropdown.js",

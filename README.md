@@ -16,7 +16,7 @@
 ```
 npm install ng-multiselect-dropdown`
 ```
-And then include it in your module (see [app.module.ts](https://github.com/nilshpatel17/ng-multiselect-dropdown/blob/master/src/app/app.module.ts)):
+And then include it in your module (see [app.module.ts](https://github.com/NileshPatel17/ng-multiselect-dropdown/blob/master/src/app/app.module.ts)):
 ```ts
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 // ...
