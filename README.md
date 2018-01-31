@@ -3,10 +3,10 @@
 [![downloads](https://img.shields.io/npm/dt/ng-multiselect-dropdown.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown)
 [![license](https://img.shields.io/github/license/nileshpatel17/ng-multiselect-dropdown.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown)
 
-Angular multiselect dropdown component for web applications. Easy to integrate and use.
+Angular multiselect dropdown component for web applications. Easy to integrate and use. It can be bind to any custom data source.
 
 
-# [Demos](https://nileshpatel17.github.io/ng-multiselect-dropdown/).
+# [Demos](https://nileshpatel17.github.io/ng-multiselect-dropdown/)
 
 ## Getting Started
 
@@ -18,6 +18,7 @@ Angular multiselect dropdown component for web applications. Easy to integrate a
 ## Features
 
 - dropdown with single/multiple selction option
+- bind to any custom data source
 - search item with custom placeholder text
 - limit selection
 - select/de-select all items
