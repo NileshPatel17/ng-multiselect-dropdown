@@ -1,9 +1,19 @@
+# Angular Multiselect Dropdown
+[![npm version](https://img.shields.io/npm/v/ng-multiselect-dropdown.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown)
+[![downloads](https://img.shields.io/npm/dt/ng-multiselect-dropdown.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown)
+[![license](https://img.shields.io/github/license/nileshpatel17/ng-multiselect-dropdown.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown)
+
+Angular multiselect dropdown component for web applications. Easy to integrate and use.
+
+
+# [Demos](https://nileshpatel17.github.io/ng-multiselect-dropdown/).
+
 ## Getting Started
 
 ![demo](Screenshots/demo.gif)
 
 ### Dependencies
-- Bootstrap 
+- Bootstrap
 
 ## Features
 
@@ -11,7 +21,7 @@
 - search item with custom placeholder text
 - limit selection
 - select/de-select all items
- 
+
 ### Installation
 ```
 npm install ng-multiselect-dropdown`
@@ -61,7 +71,7 @@ export class AppComponent implements OnInit {
             unSelectAllText: 'UnSelect All',
             itemsShowLimit: 3,
             allowSearchFilter: true
-        };          
+        };
     }
     onItemSelect(item:any){
         console.log(item);
@@ -75,10 +85,10 @@ export class AppComponent implements OnInit {
 ```Markup
 <ng-multiselect-dropdown
     [placeholder]="'custom placeholder'"
-    [data]="items" 
-    [(ngModel)]="selectedItems" 
-    [settings]="dropdownSettings" 
-    (onSelect)="onItemSelect($event)" 
+    [data]="items"
+    [(ngModel)]="selectedItems"
+    [settings]="dropdownSettings"
+    (onSelect)="onItemSelect($event)"
     (onSelectAll)="onSelectAll($event)"
 >
 </ng-multiselect-dropdown>
@@ -109,7 +119,7 @@ export class AppComponent implements OnInit {
     Example : (onSelect)="onItemSelect($event)"
 - `onSelectAll` - Return the list of all selected items.
     Example : (onSelectAll)="onSelectAll($event)"
-    
+
 
 ## Run locally
 - Clone the repository or downlod the .zip,.tar files.
