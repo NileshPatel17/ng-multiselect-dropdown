@@ -4,8 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { TabsModule, ButtonsModule  } from 'ng2-bootstrap';
-// import { Ng2MultiSelectDropDownModule } from '../ng-multiselect-dropdown/src';
-import { Ng2MultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { Ng2MultiSelectDropDownModule } from '../ng-multiselect-dropdown/src';
+// import { Ng2MultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { SelectSectionComponent } from './components/select-section';
 import { SampleSectionComponent } from './components/sample-section.component';

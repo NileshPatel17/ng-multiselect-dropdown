@@ -216,14 +216,14 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
         this.onSelect.emit(this.emittedValue(item));
     }
 
-    removeSelected(item: ListItem) {
-        this.selectedItems.forEach(itm => {
-            if (item.id === itm.id) {
+    removeSelected(itemSel: ListItem) {
+        this.selectedItems.forEach(item => {
+            if (itemSel.id === item.id) {
                 this.selectedItems.splice(this.selectedItems.indexOf(item), 1);
             }
         });
         this.onChangeCallback(this.emittedValue(this.selectedItems));
-        this.onDeSelect.emit(this.emittedValue(item));
+        this.onDeSelect.emit(this.emittedValue(itemSel));
     }
 
     emittedValue(val: any): any {

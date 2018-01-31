@@ -1,6 +1,6 @@
 {
   "name": "ng-multiselect-dropdown-base",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "description": "Angular Multi-Select Dropdown",
   "scripts": {
@@ -23,6 +23,7 @@
     "angular multiselect dropdown",
     "angular2 multiselect dropdown",
     "angular4 multiselect dropdown",
+    "ng multiselect dropdown",
     "ng2 multiselect dropdown",
     "ng4 multiselect dropdown"
   ],
