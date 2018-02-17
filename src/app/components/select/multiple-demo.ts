@@ -29,7 +29,7 @@ export class MultipleDemoComponent implements OnInit {
     typescriptCode = `
     import { FormBuilder, FormGroup } from '@angular/forms';
     import { Component, OnInit } from '@angular/core';
-    
+
     @Component({
         selector: 'multiple-demo',
         templateUrl: './multiple-demo.html'
@@ -43,7 +43,7 @@ export class MultipleDemoComponent implements OnInit {
         selectedItems: Array<any> = [];
         dropdownSettings: any = {};
         constructor(private fb: FormBuilder) {}
-         
+
         ngOnInit() {
             this.cities = [
                 { item_id: 1, item_text: 'New Delhi' },
@@ -67,7 +67,7 @@ export class MultipleDemoComponent implements OnInit {
                 city: [this.selectedItems]
             });
         }
-    
+
         onItemSelect(item: any) {
             console.log('onItemSelect', item);
         }
