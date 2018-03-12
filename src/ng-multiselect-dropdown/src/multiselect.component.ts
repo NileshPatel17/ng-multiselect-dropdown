@@ -109,6 +109,8 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
     }
   }
 
+  @Output('onFilterChange') onFilterChange: EventEmitter<ListItem> = new EventEmitter<any>();
+
   @Output('onSelect') onSelect: EventEmitter<ListItem> = new EventEmitter<any>();
 
   @Output('onDeSelect') onDeSelect: EventEmitter<ListItem> = new EventEmitter<any>();
@@ -124,6 +126,11 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
 
   constructor() {}
   ngOnInit() {}
+
+  onFilterTextChange($event) {
+    this.onFilterChange.emit($event);
+  }
+
   onItemClick($event: any, item: ListItem) {
     if (this.disabled) {
       return false;

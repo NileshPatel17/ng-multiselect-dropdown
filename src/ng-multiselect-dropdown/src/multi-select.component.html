@@ -21,7 +21,7 @@
             </li>
              <li class="filter-textbox" *ngIf="_settings.allowSearchFilter">
                  <!-- <span class="glyphicon glyphicon-search"></span>  -->
-                <input type="text" [readOnly]="disabled" [placeholder]="_settings.searchPlaceholderText" [(ngModel)]="filter.text">
+                <input type="text" [readOnly]="disabled" [placeholder]="_settings.searchPlaceholderText" [(ngModel)]="filter.text"  (ngModelChange)="onFilterTextChange($event)">
             </li>
         </ul> 
         
