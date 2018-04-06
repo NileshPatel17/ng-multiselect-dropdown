@@ -10,11 +10,10 @@ import { ListFilterPipe } from './list-filter.pipe';
   declarations: [MultiSelectComponent, ClickOutsideDirective, ListFilterPipe],
   exports: [MultiSelectComponent]
 })
-
-export class Ng2MultiSelectDropDownModule {
-    static forRoot(): ModuleWithProviders {
-      return {
-        ngModule: Ng2MultiSelectDropDownModule
-      };
-    }
+export class NgMultiSelectDropDownModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: NgMultiSelectDropDownModule
+    };
+  }
 }

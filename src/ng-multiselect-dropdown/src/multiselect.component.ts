@@ -12,7 +12,8 @@ import {
   ElementRef,
   AfterViewInit,
   Pipe,
-  PipeTransform
+  PipeTransform,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -46,7 +47,8 @@ const noop = () => {};
   selector: 'ng-multiselect-dropdown',
   templateUrl: './multi-select.component.html',
   styleUrls: ['./multi-select.component.scss'],
-  providers: [DROPDOWN_CONTROL_VALUE_ACCESSOR]
+  providers: [DROPDOWN_CONTROL_VALUE_ACCESSOR],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class MultiSelectComponent implements OnInit, ControlValueAccessor {
   public _settings: DropdownSettings;
