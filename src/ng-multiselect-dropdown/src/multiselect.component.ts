@@ -1,9 +1,7 @@
 import {
   Component,
-  OnInit,
   NgModule,
   HostListener,
-  OnChanges,
   ViewEncapsulation,
   forwardRef,
   Input,
@@ -12,7 +10,8 @@ import {
   ElementRef,
   AfterViewInit,
   Pipe,
-  PipeTransform
+  PipeTransform,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -25,11 +24,11 @@ export interface DropdownSettings {
   idField?: string;
   textField?: string;
   enableCheckAll: Boolean;
-  selectAllText: String;
-  unSelectAllText: String;
+  selectAllText?: String;
+  unSelectAllText?: String;
   allowSearchFilter?: Boolean;
   maxHeight?: Number;
-  itemsShowLimit: Number;
+  itemsShowLimit?: Number;
   limitSelection?: Number;
   searchPlaceholderText?: String;
   closeDropDownOnSelection?: Boolean;
@@ -46,9 +45,10 @@ const noop = () => {};
   selector: 'ng-multiselect-dropdown',
   templateUrl: './multi-select.component.html',
   styleUrls: ['./multi-select.component.scss'],
-  providers: [DROPDOWN_CONTROL_VALUE_ACCESSOR]
+  providers: [DROPDOWN_CONTROL_VALUE_ACCESSOR],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
-export class MultiSelectComponent implements OnInit, ControlValueAccessor {
+export class MultiSelectComponent implements ControlValueAccessor {
   public _settings: DropdownSettings;
   public _data: Array<ListItem> = [];
   public selectedItems: Array<ListItem> = [];
@@ -123,7 +123,7 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
   private onChangeCallback: (_: any) => void = noop;
 
   constructor() {}
-  ngOnInit() {}
+
   onItemClick($event: any, item: ListItem) {
     if (this.disabled) {
       return false;

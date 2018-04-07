@@ -2,9 +2,10 @@
 
 # compiled output
 /dist
-/lib-dist
+/dist-lib
 /tmp
 /out-tsc
+dist-lib.tgz
 
 # dependencies
 /node_modules
@@ -49,3 +50,4 @@ settings.json
 
 
 TODO.md
+ng-multiselect-dropdown - Copy

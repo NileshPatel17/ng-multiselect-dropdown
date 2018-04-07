@@ -124,5 +124,6 @@ export class AppComponent implements OnInit {
 - Run `ng serve` for a dev server
 - Navigate to `http://localhost:4200/`
 
+## if you make changes in library, run `yarn build:lib` and run `ng serve`
 ## License
 MIT License.

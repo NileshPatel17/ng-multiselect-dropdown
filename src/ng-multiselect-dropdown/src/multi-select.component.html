@@ -1,38 +1,39 @@
 <div tabindex="=0" (blur)="onTouched()" class="multiselect-dropdown" (clickOutside)="closeDropdown()">
-    <div [class.disabled]="disabled">
-        <span tabindex="-1" class="btn" (click)="toggleDropdown($event)">
-            <span *ngIf="selectedItems.length == 0">{{placeholder}}</span>
-            <span class="selected-item" *ngFor="let item of selectedItems;trackBy: trackByFn;let k = index" [hidden]="k > _settings.itemsShowLimit-1">
-                {{item.text}}
-                <a style="padding-top:2px;padding-left:2px;color:white" (click)="onItemClick($event,item)">x</a>
-            </span>
-             <span style="float:right !important;padding-right:4px">
-                <span style="padding-right: 6px;" *ngIf="itemShowRemaining()>0">+{{itemShowRemaining()}}</span>
-                <span [ngClass]="isDropdownOpen ? 'glyphicon glyphicon-menu-up' : 'glyphicon glyphicon-menu-down'"></span>
-            </span>
-        </span>
-    </div>
+  <div [class.disabled]="disabled">
+    <span tabindex="-1" class="dropdown-btn" (click)="toggleDropdown($event)">
+      <span *ngIf="selectedItems.length == 0">{{placeholder}}</span>
+      <span class="selected-item" *ngFor="let item of selectedItems;trackBy: trackByFn;let k = index" [hidden]="k > _settings.itemsShowLimit-1">
+        {{item.text}}
+        <a style="padding-top:2px;padding-left:2px;color:white" (click)="onItemClick($event,item)">x</a>
+      </span>
+      <span style="float:right !important;padding-right:4px">
+        <span style="padding-right: 6px;" *ngIf="itemShowRemaining()>0">+{{itemShowRemaining()}}</span>
+        <span [ngClass]="isDropdownOpen ? 'dropdown-up' : 'dropdown-down'"></span>
+      </span>
+    </span>
+  </div>
 
-    <div class="dropdown-list" [hidden]="!isDropdownOpen">
-         <ul *ngIf="_settings.enableCheckAll && !_settings.limitSelection">
-            <li (click)="toggleSelectAll()" *ngIf="_data.length > 0 && !_settings.singleSelection" class="multiselect-item-checkbox" style="border-bottom: 1px solid #ccc;padding:10px">
-                <input type="checkbox" [checked]="isAllItemsSelected()" [disabled]="disabled || isLimitSelectionReached()"/>
-                <div>{{!isAllItemsSelected() ? _settings.selectAllText : _settings.unSelectAllText}}</div>
-            </li>
-             <li class="filter-textbox" *ngIf="_settings.allowSearchFilter">
-                 <!-- <span class="glyphicon glyphicon-search"></span>  -->
-                <input type="text" [readOnly]="disabled" [placeholder]="_settings.searchPlaceholderText" [(ngModel)]="filter.text">
-            </li>
-        </ul> 
-        
-         <ul [style.maxHeight] = "_settings.maxHeight+'px'">
-            <li *ngFor="let item of _data | ng2ListFilter:filter; let i = index;" (click)="onItemClick($event,item)" class="multiselect-item-checkbox">
-                <input type="checkbox" [checked]="isSelected(item)" [disabled]="disabled || (isLimitSelectionReached() && !isSelected(item))"/>
-                <div>{{item.text}}</div>
-            </li>
-            <li *ngIf="_data.length == 0">
-                <h5>No data available</h5>
-            </li>
-        </ul>
-    </div>
+  <div class="dropdown-list" [hidden]="!isDropdownOpen">
+    <ul *ngIf="_settings.enableCheckAll && !_settings.limitSelection">
+      <li (click)="toggleSelectAll()" *ngIf="_data.length > 0 && !_settings.singleSelection" class="multiselect-item-checkbox"
+        style="border-bottom: 1px solid #ccc;padding:10px">
+        <input type="checkbox" [checked]="isAllItemsSelected()" [disabled]="disabled || isLimitSelectionReached()" />
+        <div>{{!isAllItemsSelected() ? _settings.selectAllText : _settings.unSelectAllText}}</div>
+      </li>
+      <li class="filter-textbox" *ngIf="_settings.allowSearchFilter">
+        <input type="text" [readOnly]="disabled" [placeholder]="_settings.searchPlaceholderText" [(ngModel)]="filter.text">
+      </li>
+    </ul>
+
+    <ul [style.maxHeight]="_settings.maxHeight+'px'">
+      <li *ngFor="let item of _data | ng2ListFilter:filter; let i = index;" (click)="onItemClick($event,item)" class="multiselect-item-checkbox">
+        <input type="checkbox" [checked]="isSelected(item)" [disabled]="disabled || (isLimitSelectionReached() && !isSelected(item))"
+        />
+        <div>{{item.text}}</div>
+      </li>
+      <li *ngIf="_data.length == 0">
+        <h5>No data available</h5>
+      </li>
+    </ul>
+  </div>
 </div>
