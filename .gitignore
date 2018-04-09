@@ -36,7 +36,7 @@ npm-debug.log
 testem.log
 /typings
 yarn-error.log
-publish package.txt
+publish-package.md
 
 # e2e
 /e2e/*.js
