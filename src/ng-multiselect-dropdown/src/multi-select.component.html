@@ -14,8 +14,8 @@
   </div>
 
   <div class="dropdown-list" [hidden]="!isDropdownOpen">
-    <ul *ngIf="_settings.enableCheckAll && !_settings.limitSelection">
-      <li (click)="toggleSelectAll()" *ngIf="_data.length > 0 && !_settings.singleSelection" class="multiselect-item-checkbox"
+    <ul *ngIf="!_settings.limitSelection">
+      <li (click)="toggleSelectAll()" *ngIf="!_settings.singleSelection && _settings.enableCheckAll && _data.length > 0" class="multiselect-item-checkbox"
         style="border-bottom: 1px solid #ccc;padding:10px">
         <input type="checkbox" [checked]="isAllItemsSelected()" [disabled]="disabled || isLimitSelectionReached()" />
         <div>{{!isAllItemsSelected() ? _settings.selectAllText : _settings.unSelectAllText}}</div>

@@ -11,7 +11,8 @@ import {
   AfterViewInit,
   Pipe,
   PipeTransform,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
 } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -46,7 +47,7 @@ const noop = () => {};
   templateUrl: './multi-select.component.html',
   styleUrls: ['./multi-select.component.scss'],
   providers: [DROPDOWN_CONTROL_VALUE_ACCESSOR],
-  changeDetection:ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MultiSelectComponent implements ControlValueAccessor {
   public _settings: DropdownSettings;
@@ -89,10 +90,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
       const _items = value.filter((item: any) => {
         if (
           typeof item === 'string' ||
-          (typeof item === 'object' &&
-            item &&
-            item[this._settings.idField] &&
-            item[this._settings.textField])
+          (typeof item === 'object' && item && item[this._settings.idField] && item[this._settings.textField])
         ) {
           return item;
         }
@@ -113,16 +111,14 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   @Output('onDeSelect') onDeSelect: EventEmitter<ListItem> = new EventEmitter<any>();
 
-  @Output('onSelectAll')
-  onSelectAll: EventEmitter<Array<ListItem>> = new EventEmitter<Array<any>>();
+  @Output('onSelectAll') onSelectAll: EventEmitter<Array<ListItem>> = new EventEmitter<Array<any>>();
 
-  @Output('onDeSelectAll')
-  onDeSelectAll: EventEmitter<Array<ListItem>> = new EventEmitter<Array<any>>();
+  @Output('onDeSelectAll') onDeSelectAll: EventEmitter<Array<ListItem>> = new EventEmitter<Array<any>>();
 
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
 
-  constructor() {}
+  constructor(ref: ChangeDetectorRef) {}
 
   onItemClick($event: any, item: ListItem) {
     if (this.disabled) {
@@ -149,7 +145,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   }
 
   writeValue(value: any) {
-    if (value !== undefined && value !== null) {
+    if (value !== undefined && value !== null && value.length > 0) {
       if (this._settings.singleSelection) {
         try {
           if (value.length >= 1) {
@@ -182,7 +178,10 @@ export class MultiSelectComponent implements ControlValueAccessor {
           this.selectedItems = _data;
         }
       }
+    } else {
+      this.selectedItems = [];
     }
+    this.onChangeCallback(value);
   }
 
   // From ControlValueAccessor interface
@@ -235,7 +234,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     } else {
       this.selectedItems.push(item);
     }
-    this.onChangeCallback(this.emittedValue(this.selectedItems));
+    // this.onChangeCallback(this.emittedValue(this.selectedItems));
     this.onSelect.emit(this.emittedValue(item));
   }
 
@@ -245,7 +244,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
         this.selectedItems.splice(this.selectedItems.indexOf(item), 1);
       }
     });
-    this.onChangeCallback(this.emittedValue(this.selectedItems));
+    // this.onChangeCallback(this.emittedValue(this.selectedItems));
     this.onDeSelect.emit(this.emittedValue(itemSel));
   }
 

@@ -7,7 +7,7 @@ Angular multiselect dropdown component for web applications. Easy to integrate a
 
 # [Demo](https://nileshpatel17.github.io/ng-multiselect-dropdown/)
 
-![demo](Screenshots/demo.gif)
+![demo](Screenshots/ng-multiselect-dropdown_v0.1.6.gif)
 
 ## Getting Started
 
