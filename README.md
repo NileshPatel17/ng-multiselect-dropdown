@@ -107,6 +107,7 @@ export class AppComponent implements OnInit {
 | selectAllText            | String     | Text to display as the label of select all option                                                                                                                                                                                                                                                                                                        | Select All    |
 | unSelectAllText          | String     | Text to display as the label of unSelect option                                                                                                                                                                                                                                                                                                          | UnSelect All  |
 | allowSearchFilter        | Boolean    | Enable filter option for the list.                                                                                                                                                                                                                                                                                                                       | false         |
+| clearSearchFilter        | Boolean    | clear search filter on dropdown close                                                                                                                                                                                                                                                                                                                    | true          |
 | maxHeight                | Number     | Set maximum height of the dropdown list in px.                                                                                                                                                                                                                                                                                                           | 197           |
 | itemsShowLimit           | Number     | Limit the number of items to show in the input field. If not set will show all selected.                                                                                                                                                                                                                                                                 | All           |
 | limitSelection           | Number     | Limit the selection of number of items from the dropdown list. Once the limit is reached, all unselected items gets disabled.                                                                                                                                                                                                                            | none          |
@@ -115,10 +116,12 @@ export class AppComponent implements OnInit {
 
 ### Callback Methods
 
-* `onSelect` - Return the selected item on selection.
+* `onSelect` - Return the selected item when an item is checked.
   Example : (onSelect)="onItemSelect($event)"
-* `onSelectAll` - Return the list of all selected items.
-  Example : (onSelectAll)="onSelectAll($event)"
+* `onSelectAll` - Return the all items.
+  Example : (onSelectAll)="onSelectAll($event)".
+* `onDeSelect` - Return the unselected item when an item is unchecked.
+  Example : (onDeSelect)="onItemDeSelect($event)"
 
 ## Run locally
 

@@ -28,6 +28,7 @@ export interface DropdownSettings {
   selectAllText?: String;
   unSelectAllText?: String;
   allowSearchFilter?: Boolean;
+  clearSearchFilter?: Boolean;
   maxHeight?: Number;
   itemsShowLimit?: Number;
   limitSelection?: Number;
@@ -64,6 +65,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
     allowSearchFilter: false,
+    clearSearchFilter: true,
     maxHeight: 197,
     itemsShowLimit: 999999999999,
     searchPlaceholderText: 'Search',
@@ -118,7 +120,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
 
-  constructor(ref: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef) {}
 
   onItemClick($event: any, item: ListItem) {
     if (this.disabled) {
@@ -287,6 +289,10 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   closeDropdown() {
     this.isDropdownOpen = false;
+    // clear search text
+    if (this._settings.clearSearchFilter) {
+      this.filter.text = '';
+    }
   }
 
   toggleSelectAll() {
