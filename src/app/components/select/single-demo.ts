@@ -73,6 +73,7 @@ export class SingleDemoComponent implements OnInit {
 
   onItemSelect(item: any) {
     console.log('onItemSelect', item);
+    console.log('selectedItem', this.selectedItem);
   }
 
   toggleCloseDropdownSelection() {

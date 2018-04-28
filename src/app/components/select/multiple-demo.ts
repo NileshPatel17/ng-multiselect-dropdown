@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class MultipleDemoComponent implements OnInit {
   myForm: FormGroup;
   disabled = false;
-  ShowFilter = false;
+  ShowFilter = true;
   showAll = true;
   limitSelection = false;
   cities: Array<any> = [];
@@ -119,7 +119,13 @@ export class MultipleDemoComponent implements OnInit {
 
   onItemSelect(item: any) {
     console.log('onItemSelect', item);
+    console.log('form model', this.myForm.get('city').value);
   }
+  onItemDeSelect(item: any) {
+    console.log('onItem DeSelect', item);
+    console.log('form model', this.myForm.get('city').value);
+  }
+
   onSelectAll(items: any) {
     console.log('onSelectAll', items);
   }

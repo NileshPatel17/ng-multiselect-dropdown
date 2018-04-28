@@ -55,7 +55,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   public _data: Array<ListItem> = [];
   public selectedItems: Array<ListItem> = [];
   public isDropdownOpen = false;
-
+  _placeholder: string = 'Select';
   filter: ListItem = new ListItem(this.data);
   defaultSettings: DropdownSettings = {
     singleSelection: false,
@@ -72,7 +72,14 @@ export class MultiSelectComponent implements ControlValueAccessor {
     closeDropDownOnSelection: false
   };
 
-  @Input() placeholder = 'Select';
+  @Input()
+  public set placeholder(value: string) {
+    if (value) {
+      this._placeholder = value;
+    } else {
+      this._placeholder = 'Select';
+    }
+  }
   @Input() disabled = false;
 
   @Input()
@@ -236,7 +243,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     } else {
       this.selectedItems.push(item);
     }
-    // this.onChangeCallback(this.emittedValue(this.selectedItems));
+    this.onChangeCallback(this.emittedValue(this.selectedItems));
     this.onSelect.emit(this.emittedValue(item));
   }
 
@@ -246,7 +253,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
         this.selectedItems.splice(this.selectedItems.indexOf(item), 1);
       }
     });
-    // this.onChangeCallback(this.emittedValue(this.selectedItems));
+    this.onChangeCallback(this.emittedValue(this.selectedItems));
     this.onDeSelect.emit(this.emittedValue(itemSel));
   }
 
