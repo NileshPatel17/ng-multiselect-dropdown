@@ -1,0 +1,198 @@
+// import { Component, Type, ViewChild, QueryList } from '@angular/core';
+// import { FormsModule } from '@angular/forms';
+// import { TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
+// import { By } from '@angular/platform-browser';
+// import { NgMultiSelectDropDownModule } from './../src/ng-multiselect-dropdown.module';
+// import { MultiSelectComponent } from './../src/multiselect.component';
+// // import { createTestingModule, tickAndDetectChanges } from './Utils';
+
+// export function createTestingModule<T>(cmp: Type<T>, template: string): ComponentFixture<T> {
+//   TestBed.configureTestingModule({
+//     imports: [FormsModule, cmp],
+//     declarations: [cmp]
+//   })
+//     .overrideComponent(cmp, {
+//       set: {
+//         template: template
+//       }
+//     })
+//     .compileComponents();
+//   const fixture = TestBed.createComponent(cmp);
+//   fixture.detectChanges();
+//   return fixture;
+// }
+
+// export function tickAndDetectChanges(fixture) {
+//   fixture.detectChanges();
+//   tick();
+// }
+// @Component({
+//   template: ``
+// })
+// class NgMultiSelectDropdownSingleSelectComponent {
+//   @ViewChild(MultiSelectComponent) select: MultiSelectComponent;
+//   cities = [
+//     { item_id: 1, item_text: 'Mumbai' },
+//     { item_id: 2, item_text: 'Bangalore' },
+//     { item_id: 3, item_text: 'Pune' },
+//     { item_id: 4, item_text: 'Navsari' },
+//     { item_id: 5, item_text: 'New Delhi' }
+//   ];
+//   selectedItem = [{ item_id: 4, item_text: 'Navsari' }];
+//   dropdownSettings = {
+//     singleSelection: true,
+//     idField: 'item_id',
+//     textField: 'item_text',
+//     selectAllText: 'Select All',
+//     unSelectAllText: 'UnSelect All',
+//     badgeShowLimit: 3,
+//     allowSearchFilter: false
+//   };
+// }
+// @Component({
+//   template: ``
+// })
+// class NgMultiSelectDropdownMultipleSelectComponent {
+//   @ViewChild(MultiSelectComponent) select: MultiSelectComponent;
+//   cities = [
+//     { item_id: 1, item_text: 'Mumbai' },
+//     { item_id: 2, item_text: 'Bangalore' },
+//     { item_id: 3, item_text: 'Pune' },
+//     { item_id: 4, item_text: 'Navsari' },
+//     { item_id: 5, item_text: 'New Delhi' }
+//   ];
+//   selectedItems = [{ item_id: 3, item_text: 'Pune' }, { item_id: 4, item_text: 'Navsari' }];
+//   dropdownSettings = {
+//     singleSelection: false,
+//     idField: 'item_id',
+//     textField: 'item_text',
+//     selectAllText: 'Select All',
+//     unSelectAllText: 'UnSelect All',
+//     badgeShowLimit: 3,
+//     allowSearchFilter: false
+//   };
+// }
+// describe('ng-multiselect-component', function() {
+//   describe('Single Selection', () => {
+//     let fixture: ComponentFixture<NgMultiSelectDropdownSingleSelectComponent>;
+//     beforeEach(
+//       fakeAsync(() => {
+//         fixture = createTestingModule(
+//           NgMultiSelectDropdownSingleSelectComponent,
+//           `<div class='container'>
+//           <ng-multiselect-dropdown name="city" [data]="cities"
+//       [(ngModel)]="selectedItem" [settings]="dropdownSettings"
+//       (onSelect)="onItemSelect($event)"
+//       [disabled]="disabled">
+//     </ng-multiselect-dropdown>
+//     </div>`
+//         );
+//       })
+//     );
+//     it('should update internal model on select an item', () => {
+//       fixture.whenStable().then(() => {
+//         const index = 4;
+//         let heroRows: HTMLLIElement[];
+//         const sel = fixture.nativeElement.querySelectorAll('.multiselect-item-checkbox');
+//         heroRows = Array.from(sel);
+//         heroRows[index].click();
+//         tickAndDetectChanges(fixture);
+//         expect(fixture.componentInstance.selectedItem.length).toBe(1);
+//         const selItem = fixture.componentInstance.cities[index];
+//         expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
+//       });
+//     });
+
+//     it('should work search feature', () => {
+//       fixture.whenStable().then(() => {});
+//     });
+
+//     it(
+//       'selected item should be correct',
+//       fakeAsync(() => {
+//         expect(fixture.componentInstance.selectedItem.length).toBe(1);
+//         const selItem = fixture.componentInstance.cities[3];
+//         expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
+//       })
+//     );
+//     it('should have default placeholder as "Select"', () => {
+//       const sel = document.querySelector('.dropdown-btn') as HTMLElement;
+//       expect(sel.innerText).toBe('Select');
+//     });
+
+//     it('close dropdown if opened and clicked outside dropdown container', () => {
+//       fixture.whenStable().then(() => {
+//         fixture.componentInstance.select.isDropdownOpen = true;
+//         (document.querySelector('.container') as HTMLElement).click();
+//         expect(fixture.componentInstance.select.isDropdownOpen).toBe(false);
+//       });
+//     });
+//   });
+//   describe('Multiple Selection', () => {
+//     let fixture: ComponentFixture<NgMultiSelectDropdownMultipleSelectComponent>;
+//     beforeEach(
+//       fakeAsync(() => {
+//         fixture = createTestingModule(
+//           NgMultiSelectDropdownMultipleSelectComponent,
+//           `<div class='container'>
+//           <ng-multiselect-dropdown name="city" [data]="cities"
+//       [(ngModel)]="selectedItems" [settings]="dropdownSettings"
+//       (onSelect)="onItemSelect($event)"
+//       [disabled]="disabled">
+//     </ng-multiselect-dropdown>
+//     </div>`
+//         );
+//       })
+//     );
+//     it('should update internal model on select an item', () => {
+//       fixture.whenStable().then(() => {
+//         const index = 0;
+//         let heroRows: HTMLLIElement[];
+//         const sel = fixture.nativeElement.querySelectorAll('.multiselect-item-checkbox');
+//         heroRows = Array.from(sel);
+//         heroRows[index].click();
+//         tickAndDetectChanges(fixture);
+//         expect(fixture.componentInstance.selectedItems.length).toBe(3);
+//         const selItem = fixture.componentInstance.cities[index];
+//         expect(fixture.componentInstance.selectedItems[0]).toEqual(selItem);
+//       });
+//     });
+
+//     it('should update intenal model on select all items by clicking on all "select all" checkbox', () => {
+//       fixture.whenStable().then(() => {
+//         const tot = fixture.componentInstance.cities.length;
+//         const sel = fixture.nativeElement.querySelector('.multiselect-item-checkbox');
+//         sel.click();
+//         tickAndDetectChanges(fixture);
+//         expect(fixture.componentInstance.selectedItems.length).toBe(tot);
+//         const selItems = fixture.componentInstance.cities;
+//         expect(fixture.componentInstance.selectedItems).toEqual(selItems);
+//       });
+//     });
+
+//     //   it('should work search feature', () => {
+//     //     fixture.whenStable().then(() => {});
+//     //   });
+
+//     //   it(
+//     //     'selected item should be correct',
+//     //     fakeAsync(() => {
+//     //       expect(fixture.componentInstance.selectedItem.length).toBe(1);
+//     //       const selItem = fixture.componentInstance.cities[3];
+//     //       expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
+//     //     })
+//     //   );
+//     //   it('should have default placeholder as "Select"', () => {
+//     //     const sel = document.querySelector('.dropdown-btn') as HTMLElement;
+//     //     expect(sel.innerText).toBe('Select');
+//     //   });
+
+//     //   it('close dropdown if opened and clicked outside dropdown container', () => {
+//     //     fixture.whenStable().then(() => {
+//     //       fixture.componentInstance.select.isDropdownOpen = true;
+//     //       (document.querySelector('.container') as HTMLElement).click();
+//     //       expect(fixture.componentInstance.select.isDropdownOpen).toBe(false);
+//     //     });
+//     //   });
+//   });
+// });

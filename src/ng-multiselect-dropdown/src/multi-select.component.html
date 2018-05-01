@@ -1,4 +1,4 @@
-<div tabindex="=0" (blur)="onTouched()" class="multiselect-dropdown" (clickOutside)="closeDropdown()">
+<div tabindex="0" (blur)="onTouched()" class="multiselect-dropdown" (clickOutside)="closeDropdown()">
   <div [class.disabled]="disabled">
     <span tabindex="-1" class="dropdown-btn" (click)="toggleDropdown($event)">
       <span *ngIf="selectedItems.length == 0">{{_placeholder}}</span>
@@ -14,9 +14,8 @@
   </div>
 
   <div class="dropdown-list" [hidden]="!isDropdownOpen">
-    <ul *ngIf="!_settings.limitSelection">
-      <li (click)="toggleSelectAll()" *ngIf="!_settings.singleSelection && _settings.enableCheckAll && _data.length > 0" class="multiselect-item-checkbox"
-        style="border-bottom: 1px solid #ccc;padding:10px">
+    <ul>
+      <li (click)="toggleSelectAll()" *ngIf="this.shouldBeEnabled()" class="multiselect-item-checkbox" style="border-bottom: 1px solid #ccc;padding:10px">
         <input type="checkbox" [checked]="isAllItemsSelected()" [disabled]="disabled || isLimitSelectionReached()" />
         <div>{{!isAllItemsSelected() ? _settings.selectAllText : _settings.unSelectAllText}}</div>
       </li>

@@ -65,6 +65,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
     allowSearchFilter: false,
+    limitSelection: -1,
     clearSearchFilter: true,
     maxHeight: 197,
     itemsShowLimit: 999999999999,
@@ -226,6 +227,11 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   isLimitSelectionReached(): boolean {
     return this._settings.limitSelection === this.selectedItems.length;
+  }
+
+  shouldBeEnabled(): boolean {
+    this._settings.enableCheckAll = this._settings.limitSelection === -1 ? true : false;
+    return !this._settings.singleSelection && this._settings.enableCheckAll && this._data.length > 0;
   }
 
   isAllItemsSelected(): boolean {

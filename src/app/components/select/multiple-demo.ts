@@ -143,7 +143,7 @@ export class MultipleDemoComponent implements OnInit {
     if (this.limitSelection) {
       this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: 2 });
     } else {
-      this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: null });
+      this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: -1 });
     }
   }
 
