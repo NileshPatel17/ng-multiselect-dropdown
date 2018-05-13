@@ -14,11 +14,10 @@
   </div>
 
   <div class="dropdown-list" [hidden]="!isDropdownOpen">
-    <ul *ngIf="!_settings.limitSelection">
-      <li (click)="toggleSelectAll()" *ngIf="!_settings.singleSelection && _settings.enableCheckAll && _data.length > 0" class="multiselect-item-checkbox"
-        style="border-bottom: 1px solid #ccc;padding:10px">
-        <input type="checkbox" [checked]="isAllItemsSelected()" [disabled]="disabled || isLimitSelectionReached()" />
-        <div>{{!isAllItemsSelected() ? _settings.selectAllText : _settings.unSelectAllText}}</div>
+    <ul>
+      <li (click)="toggleSelectAll()" *ngIf="showButton()" class="multiselect-item-checkbox" style="border-bottom: 1px solid #ccc;padding:10px">
+        <input type="checkbox" [checked]="isAllItemsSelected()" [disabled]="disabled" />
+        <div class='select-all-text'>{{!isAllItemsSelected() ? _settings.selectAllText : _settings.unSelectAllText}}</div>
       </li>
       <li class="filter-textbox" *ngIf="_settings.allowSearchFilter">
         <input type="text" [readOnly]="disabled" [placeholder]="_settings.searchPlaceholderText" [(ngModel)]="filter.text">

@@ -55,7 +55,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   public _data: Array<ListItem> = [];
   public selectedItems: Array<ListItem> = [];
   public isDropdownOpen = false;
-  _placeholder: string = 'Select';
+  _placeholder = 'Select';
   filter: ListItem = new ListItem(this.data);
   defaultSettings: DropdownSettings = {
     singleSelection: false,
@@ -65,6 +65,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
     allowSearchFilter: false,
+    limitSelection: -1,
     clearSearchFilter: true,
     maxHeight: 197,
     itemsShowLimit: 999999999999,
@@ -97,10 +98,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
       this._data = [];
     } else {
       const _items = value.filter((item: any) => {
-        if (
-          typeof item === 'string' ||
-          (typeof item === 'object' && item && item[this._settings.idField] && item[this._settings.textField])
-        ) {
+        if (typeof item === 'string' || (typeof item === 'object' && item && item[this._settings.idField] && item[this._settings.textField])) {
           return item;
         }
       });
@@ -135,14 +133,9 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
 
     const found = this.isSelected(item);
-    const limit = this.selectedItems.length < this._settings.limitSelection ? true : false;
-
+    const allowAdd =(this._settings.limitSelection === -1) || (this._settings.limitSelection > 0 && this.selectedItems.length < this._settings.limitSelection);
     if (!found) {
-      if (this._settings.limitSelection) {
-        if (limit) {
-          this.addSelected(item);
-        }
-      } else {
+      if (allowAdd) {
         this.addSelected(item);
       }
     } else {
@@ -230,6 +223,19 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   isAllItemsSelected(): boolean {
     return this._data.length === this.selectedItems.length;
+  }
+
+  showButton(): boolean {
+    if (!this._settings.singleSelection) {
+      if(this._settings.limitSelection > 0){
+        return false;
+      }
+      // this._settings.enableCheckAll = this._settings.limitSelection === -1 ? true : false;
+      return true;// !this._settings.singleSelection && this._settings.enableCheckAll && this._data.length > 0;
+    } else {
+      // should be disabled in single selection mode
+      return false;
+    }
   }
 
   itemShowRemaining(): Number {
