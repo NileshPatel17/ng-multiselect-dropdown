@@ -2,9 +2,10 @@
 
 # compiled output
 /dist
-/lib-dist
+/dist-lib
 /tmp
 /out-tsc
+dist-lib.tgz
 
 # dependencies
 /node_modules
@@ -35,7 +36,7 @@ npm-debug.log
 testem.log
 /typings
 yarn-error.log
-publish package.txt
+publish-package.md
 
 # e2e
 /e2e/*.js
@@ -49,3 +50,4 @@ settings.json
 
 
 TODO.md
+ng-multiselect-dropdown - Copy

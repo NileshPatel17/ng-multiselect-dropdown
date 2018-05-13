@@ -3,15 +3,8 @@
     <div class="col-md-4">
       <h3>Select Multiple Cities</h3>
       <form [formGroup]="myForm">
-        <ng-multiselect-dropdown
-          name="city"
-          [placeholder]="'Select City'"
-          [data]="cities"
-          formControlName="city"
-          [disabled]="disabled"
-          [settings]="dropdownSettings"
-          (onSelect)="onItemSelect($event)"
-          (onSelectAll)="onSelectAll($event)">
+        <ng-multiselect-dropdown name="city" [placeholder]="'Select City'" [data]="cities" formControlName="city" [disabled]="disabled"
+          [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
         </ng-multiselect-dropdown>
       </form>
       <p></p>
@@ -20,18 +13,28 @@
       <h3>Option</h3>
       <div class="checkbox">
         <label>
-              <input type="checkbox" [checked]="ShowFilter" (change)="toogleShowFilter()"> Show Search filter
-          </label>
+          <input type="checkbox" [checked]="showAll" (change)="toogleShowAll()"> Show Select All
+        </label>
       </div>
       <div class="checkbox">
         <label>
-              <input type="checkbox" [checked]="disabled" [(ngModel)]="disabled"> Disabled
-            </label>
+          <input type="checkbox" [checked]="ShowFilter" (change)="toogleShowFilter()"> Show Search filter
+        </label>
       </div>
       <div class="checkbox">
         <label>
-              <input type="checkbox" [checked]="limitSelection" [(ngModel)]="limitSelection" (change)="handleLimitSelection()"> Limit Selection to 2
-            </label>
+          <input type="checkbox" [checked]="disabled" [(ngModel)]="disabled"> Disabled
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [checked]="limitSelection" [(ngModel)]="limitSelection" (change)="handleLimitSelection()"> Limit Selection to 2
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="button" (click)="handleReset()" value="reset">
+        </label>
       </div>
     </div>
   </div>
