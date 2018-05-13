@@ -127,9 +127,6 @@ export class MultiSelectComponent implements ControlValueAccessor {
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
 
-  constructor() {}
-  ngOnInit() {}
-
   onFilterTextChange($event) {
     this.onFilterChange.emit($event);
   }
@@ -142,7 +139,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
 
     const found = this.isSelected(item);
-    const allowAdd =(this._settings.limitSelection === -1) || (this._settings.limitSelection > 0 && this.selectedItems.length < this._settings.limitSelection);
+    const allowAdd = this._settings.limitSelection === -1 || (this._settings.limitSelection > 0 && this.selectedItems.length < this._settings.limitSelection);
     if (!found) {
       if (allowAdd) {
         this.addSelected(item);
@@ -236,11 +233,11 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   showButton(): boolean {
     if (!this._settings.singleSelection) {
-      if(this._settings.limitSelection > 0){
+      if (this._settings.limitSelection > 0) {
         return false;
       }
       // this._settings.enableCheckAll = this._settings.limitSelection === -1 ? true : false;
-      return true;// !this._settings.singleSelection && this._settings.enableCheckAll && this._data.length > 0;
+      return true; // !this._settings.singleSelection && this._settings.enableCheckAll && this._data.length > 0;
     } else {
       // should be disabled in single selection mode
       return false;
