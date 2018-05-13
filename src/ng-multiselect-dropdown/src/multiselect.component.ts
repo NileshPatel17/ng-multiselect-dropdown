@@ -114,6 +114,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
   }
 
+  @Output('onFilterChange') onFilterChange: EventEmitter<ListItem> = new EventEmitter<any>();
+
   @Output('onSelect') onSelect: EventEmitter<ListItem> = new EventEmitter<any>();
 
   @Output('onDeSelect') onDeSelect: EventEmitter<ListItem> = new EventEmitter<any>();
@@ -124,6 +126,13 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
+
+  constructor() {}
+  ngOnInit() {}
+
+  onFilterTextChange($event) {
+    this.onFilterChange.emit($event);
+  }
 
   constructor(private cdr: ChangeDetectorRef) {}
 
