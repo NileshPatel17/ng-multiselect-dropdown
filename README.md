@@ -122,6 +122,8 @@ export class AppComponent implements OnInit {
   Example : (onSelectAll)="onSelectAll($event)".
 * `onDeSelect` - Return the unselected item when an item is unchecked.
   Example : (onDeSelect)="onItemDeSelect($event)"
+  `onFilterChange` - Return the key press.
+  Example : (onFilterChange)="onFilterChange($event)"
 
 ## Run locally
 
