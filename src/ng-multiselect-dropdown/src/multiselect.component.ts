@@ -180,7 +180,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
                   text: item[this._settings.textField]
                 })
         );
-        if (this._settings.limitSelection) {
+        if (this._settings.limitSelection > 0) {
           this.selectedItems = _data.splice(0, this._settings.limitSelection);
         } else {
           this.selectedItems = _data;
