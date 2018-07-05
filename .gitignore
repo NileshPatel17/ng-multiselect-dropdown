@@ -45,7 +45,7 @@ publish-package.md
 # System Files
 .DS_Store
 Thumbs.db
-yarn.lock
+package-lock.json
 settings.json
 
 
