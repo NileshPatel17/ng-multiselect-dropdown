@@ -1,39 +1,30 @@
 import {
   Component,
-  NgModule,
   HostListener,
-  ViewEncapsulation,
   forwardRef,
   Input,
   Output,
   EventEmitter,
-  ElementRef,
-  AfterViewInit,
-  Pipe,
-  PipeTransform,
   ChangeDetectionStrategy,
   ChangeDetectorRef
 } from '@angular/core';
-import { FormsModule, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { ListItem, MyException } from './multiselect.model';
-import { ClickOutsideDirective } from './click-outside.directive';
-import { ListFilterPipe } from './list-filter.pipe';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { ListItem } from './multiselect.model';
 
 export interface DropdownSettings {
-  singleSelection: Boolean;
+  singleSelection: boolean;
   idField?: string;
   textField?: string;
-  enableCheckAll: Boolean;
-  selectAllText?: String;
-  unSelectAllText?: String;
-  allowSearchFilter?: Boolean;
-  clearSearchFilter?: Boolean;
-  maxHeight?: Number;
-  itemsShowLimit?: Number;
-  limitSelection?: Number;
-  searchPlaceholderText?: String;
-  closeDropDownOnSelection?: Boolean;
+  enableCheckAll: boolean;
+  selectAllText?: string;
+  unSelectAllText?: string;
+  allowSearchFilter?: boolean;
+  clearSearchFilter?: boolean;
+  maxHeight?: number;
+  itemsShowLimit?: number;
+  limitSelection?: number;
+  searchPlaceholderText?: string;
+  closeDropDownOnSelection?: boolean;
 }
 
 export const DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
@@ -244,8 +235,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
   }
 
-  itemShowRemaining(): Number {
-    return this.selectedItems.length - Number(this._settings.itemsShowLimit);
+  itemShowRemaining(): number {
+    return this.selectedItems.length - this._settings.itemsShowLimit;
   }
 
   addSelected(item: ListItem) {
