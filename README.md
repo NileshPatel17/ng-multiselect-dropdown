@@ -151,7 +151,7 @@ Contributions are welcome, please open an issue and preferrably file a pull requ
 
 ### Opening Issue
 
-Please share sample code using codesandbox or stackblitz help me re-produce the issue.
+Please share sample code using codesandbox.com or stackblitz.com to help me re-produce the issue.
 
 ## License
 
