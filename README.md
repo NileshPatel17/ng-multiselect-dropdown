@@ -139,7 +139,7 @@ Run `yarn build:lib` to build the library and generate an NPM package. The build
 
 ## Running unit tests
 
-Run `yarn test` to execute the unit tests via Jest.
+Run `yarn test` to execute the unit tests.
 
 ## Development
 
