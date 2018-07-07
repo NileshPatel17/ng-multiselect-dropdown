@@ -18,8 +18,7 @@
     "postbuild:lib": "yarn copyfiles",
     "prepublish": "yarn build:prod",
     "publish": "ngh --no-silent false --name=\"nileshpatel17\" --email=\"nilesh.nvs@hotmail.com\"",
-    "deploy":
-      "ng build --prod --bh /ng-multiselect-dropdown/ && angular-cli-ghpages --no-silent --repo=https://github.com/NileshPatel17/ng-multiselect-dropdown.git --name=\"Nilesh Patel\" --email=nilesh.nvs@hotmail.com",
+    "deploy": "ng build --prod --bh /ng-multiselect-dropdown/ && angular-cli-ghpages --no-silent --repo=https://github.com/NileshPatel17/ng-multiselect-dropdown.git --name=\"Nilesh Patel\" --email=nilesh.nvs@hotmail.com",
     "deployOnly": "angular-cli-ghpages --no-silent --repo=https://github.com/NileshPatel17/ng-multiselect-dropdown.git --name=\"Nilesh Patel\" --email=nilesh.nvs@hotmail.com"
   },
   "keywords": [
@@ -45,6 +44,7 @@
     "@angular/core": "^4.0.0 || ^6.0.0"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~0.6.8",
     "@angular/animations": "5.2.9",
     "@angular/cli": "^6.0.3",
     "@angular/common": "5.2.9",
@@ -75,11 +75,12 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "ng-multiselect-dropdown": "^0.1.4",
-    "ng-packagr": "^2.4.1",
+    "ng-packagr": "^3.0.3",
     "ngx-bootstrap": "^2.0.3",
     "protractor": "~5.1.2",
     "rimraf": "^2.6.2",
-    "rxjs": "^5.5.8",
+    "rxjs": "^6.2.1",
+    "rxjs-compat": "^6.2.1",
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
     "typescript": "2.6.2",
