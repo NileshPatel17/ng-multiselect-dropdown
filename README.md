@@ -149,6 +149,10 @@ This project was generated with Angular CLI version 1.7.1.
 
 Contributions are welcome, please open an issue and preferrably file a pull request.
 
+### Opening Issue
+
+Please share sample code to help me re-produce the issue.
+
 ## License
 
 MIT License.
