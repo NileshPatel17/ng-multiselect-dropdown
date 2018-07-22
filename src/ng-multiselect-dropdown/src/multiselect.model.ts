@@ -1,3 +1,20 @@
+export interface IDropdownSettings {
+  singleSelection?: boolean;
+  idField?: string;
+  textField?: string;
+  enableCheckAll?: boolean;
+  selectAllText?: string;
+  unSelectAllText?: string;
+  allowSearchFilter?: boolean;
+  clearSearchFilter?: boolean;
+  maxHeight?: number;
+  itemsShowLimit?: number;
+  limitSelection?: number;
+  searchPlaceholderText?: string;
+  closeDropDownOnSelection?: boolean;
+  showSelectedItemsAtTop?: boolean;
+}
+
 export class ListItem {
   id: String;
   text: String;
@@ -10,13 +27,5 @@ export class ListItem {
       this.id = source.id;
       this.text = source.text;
     }
-  }
-}
-export class MyException {
-  status: number;
-  body: any;
-  constructor(status: number, body: any) {
-    this.status = status;
-    this.body = body;
   }
 }
