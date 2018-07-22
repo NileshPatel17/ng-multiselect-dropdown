@@ -9,8 +9,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "ng:test": "ng test",
     "lint": "ng lint",
+    "test": "jest --watch",
+    "test:ci": "jest --runInBand",
+    "test:coverage": "jest --coverage",
     "build:prod": "ng build --prod --base-href https://nileshpatel17.github.io/ng-multiselect-dropdown/",
     "clear:lib": "rimraf dist-lib",
     "copyfiles": "copyfiles -u 1 ./dist-lib/**/*.* node_modules/ng-multiselect-dropdown",
@@ -84,6 +87,8 @@
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
     "typescript": "2.6.2",
-    "zone.js": "^0.8.25"
+    "zone.js": "^0.8.25",
+    "jest": "^23.4.1",
+    "jest-preset-angular": "^5.2.3"
   }
 }

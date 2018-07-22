@@ -74,7 +74,7 @@ class Ng2MultiSelectDropdownMultipleSelect {
     singleSelection: false,
     idField: 'item_id',
     textField: 'item_text',
-    selectAllText: 'Select-All',
+    selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
     badgeShowLimit: 3,
     disabled: false,
@@ -259,7 +259,7 @@ describe('ng-multiselect-component', function() {
     it('should have custom placeholder for "select all text" button', () => {
       fixture.whenStable().then(() => {
         const sel = document.querySelector('.select-all-text') as HTMLElement;
-        expect(sel.innerText).toContain('Select-All');
+        expect(sel.innerText).toContain('Select All');
       });
     });
   });
