@@ -24,13 +24,13 @@
       </li>
     </ul>
     <ul class="item2" [style.maxHeight]="_settings.maxHeight+'px'">
-      <li *ngFor="let item of _data | ng2ListFilter:filter; let i = index;" (click)="onItemClick($event,item)" class="multiselect-item-checkbox">
-        <ng-container *ngIf="i < _settings.optionsShowLimit">
+      <ng-container *ngFor="let item of _data | ng2ListFilter:filter; let i = index;">
+        <li *ngIf="i < _settings.optionsShowLimit" (click)="onItemClick($event,item)" class="multiselect-item-checkbox">
           <input type="checkbox" [checked]="isSelected(item)" [disabled]="disabled || (isLimitSelectionReached() && !isSelected(item))"
           />
           <div>{{item.text}}</div>
-        </ng-container>
-      </li>
+        </li>
+      </ng-container>
       <li *ngIf="_data.length == 0">
         <h5>No data available</h5>
       </li>
