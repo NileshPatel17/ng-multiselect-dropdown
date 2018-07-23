@@ -1,4 +1,4 @@
-import { Component, Type, ViewChild } from '@angular/core';
+import { Component, Type, ViewChild, DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -82,7 +82,7 @@ class Ng2MultiSelectDropdownMultipleSelect {
     closeDropDownOnSelection: true
   };
 }
-describe('ng-multiselect-component', function() {
+describe('ng-multiselect-component', function () {
   describe('Single Selection', () => {
     let fixture: ComponentFixture<Ng2MultiSelectDropdownSingleSelect>;
     beforeEach(
@@ -99,33 +99,31 @@ describe('ng-multiselect-component', function() {
         );
       })
     );
-    it('should update internal model on select an item', () => {
-      fixture.whenStable().then(() => {
-        let index = 4;
-        let selCheckBoxes: HTMLLIElement[];
-        const sel = fixture.nativeElement.querySelectorAll('.multiselect-item-checkbox');
-        selCheckBoxes = Array.from(sel);
-        selCheckBoxes[index].click();
-        tickAndDetectChanges(fixture);
-        expect(fixture.componentInstance.selectedItem.length).toBe(1);
-        let selItem = fixture.componentInstance.cities[index];
-        expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
+    it('should update internal model on select an item', fakeAsync(() => {
+      let index = 4;
+      let selCheckBoxes: HTMLLIElement[];
+      const sel = fixture.nativeElement.querySelectorAll('.multiselect-item-checkbox');
+      selCheckBoxes = Array.from(sel);
+      selCheckBoxes[index].click();
+      tickAndDetectChanges(fixture);
+      expect(fixture.componentInstance.selectedItem.length).toBe(1);
+      let selItem = fixture.componentInstance.cities[index];
+      expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
 
-        index = 3;
-        selCheckBoxes[index].click();
-        tickAndDetectChanges(fixture);
-        expect(fixture.componentInstance.selectedItem.length).toBe(1);
-        selItem = fixture.componentInstance.cities[index];
-        expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
+      index = 3;
+      selCheckBoxes[index].click();
+      tickAndDetectChanges(fixture);
+      expect(fixture.componentInstance.selectedItem.length).toBe(1);
+      selItem = fixture.componentInstance.cities[index];
+      expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
 
-        index = 4;
-        selCheckBoxes[index].click();
-        tickAndDetectChanges(fixture);
-        expect(fixture.componentInstance.selectedItem.length).toBe(1);
-        selItem = fixture.componentInstance.cities[index];
-        expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
-      });
-    });
+      index = 4;
+      selCheckBoxes[index].click();
+      tickAndDetectChanges(fixture);
+      expect(fixture.componentInstance.selectedItem.length).toBe(1);
+      selItem = fixture.componentInstance.cities[index];
+      expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
+    }));
 
     it(
       'should dropdown gets close once item is selected',
@@ -147,17 +145,19 @@ describe('ng-multiselect-component', function() {
       })
     );
     it('should have default placeholder as "Select"', () => {
-      const sel = document.querySelector('.dropdown-btn') as HTMLElement;
-      expect(sel.innerText).toBe('Select');
+      const de: DebugElement = fixture.debugElement.query(By.css('.dropdown-btn>span'));
+      const el = de.nativeElement;
+      expect(el.textContent).toContain('Select')
     });
 
-    it('close dropdown if opened and clicked outside dropdown container', () => {
-      fixture.whenStable().then(() => {
-        fixture.componentInstance.select.isDropdownOpen = true;
-        (document.querySelector('.container') as HTMLElement).click();
-        expect(fixture.componentInstance.select.isDropdownOpen).toBe(false);
-      });
-    });
+    it('close dropdown if opened and clicked outside dropdown container', fakeAsync(() => {
+      fixture.componentInstance.select.isDropdownOpen = true;
+      const de: DebugElement = fixture.debugElement.query(By.css('.container'));
+      const el = de.nativeElement;
+      el.click();
+      tickAndDetectChanges(fixture)
+      expect(fixture.componentInstance.select.isDropdownOpen).toBe(false);
+    }));
 
     // it('search filter should work', () => {
     //   const inputSearch = fixture.nativeElement.query(By.css('input[type=text]')) as HTMLInputElement;
@@ -167,15 +167,14 @@ describe('ng-multiselect-component', function() {
     //   const selItems: HTMLLIElement[] = Array.from(document.querySelectorAll('.multiselect-item-checkbox'));
     //   expect(selItems.length).toBe(1);
     // });
-    it('dropdown should not open when component is disabled', () => {
-      fixture.whenStable().then(() => {
-        fixture.componentInstance.select.isDropdownOpen = false;
-        fixture.componentInstance.dropdownSettings.disabled = true;
-        (document.querySelector('.dropdown-btn') as HTMLElement).click();
-        tickAndDetectChanges(fixture);
-        expect(fixture.componentInstance.select.isDropdownOpen).toBe(false);
-      });
-    });
+    it('dropdown should not open when component is disabled', fakeAsync(() => {
+      fixture.componentInstance.select.isDropdownOpen = false;
+      fixture.componentInstance.dropdownSettings.disabled = true;
+      const de: DebugElement = fixture.debugElement.query(By.css('.dropdown-btn'));
+      const el = de.nativeElement;
+      tickAndDetectChanges(fixture);
+      expect(fixture.componentInstance.select.isDropdownOpen).toBe(false);
+    }));
   });
   describe('Multiple Selection', () => {
     let fixture: ComponentFixture<Ng2MultiSelectDropdownMultipleSelect>;
@@ -193,33 +192,31 @@ describe('ng-multiselect-component', function() {
         );
       })
     );
-    it('should update internal model on select an item', () => {
-      fixture.whenStable().then(() => {
-        let index = 4;
-        let selCheckBoxes: HTMLLIElement[];
-        const sel = fixture.nativeElement.querySelectorAll('.multiselect-item-checkbox');
-        selCheckBoxes = Array.from(sel);
-        selCheckBoxes[index].click();
-        tickAndDetectChanges(fixture);
-        expect(fixture.componentInstance.selectedItem.length).toBe(1);
-        let selItem = fixture.componentInstance.cities[index];
-        expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
+    it('should update internal model on select an item', fakeAsync(() => {
+      let index = 4;
+      let selCheckBoxes: HTMLLIElement[];
+      const sel = fixture.nativeElement.querySelectorAll('.multiselect-item-checkbox');
+      selCheckBoxes = Array.from(sel);
+      selCheckBoxes[index].click();
+      tickAndDetectChanges(fixture);
+      expect(fixture.componentInstance.selectedItem.length).toBe(1);
+      let selItem = fixture.componentInstance.cities[index];
+      expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
 
-        index = 3;
-        selCheckBoxes[index].click();
-        tickAndDetectChanges(fixture);
-        expect(fixture.componentInstance.selectedItem.length).toBe(1);
-        selItem = fixture.componentInstance.cities[index];
-        expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
+      index = 3;
+      selCheckBoxes[index].click();
+      tickAndDetectChanges(fixture);
+      expect(fixture.componentInstance.selectedItem.length).toBe(1);
+      selItem = fixture.componentInstance.cities[index];
+      expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
 
-        index = 4;
-        selCheckBoxes[index].click();
-        tickAndDetectChanges(fixture);
-        expect(fixture.componentInstance.selectedItem.length).toBe(1);
-        selItem = fixture.componentInstance.cities[index];
-        expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
-      });
-    });
+      index = 4;
+      selCheckBoxes[index].click();
+      tickAndDetectChanges(fixture);
+      expect(fixture.componentInstance.selectedItem.length).toBe(1);
+      selItem = fixture.componentInstance.cities[index];
+      expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
+    }));
 
     it(
       'should dropdown gets close once item is selected',
@@ -241,26 +238,28 @@ describe('ng-multiselect-component', function() {
       })
     );
     it('should have default placeholder as "Select"', () => {
-      const sel = document.querySelector('.dropdown-btn') as HTMLElement;
-      expect(sel.innerText).toBe('Select');
+      const de: DebugElement = fixture.debugElement.query(By.css('.dropdown-btn>span'));
+      const el = de.nativeElement;
+      expect(el.textContent).toContain('Select')
     });
-    // it('should have default placeholder for search textbox as "Search"', () => {
-    //   const sel = document.querySelector('.filter-textbox-input') as HTMLElement;
-    //   expect(sel.innerText).toBe('Search');
-    // });
-    it('close dropdown if opened and clicked outside dropdown container', () => {
-      fixture.whenStable().then(() => {
-        fixture.componentInstance.select.isDropdownOpen = true;
-        (document.querySelector('.container') as HTMLElement).click();
-        expect(fixture.componentInstance.select.isDropdownOpen).toBe(false);
-      });
+    it('should have default placeholder for search textbox as "Search"', () => {
+      const de: DebugElement = fixture.debugElement.query(By.css('.filter-textbox>input'));
+      const el = de.nativeElement;
+      expect(el.placeholder).toBe('Search');
     });
+    it('close dropdown if opened and clicked outside dropdown container', fakeAsync(() => {
+      fixture.componentInstance.select.isDropdownOpen = true;
+      const de: DebugElement = fixture.debugElement.query(By.css('.container'));
+      const el = de.nativeElement;
+      el.click();
+      tickAndDetectChanges(fixture)
+      expect(fixture.componentInstance.select.isDropdownOpen).toBe(false);
+    }));
 
     it('should have custom placeholder for "select all text" button', () => {
-      fixture.whenStable().then(() => {
-        const sel = document.querySelector('.select-all-text') as HTMLElement;
-        expect(sel.innerText).toContain('Select All');
-      });
-    });
+      const de: DebugElement = fixture.debugElement.query(By.css('.item1>li>div'));
+      const el = de.nativeElement;
+      expect(el.textContent).toContain('Select All')
+    })
   });
 });
