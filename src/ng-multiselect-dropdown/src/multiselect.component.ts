@@ -25,6 +25,7 @@ export interface DropdownSettings {
   limitSelection?: number;
   searchPlaceholderText?: string;
   closeDropDownOnSelection?: boolean;
+  optionsShowLimit?: number;
 }
 
 export const DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
@@ -61,7 +62,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
     maxHeight: 197,
     itemsShowLimit: 999999999999,
     searchPlaceholderText: 'Search',
-    closeDropDownOnSelection: false
+    closeDropDownOnSelection: false,
+    optionsShowLimit: 999999999999
   };
 
   @Input()
