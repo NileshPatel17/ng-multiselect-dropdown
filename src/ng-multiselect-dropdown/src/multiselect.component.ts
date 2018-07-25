@@ -117,6 +117,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   @Output('onDeSelectAll') onDeSelectAll: EventEmitter<Array<ListItem>> = new EventEmitter<Array<any>>();
 
+  @Output() onDropdownClose: EventEmitter<void> = new EventEmitter<void>();
+  
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
 
@@ -305,6 +307,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     if (this._settings.clearSearchFilter) {
       this.filter.text = '';
     }
+    this.onDropdownClose.next();
   }
 
   toggleSelectAll() {
