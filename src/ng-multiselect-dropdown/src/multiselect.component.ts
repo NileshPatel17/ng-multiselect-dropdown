@@ -25,6 +25,7 @@ export interface DropdownSettings {
   limitSelection?: number;
   searchPlaceholderText?: string;
   closeDropDownOnSelection?: boolean;
+  optionsShowLimit?: number;
 }
 
 export const DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
@@ -61,7 +62,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
     maxHeight: 197,
     itemsShowLimit: 999999999999,
     searchPlaceholderText: 'Search',
-    closeDropDownOnSelection: false
+    closeDropDownOnSelection: false,
+    optionsShowLimit: 999999999999
   };
 
   @Input()
@@ -115,6 +117,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   @Output('onDeSelectAll') onDeSelectAll: EventEmitter<Array<ListItem>> = new EventEmitter<Array<any>>();
 
+  @Output() onDropdownClose: EventEmitter<void> = new EventEmitter<void>();
+  
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
 
@@ -303,6 +307,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     if (this._settings.clearSearchFilter) {
       this.filter.text = '';
     }
+    this.onDropdownClose.next();
   }
 
   toggleSelectAll() {
