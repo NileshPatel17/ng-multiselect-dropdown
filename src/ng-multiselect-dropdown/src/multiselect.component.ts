@@ -25,6 +25,8 @@ export interface DropdownSettings {
   limitSelection?: number;
   searchPlaceholderText?: string;
   closeDropDownOnSelection?: boolean;
+  pillBoxesEnabled?: boolean;
+  pillBoxesDisabledPlaceholder?: string;
 }
 
 export const DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
@@ -61,7 +63,9 @@ export class MultiSelectComponent implements ControlValueAccessor {
     maxHeight: 197,
     itemsShowLimit: 999999999999,
     searchPlaceholderText: 'Search',
-    closeDropDownOnSelection: false
+    closeDropDownOnSelection: false,
+    pillBoxesEnabled: true,
+    pillBoxesDisabledPlaceholder: 'Expand to view'
   };
 
   @Input()

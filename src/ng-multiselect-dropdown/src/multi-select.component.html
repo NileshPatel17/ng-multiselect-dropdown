@@ -1,15 +1,22 @@
 <div tabindex="=0" (blur)="onTouched()" class="multiselect-dropdown" (clickOutside)="closeDropdown()">
   <div [class.disabled]="disabled">
     <span tabindex="-1" class="dropdown-btn" (click)="toggleDropdown($event)">
-      <span *ngIf="selectedItems.length == 0">{{_placeholder}}</span>
-      <span class="selected-item" *ngFor="let item of selectedItems;trackBy: trackByFn;let k = index" [hidden]="k > _settings.itemsShowLimit-1">
-        {{item.text}}
-        <a style="padding-top:2px;padding-left:2px;color:white" (click)="onItemClick($event,item)">x</a>
-      </span>
-      <span style="float:right !important;padding-right:4px">
-        <span style="padding-right: 6px;" *ngIf="itemShowRemaining()>0">+{{itemShowRemaining()}}</span>
-        <span [ngClass]="isDropdownOpen ? 'dropdown-up' : 'dropdown-down'"></span>
-      </span>
+      <span *ngIf="selectedItems.length == 0; else itemsSelected">{{_placeholder}}</span>
+      <ng-template #itemsSelected>
+        <div *ngIf="_settings.pillBoxesEnabled; else pillBoxesDisabled">
+          <span class="selected-item" *ngFor="let item of selectedItems;trackBy: trackByFn;let k = index" [hidden]="k > _settings.itemsShowLimit-1">
+            {{item.text}}
+            <a style="padding-top:2px;padding-left:2px;color:white" (click)="onItemClick($event,item)">x</a>
+          </span>
+          <span style="float:right !important;padding-right:4px">
+            <span style="padding-right: 6px;" *ngIf="itemShowRemaining()>0">+{{itemShowRemaining()}}</span>
+            <span [ngClass]="isDropdownOpen ? 'dropdown-up' : 'dropdown-down'"></span>
+          </span>
+        </div>
+        <ng-template #pillBoxesDisabled>
+          <span>{{_settings.pillBoxesDisabledPlaceholder}}</span>
+        </ng-template>
+      </ng-template>
     </span>
   </div>
   <div class="dropdown-list" [hidden]="!isDropdownOpen">
