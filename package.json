@@ -19,7 +19,7 @@
     "prepublish": "yarn build:prod",
     "publish": "ngh --no-silent false --name=\"ncromwell\" --email=\"ncromwell@dakotasoft.com\"",
     "deploy": "ng build --prod --bh /ng-multiselect-dropdown/ && angular-cli-ghpages --no-silent --repo=https://github.com/nick-cromwell/ng-multiselect-dropdown.git --name=\"Nick Cromwell\" --email=ncromwell@dakotasoft.com",
-    "deployOnly": "angular-cli-ghpages --no-silent --repo=https://github.com/nick-cromwell/ng-multiselect-dropdown.git --name=\"Nilesh Patel\" --email=ncromwell@dakotasoft.com"
+    "deployOnly": "angular-cli-ghpages --no-silent --repo=https://github.com/nick-cromwell/ng-multiselect-dropdown.git --name=\"Nick Cromwell\" --email=ncromwell@dakotasoft.com"
   },
   "keywords": [
     "angular2",
