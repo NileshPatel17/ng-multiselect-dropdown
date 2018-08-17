@@ -11,6 +11,7 @@ export interface IDropdownSettings {
   itemsShowLimit?: number;
   limitSelection?: number;
   searchPlaceholderText?: string;
+  noDataAvailablePlaceholderText?: string;
   closeDropDownOnSelection?: boolean;
   showSelectedItemsAtTop?: boolean;
 }
