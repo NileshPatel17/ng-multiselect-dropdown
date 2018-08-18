@@ -29,7 +29,7 @@
         />
         <div>{{item.text}}</div>
       </li>
-      <li *ngIf="_data.length == 0">
+      <li class='no-data' *ngIf="_data.length == 0">
         <h5>{{_settings.noDataAvailablePlaceholderText}}</h5>
       </li>
     </ul>

@@ -74,12 +74,12 @@ export class MultiSelectComponent implements ControlValueAccessor {
     if (!value) {
       this._data = [];
     } else {
-      const _items = value.filter((item: any) => {
-        if (typeof item === 'string' || (typeof item === 'object' && item && item[this._settings.idField] && item[this._settings.textField])) {
-          return item;
-        }
-      });
-      this._data = _items.map(
+      // const _items = value.filter((item: any) => {
+      //   if (typeof item === 'string' || (typeof item === 'object' && item && item[this._settings.idField] && item[this._settings.textField])) {
+      //     return item;
+      //   }
+      // });
+      this._data = value.map(
         (item: any) =>
           typeof item === 'string'
             ? new ListItem(item)
