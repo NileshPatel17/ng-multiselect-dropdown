@@ -20,9 +20,8 @@
         />
         <div>{{!isAllItemsSelected() ? _settings.selectAllText : _settings.unSelectAllText}}</div>
       </li>
-      <li class="filter-textbox" *ngIf="_settings.allowSearchFilter">
-        <input type="text" aria-label="multiselect-search" [readOnly]="disabled" [placeholder]="_settings.searchPlaceholderText"
-          [(ngModel)]="filter.text" (ngModelChange)="onFilterTextChange($event)">
+      <li class="filter-textbox" *ngIf="_data.length>0 && _settings.allowSearchFilter">
+        <input type="text" aria-label="multiselect-search" [readOnly]="disabled" [placeholder]="_settings.searchPlaceholderText" [(ngModel)]="filter.text" (ngModelChange)="onFilterTextChange($event)">
       </li>
     </ul>
     <ul class="item2" [style.maxHeight]="_settings.maxHeight+'px'">
@@ -31,8 +30,8 @@
         />
         <div>{{item.text}}</div>
       </li>
-      <li *ngIf="_data.length == 0">
-        <h5>No data available</h5>
+      <li class='no-data' *ngIf="_data.length == 0">
+        <h5>{{_settings.noDataAvailablePlaceholderText}}</h5>
       </li>
     </ul>
   </div>

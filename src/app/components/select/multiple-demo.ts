@@ -1,5 +1,6 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { IDropdownSettings } from '../../../ng-multiselect-dropdown/src';
 
 @Component({
   selector: 'multiple-demo',
@@ -13,7 +14,7 @@ export class MultipleDemoComponent implements OnInit {
   limitSelection = false;
   cities: Array<any> = [];
   selectedItems: Array<any> = [];
-  dropdownSettings: any = {};
+  dropdownSettings: IDropdownSettings = {};
   htmlCode = `
     &lt;form [formGroup]="myForm"&gt;
         &lt;ng-multiselect-dropdown
@@ -90,7 +91,7 @@ export class MultipleDemoComponent implements OnInit {
     }
 `;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.cities = [

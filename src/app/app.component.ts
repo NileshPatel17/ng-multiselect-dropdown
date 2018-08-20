@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DropdownSettings } from '../ng-multiselect-dropdown/src/multiselect.component';
 
 @Component({
     selector: 'app-root',

@@ -2,6 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/ng-multiselect-dropdown.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown)
 [![downloads](https://img.shields.io/npm/dt/ng-multiselect-dropdown.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown)
+[![downloads](https://img.shields.io/npm/dm/ng-multiselect-dropdown.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown)
 
 Angular multiselect dropdown component for web applications. Easy to integrate and use. It can be bind to any custom data source.
 
@@ -113,6 +114,7 @@ export class AppComponent implements OnInit {
 | itemsShowLimit           | Number     | Limit the number of items to show in the input field. If not set will show all selected.                                                                                                                                                                                                                                                                 | All           |
 | limitSelection           | Number     | Limit the selection of number of items from the dropdown list. Once the limit is reached, all unselected items gets disabled.                                                                                                                                                                                                                            | none          |
 | searchPlaceholderText    | String     | Custom text for the search placeholder text. Default value would be 'Search'                                                                                                                                                                                                                                                                             | 'Search'      |
+| noDataAvailablePlaceholderText    | String     | Custom text when no data is available.                                                                                                                                                                                                                                                                             | 'No data available'      |
 | closeDropDownOnSelection | Boolean    | Closes the dropdown when item is selected. applicable only in cas of single selection                                                                                                                                                                                                                                                                    | false         |
 
 ### Callback Methods
