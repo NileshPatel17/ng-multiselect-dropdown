@@ -34,6 +34,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   filter: ListItem = new ListItem(this.data);
   defaultSettings: IDropdownSettings = {
     singleSelection: false,
+    allowAddChoice: false,
     idField: 'id',
     textField: 'text',
     enableCheckAll: true,
@@ -101,6 +102,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   @Output('onDeSelectAll') onDeSelectAll: EventEmitter<Array<ListItem>> = new EventEmitter<Array<any>>();
 
+  @Output('onEnterChange') onEnterChange: EventEmitter<Array<ListItem>> = new EventEmitter<Array<any>>();
+
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
 
@@ -108,7 +111,29 @@ export class MultiSelectComponent implements ControlValueAccessor {
     this.onFilterChange.emit($event);
   }
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  onEnterKeydownChange($event) {
+    if (this.filter.text && this._settings.allowAddChoice) {
+      if (this._data.filter(function (item) {
+        if (typeof item === 'string') {
+          return item === this.filter.text;
+        } else {
+          return item[this._settings.textField] === this.filter.text;
+        }
+      }).length === 0
+      ) {
+        this._data.push(new ListItem(this.filter.text));
+        const dataArray = [];
+        this._data.map(function (item) {
+          dataArray.push(item[this._settings.textField]);
+        });
+        this.onEnterChange.emit(dataArray);
+      }
+
+    }
+  }
+
+  constructor(private cdr: ChangeDetectorRef) {
+  }
 
   onItemClick($event: any, item: ListItem) {
     if (this.disabled) {
@@ -130,11 +155,11 @@ export class MultiSelectComponent implements ControlValueAccessor {
   }
 
   writeValue(value: any) {
-    if (value !== undefined && value !== null && value.length > 0) {
+    if (value !== undefined && value !== null) {
       if (this._settings.singleSelection) {
         try {
           if (value.length >= 1) {
-            const firstItem = value[0];
+            const firstItem = (typeof value === 'string') ? value : value[0];
             this.selectedItems = [
               typeof firstItem === 'string'
                 ? new ListItem(firstItem)
@@ -147,7 +172,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
         } catch (e) {
           // console.error(e.body.msg);
         }
-      } else {
+      } else if (value.length > 0) {
         const _data = value.map(
           (item: any) =>
             typeof item === 'string'
