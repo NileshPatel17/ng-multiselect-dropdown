@@ -65,6 +65,7 @@ export class AppComponent implements OnInit {
     ];
     this.dropdownSettings = {
       singleSelection: false,
+      allowAddChoice: false,
       idField: 'item_id',
       textField: 'item_text',
       selectAllText: 'Select All',
@@ -99,6 +100,7 @@ export class AppComponent implements OnInit {
 | Setting                  | Type       | Description                                                                                                                                                                                                                                                                                                                                              | Default Value |
 | :----------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
 | singleSelection          | Boolean    | Mode of this component. If set `true` user can select more than one option.                                                                                                                                                                                                                                                                              | false         |
+| allowAddChoice           | Boolean    | Allowing user to add choice. If set `true` and press 'Enter' in the search bar, user can add the searchKey to the dropdown.                                                                                                                                                                                                                                                                            | false         |
 | placeholder              | String     | Text to be show in the dropdown, when no items are selected.                                                                                                                                                                                                                                                                                             | 'Select'      |
 | disabled                 | Boolean    | Disable the dropdown                                                                                                                                                                                                                                                                                                                                     | false         |
 | data                     | Array<any> | Array of items from which to select. Should be an array of objects with id and `text` properties. You can also use custom properties. In that case you need to map idField and `textField` properties. As convenience, you may also pass an array of strings, in which case the same string is used for both the ID and the text(no mapping is required) | n/a           |
@@ -127,6 +129,8 @@ export class AppComponent implements OnInit {
   Example : (onDeSelect)="onItemDeSelect($event)"
   `onFilterChange` - Return the key press.
   Example : (onFilterChange)="onFilterChange($event)"
+* `onEnterChange` - Return the all dropdown choices.
+  Example : (onEnterChange)="onEnterChange($event)".
 
 ## Run locally
 
