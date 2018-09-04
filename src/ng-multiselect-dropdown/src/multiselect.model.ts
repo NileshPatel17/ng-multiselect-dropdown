@@ -1,5 +1,6 @@
 export interface IDropdownSettings {
   singleSelection?: boolean;
+  allowAddChoice?: boolean;
   idField?: string;
   textField?: string;
   enableCheckAll?: boolean;
