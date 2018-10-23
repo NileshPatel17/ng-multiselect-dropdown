@@ -3,13 +3,14 @@ $disable-background-color: #eceeef;
 .multiselect-dropdown {
     position: relative;
     width: 100%;
+    font-size: inherit;
+    font-family: inherit;
     .dropdown-btn {
         display: inline-block;
         border: 1px solid #adadad;
         width: 100%;
         padding: 6px 12px;
         margin-bottom: 0;
-        font-size: 14px;
         font-weight: normal;
         line-height: 1.52857143;
         text-align: left;
