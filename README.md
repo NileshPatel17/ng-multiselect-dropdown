@@ -14,11 +14,11 @@ Angular multiselect dropdown component for web applications. Easy to integrate a
 
 ## Features
 
-* dropdown with single/multiple selction option
-* bind to any custom data source
-* search item with custom placeholder text
-* limit selection
-* select/de-select all items
+- dropdown with single/multiple selction option
+- bind to any custom data source
+- search item with custom placeholder text
+- limit selection
+- select/de-select all items
 
 ### Installation
 
@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
-  ngOnInit () {
+  ngOnInit() {
     this.dropdownList = [
       { item_id: 1, item_text: 'Mumbai' },
       { item_id: 2, item_text: 'Bangaluru' },
@@ -73,10 +73,10 @@ export class AppComponent implements OnInit {
       allowSearchFilter: true
     };
   }
-  onItemSelect (item:any) {
+  onItemSelect(item: any) {
     console.log(item);
   }
-  onSelectAll (items: any) {
+  onSelectAll(items: any) {
     console.log(items);
   }
 }
@@ -96,44 +96,47 @@ export class AppComponent implements OnInit {
 
 ### Settings
 
-| Setting                  | Type       | Description                                                                                                                                                                                                                                                                                                                                              | Default Value |
-| :----------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
-| singleSelection          | Boolean    | Mode of this component. If set `true` user can select more than one option.                                                                                                                                                                                                                                                                              | false         |
-| placeholder              | String     | Text to be show in the dropdown, when no items are selected.                                                                                                                                                                                                                                                                                             | 'Select'      |
-| disabled                 | Boolean    | Disable the dropdown                                                                                                                                                                                                                                                                                                                                     | false         |
-| data                     | Array<any> | Array of items from which to select. Should be an array of objects with id and `text` properties. You can also use custom properties. In that case you need to map idField and `textField` properties. As convenience, you may also pass an array of strings, in which case the same string is used for both the ID and the text(no mapping is required) | n/a           |
-| idField                  | String     | map id field in case of custom array of object                                                                                                                                                                                                                                                                                                           | 'id'          |
-| textField                | String     | map text field in case of custom array of object                                                                                                                                                                                                                                                                                                         | 'text'        |
-| enableCheckAll           | Boolean    | Enable the option to select all items in list                                                                                                                                                                                                                                                                                                            | false         |
-| selectAllText            | String     | Text to display as the label of select all option                                                                                                                                                                                                                                                                                                        | Select All    |
-| unSelectAllText          | String     | Text to display as the label of unSelect option                                                                                                                                                                                                                                                                                                          | UnSelect All  |
-| allowSearchFilter        | Boolean    | Enable filter option for the list.                                                                                                                                                                                                                                                                                                                       | false         |
-| searchPlaceholderText    | String     | custom search placeholder                                                                                                                                                                                                                                                                                                                                | Search        |
-| clearSearchFilter        | Boolean    | clear search filter on dropdown close                                                                                                                                                                                                                                                                                                                    | true          |
-| maxHeight                | Number     | Set maximum height of the dropdown list in px.                                                                                                                                                                                                                                                                                                           | 197           |
-| itemsShowLimit           | Number     | Limit the number of items to show in the input field. If not set will show all selected.                                                                                                                                                                                                                                                                 | All           |
-| limitSelection           | Number     | Limit the selection of number of items from the dropdown list. Once the limit is reached, all unselected items gets disabled.                                                                                                                                                                                                                            | none          |
-| searchPlaceholderText    | String     | Custom text for the search placeholder text. Default value would be 'Search'                                                                                                                                                                                                                                                                             | 'Search'      |
-| noDataAvailablePlaceholderText    | String     | Custom text when no data is available.                                                                                                                                                                                                                                                                             | 'No data available'      |
-| closeDropDownOnSelection | Boolean    | Closes the dropdown when item is selected. applicable only in cas of single selection                                                                                                                                                                                                                                                                    | false         |
+| Setting                        | Type       | Description                                                                                                                                                                                                                                                                                                                                              | Default Value       |
+| :----------------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------ |
+| singleSelection                | Boolean    | Mode of this component. If set `true` user can select more than one option.                                                                                                                                                                                                                                                                              | false               |
+| placeholder                    | String     | Text to be show in the dropdown, when no items are selected.                                                                                                                                                                                                                                                                                             | 'Select'            |
+| disabled                       | Boolean    | Disable the dropdown                                                                                                                                                                                                                                                                                                                                     | false               |
+| data                           | Array<any> | Array of items from which to select. Should be an array of objects with id and `text` properties. You can also use custom properties. In that case you need to map idField and `textField` properties. As convenience, you may also pass an array of strings, in which case the same string is used for both the ID and the text(no mapping is required) | n/a                 |
+| idField                        | String     | map id field in case of custom array of object                                                                                                                                                                                                                                                                                                           | 'id'                |
+| textField                      | String     | map text field in case of custom array of object                                                                                                                                                                                                                                                                                                         | 'text'              |
+| enableCheckAll                 | Boolean    | Enable the option to select all items in list                                                                                                                                                                                                                                                                                                            | false               |
+| selectAllText                  | String     | Text to display as the label of select all option                                                                                                                                                                                                                                                                                                        | Select All          |
+| unSelectAllText                | String     | Text to display as the label of unSelect option                                                                                                                                                                                                                                                                                                          | UnSelect All        |
+| allowSearchFilter              | Boolean    | Enable filter option for the list.                                                                                                                                                                                                                                                                                                                       | false               |
+| searchPlaceholderText          | String     | custom search placeholder                                                                                                                                                                                                                                                                                                                                | Search              |
+| clearSearchFilter              | Boolean    | clear search filter on dropdown close                                                                                                                                                                                                                                                                                                                    | true                |
+| maxHeight                      | Number     | Set maximum height of the dropdown list in px.                                                                                                                                                                                                                                                                                                           | 197                 |
+| itemsShowLimit                 | Number     | Limit the number of items to show in the input field. If not set will show all selected.                                                                                                                                                                                                                                                                 | All                 |
+| limitSelection                 | Number     | Limit the selection of number of items from the dropdown list. Once the limit is reached, all unselected items gets disabled.                                                                                                                                                                                                                            | none                |
+| searchPlaceholderText          | String     | Custom text for the search placeholder text. Default value would be 'Search'                                                                                                                                                                                                                                                                             | 'Search'            |
+| noDataAvailablePlaceholderText | String     | Custom text when no data is available.                                                                                                                                                                                                                                                                                                                   | 'No data available' |
+| closeDropDownOnSelection       | Boolean    | Closes the dropdown when item is selected. applicable only in cas of single selection                                                                                                                                                                                                                                                                    | false               |
+| defaultOpen                    | Boolean    | open state of dropdown                                                                                                                                                                                                                                                                                                                                   | false               |
 
 ### Callback Methods
 
-* `onSelect` - Return the selected item when an item is checked.
+- `onSelect` - Return the selected item when an item is checked.
   Example : (onSelect)="onItemSelect($event)"
-* `onSelectAll` - Return the all items.
+- `onSelectAll` - Return the all items.
   Example : (onSelectAll)="onSelectAll($event)".
-* `onDeSelect` - Return the unselected item when an item is unchecked.
+- `onDeSelect` - Return the unselected item when an item is unchecked.
   Example : (onDeSelect)="onItemDeSelect($event)"
-  `onFilterChange` - Return the key press.
+- `onFilterChange` - Return the key press.
   Example : (onFilterChange)="onFilterChange($event)"
+- `onDropdownClose`-
+  Example : (onDropdownClose)="onDropdownClose()"
 
 ## Run locally
 
-* Clone the repository or downlod the .zip,.tar files.
-* Run `npm install`
-* Run `ng serve` for a dev server
-* Navigate to `http://localhost:4200/`
+- Clone the repository or downlod the .zip,.tar files.
+- Run `npm install`
+- Run `ng serve` for a dev server
+- Navigate to `http://localhost:4200/`
 
 ## Library Build / NPM Package
 

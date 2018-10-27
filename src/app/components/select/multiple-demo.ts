@@ -91,7 +91,7 @@ export class MultipleDemoComponent implements OnInit {
     }
 `;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.cities = [
@@ -102,9 +102,13 @@ export class MultipleDemoComponent implements OnInit {
       { item_id: 5, item_text: 'Chennai' },
       { item_id: 6, item_text: 'Navsari' }
     ];
-    this.selectedItems = [{ item_id: 4, item_text: 'Pune' }, { item_id: 6, item_text: 'Navsari' }];
+    this.selectedItems = [
+      { item_id: 4, item_text: 'Pune' },
+      { item_id: 6, item_text: 'Navsari' }
+    ];
     this.dropdownSettings = {
       singleSelection: false,
+      defaultOpen: true,
       idField: 'item_id',
       textField: 'item_text',
       selectAllText: 'Select All',
@@ -131,20 +135,32 @@ export class MultipleDemoComponent implements OnInit {
     console.log('onSelectAll', items);
   }
 
+  onDropDownClose() {
+    console.log('dropdown closed');
+  }
+
   toogleShowAll() {
     this.showAll = !this.showAll;
-    this.dropdownSettings = Object.assign({}, this.dropdownSettings, { enableCheckAll: this.showAll });
+    this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
+      enableCheckAll: this.showAll
+    });
   }
   toogleShowFilter() {
     this.ShowFilter = !this.ShowFilter;
-    this.dropdownSettings = Object.assign({}, this.dropdownSettings, { allowSearchFilter: this.ShowFilter });
+    this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
+      allowSearchFilter: this.ShowFilter
+    });
   }
 
   handleLimitSelection() {
     if (this.limitSelection) {
-      this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: 2 });
+      this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
+        limitSelection: 2
+      });
     } else {
-      this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: -1 });
+      this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
+        limitSelection: -1
+      });
     }
   }
 

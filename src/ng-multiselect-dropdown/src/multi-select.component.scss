@@ -47,21 +47,6 @@ $disable-background-color: #eceeef;
         cursor: pointer;
         background-image: none;
         border-radius: 4px;
-        .selected-item {
-          border: 1px solid $base-color;
-          margin-right: 4px;
-          background: $base-color;
-          padding: 0px 5px;
-          color: #fff;
-          border-radius: 2px;
-          float: left;
-          a {
-            text-decoration: none;
-          }
-        }
-        .selected-item:hover {
-          box-shadow: 1px 1px #959595;
-        }
         .dropdown-down {
           display: inline-block;
           top: 10px;
@@ -78,6 +63,21 @@ $disable-background-color: #eceeef;
           border-bottom: 10px solid #adadad;
           border-left: 10px solid transparent;
           border-right: 10px solid transparent;
+        }
+        .selected-item {
+          border: 1px solid $base-color;
+          margin-right: 4px;
+          background: $base-color;
+          padding: 0px 5px;
+          color: #fff;
+          border-radius: 2px;
+          float: left;
+          a {
+            text-decoration: none;
+          }
+        }
+        .selected-item:hover {
+          box-shadow: 1px 1px #959595;
         }
       }
       .dropdown-down {
