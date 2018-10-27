@@ -108,7 +108,7 @@ export class MultipleDemoComponent implements OnInit {
     ];
     this.dropdownSettings = {
       singleSelection: false,
-      defaultOpen: true,
+      defaultOpen: false,
       idField: 'item_id',
       textField: 'item_text',
       selectAllText: 'Select All',
