@@ -128,8 +128,8 @@ export class AppComponent implements OnInit {
   Example : (onDeSelect)="onItemDeSelect($event)"
 - `onFilterChange` - Return the key press.
   Example : (onFilterChange)="onFilterChange($event)"
-- `onDropdownClose`-
-  Example : (onDropdownClose)="onDropdownClose()"
+- `onDropDownClose`-
+  Example : (onDropDownClose)="onDropDownClose()"
 
 ## Run locally
 
