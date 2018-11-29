@@ -38,17 +38,17 @@ $disable-background-color: #eceeef;
       top: 10px;
       width: 0;
       height: 0;
-      border-top: 10px solid #adadad;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
+      border-top: 5px solid #4a5157;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
     }
     .dropdown-up {
       display: inline-block;
       width: 0;
       height: 0;
-      border-bottom: 10px solid #adadad;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
+      border-bottom: 5px solid #4a5157;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
     }
   }
   .disabled {
