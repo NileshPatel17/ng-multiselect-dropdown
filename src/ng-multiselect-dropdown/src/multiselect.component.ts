@@ -10,6 +10,8 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { ListItem, IDropdownSettings } from './multiselect.model';
+import {Observable} from "rxjs/Observable";
+import { isObservable } from "rxjs";
 
 export const DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -72,7 +74,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   }
 
   @Input()
-  public set data(value: Array<any>) {
+  public set data(value: Array<any> | Observable<Array<any>>) {
     if (!value) {
       this._data = [];
     } else {
@@ -81,15 +83,30 @@ export class MultiSelectComponent implements ControlValueAccessor {
       //     return item;
       //   }
       // });
-      this._data = value.map(
-        (item: any) =>
-          typeof item === 'string'
-            ? new ListItem(item)
-            : new ListItem({
+
+      let bindData = (data: Array<any>) => {
+        this._data = data.map(
+          (item: any) =>
+            typeof item === 'string'
+              ? new ListItem(item)
+              : new ListItem({
                 id: item[this._settings.idField],
                 text: item[this._settings.textField]
               })
-      );
+        );
+      };
+
+      if (isObservable(value)) {
+        value.subscribe(result => {
+          bindData(result);
+        }, error => {
+          console.error("Error binding observable to multiselect: " + error);
+        });
+      }
+      else {
+        bindData(value);
+      }
+
     }
   }
 
