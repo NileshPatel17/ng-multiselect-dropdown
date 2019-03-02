@@ -2,9 +2,10 @@
 
 # compiled output
 /dist
-/lib-dist
+/dist-lib
 /tmp
 /out-tsc
+dist-lib.tgz
 
 # dependencies
 /node_modules
@@ -35,7 +36,6 @@ npm-debug.log
 testem.log
 /typings
 yarn-error.log
-publish package.txt
 
 # e2e
 /e2e/*.js
@@ -44,7 +44,7 @@ publish package.txt
 # System Files
 .DS_Store
 Thumbs.db
-yarn.lock
+package-lock.json
 settings.json
 
 

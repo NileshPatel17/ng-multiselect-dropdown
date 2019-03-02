@@ -1,40 +1,15 @@
 import {
   Component,
-  OnInit,
-  NgModule,
   HostListener,
-  OnChanges,
-  ViewEncapsulation,
   forwardRef,
   Input,
   Output,
   EventEmitter,
-  ElementRef,
-  AfterViewInit,
-  Pipe,
-  PipeTransform,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
 } from '@angular/core';
-import { FormsModule, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { ListItem, MyException } from './multiselect.model';
-import { ClickOutsideDirective } from './click-outside.directive';
-import { ListFilterPipe } from './list-filter.pipe';
-
-export interface DropdownSettings {
-  singleSelection: Boolean;
-  idField?: string;
-  textField?: string;
-  enableCheckAll: Boolean;
-  selectAllText: String;
-  unSelectAllText: String;
-  allowSearchFilter?: Boolean;
-  maxHeight?: Number;
-  itemsShowLimit: Number;
-  limitSelection?: Number;
-  searchPlaceholderText?: String;
-  closeDropDownOnSelection?: Boolean;
-}
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { ListItem, IDropdownSettings } from './multiselect.model';
 
 export const DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -48,16 +23,16 @@ const noop = () => {};
   templateUrl: './multi-select.component.html',
   styleUrls: ['./multi-select.component.scss'],
   providers: [DROPDOWN_CONTROL_VALUE_ACCESSOR],
-  changeDetection:ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MultiSelectComponent implements OnInit, ControlValueAccessor {
-  public _settings: DropdownSettings;
+export class MultiSelectComponent implements ControlValueAccessor {
+  public _settings: IDropdownSettings;
   public _data: Array<ListItem> = [];
   public selectedItems: Array<ListItem> = [];
-  public isDropdownOpen = false;
-
+  public isDropdownOpen = true;
+  _placeholder = 'Select';
   filter: ListItem = new ListItem(this.data);
-  defaultSettings: DropdownSettings = {
+  defaultSettings: IDropdownSettings = {
     singleSelection: false,
     idField: 'id',
     textField: 'text',
@@ -65,17 +40,30 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
     allowSearchFilter: false,
+    limitSelection: -1,
+    clearSearchFilter: true,
     maxHeight: 197,
     itemsShowLimit: 999999999999,
     searchPlaceholderText: 'Search',
-    closeDropDownOnSelection: false
+    noDataAvailablePlaceholderText: 'No data available',
+    closeDropDownOnSelection: false,
+    showSelectedItemsAtTop: false,
+    defaultOpen: false
   };
 
-  @Input() placeholder = 'Select';
-  @Input() disabled = false;
+  @Input()
+  public set placeholder(value: string) {
+    if (value) {
+      this._placeholder = value;
+    } else {
+      this._placeholder = 'Select';
+    }
+  }
+  @Input()
+  disabled = false;
 
   @Input()
-  public set settings(value: DropdownSettings) {
+  public set settings(value: IDropdownSettings) {
     if (value) {
       this._settings = Object.assign(this.defaultSettings, value);
     } else {
@@ -88,18 +76,12 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
     if (!value) {
       this._data = [];
     } else {
-      const _items = value.filter((item: any) => {
-        if (
-          typeof item === 'string' ||
-          (typeof item === 'object' &&
-            item &&
-            item[this._settings.idField] &&
-            item[this._settings.textField])
-        ) {
-          return item;
-        }
-      });
-      this._data = _items.map(
+      // const _items = value.filter((item: any) => {
+      //   if (typeof item === 'string' || (typeof item === 'object' && item && item[this._settings.idField] && item[this._settings.textField])) {
+      //     return item;
+      //   }
+      // });
+      this._data = value.map(
         (item: any) =>
           typeof item === 'string'
             ? new ListItem(item)
@@ -111,9 +93,16 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
     }
   }
 
-  @Output('onSelect') onSelect: EventEmitter<ListItem> = new EventEmitter<any>();
+  @Output('onFilterChange')
+  onFilterChange: EventEmitter<ListItem> = new EventEmitter<any>();
+  @Output('onDropDownClose')
+  onDropDownClose: EventEmitter<ListItem> = new EventEmitter<any>();
 
-  @Output('onDeSelect') onDeSelect: EventEmitter<ListItem> = new EventEmitter<any>();
+  @Output('onSelect')
+  onSelect: EventEmitter<ListItem> = new EventEmitter<any>();
+
+  @Output('onDeSelect')
+  onDeSelect: EventEmitter<ListItem> = new EventEmitter<any>();
 
   @Output('onSelectAll')
   onSelectAll: EventEmitter<Array<ListItem>> = new EventEmitter<Array<any>>();
@@ -124,34 +113,39 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
 
-  constructor() {}
-  ngOnInit() {}
+  onFilterTextChange($event) {
+    this.onFilterChange.emit($event);
+  }
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
   onItemClick($event: any, item: ListItem) {
     if (this.disabled) {
       return false;
     }
 
     const found = this.isSelected(item);
-    const limit = this.selectedItems.length < this._settings.limitSelection ? true : false;
-
+    const allowAdd =
+      this._settings.limitSelection === -1 ||
+      (this._settings.limitSelection > 0 &&
+        this.selectedItems.length < this._settings.limitSelection);
     if (!found) {
-      if (this._settings.limitSelection) {
-        if (limit) {
-          this.addSelected(item);
-        }
-      } else {
+      if (allowAdd) {
         this.addSelected(item);
       }
     } else {
       this.removeSelected(item);
     }
-    if (this._settings.singleSelection && this._settings.closeDropDownOnSelection) {
+    if (
+      this._settings.singleSelection &&
+      this._settings.closeDropDownOnSelection
+    ) {
       this.closeDropdown();
     }
   }
 
   writeValue(value: any) {
-    if (value !== undefined && value !== null) {
+    if (value !== undefined && value !== null && value.length > 0) {
       if (this._settings.singleSelection) {
         try {
           if (value.length >= 1) {
@@ -178,13 +172,16 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
                   text: item[this._settings.textField]
                 })
         );
-        if (this._settings.limitSelection) {
+        if (this._settings.limitSelection > 0) {
           this.selectedItems = _data.splice(0, this._settings.limitSelection);
         } else {
           this.selectedItems = _data;
         }
       }
+    } else {
+      this.selectedItems = [];
     }
+    this.onChangeCallback(value);
   }
 
   // From ControlValueAccessor interface
@@ -226,8 +223,21 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
     return this._data.length === this.selectedItems.length;
   }
 
-  itemShowRemaining(): Number {
-    return this.selectedItems.length - Number(this._settings.itemsShowLimit);
+  showButton(): boolean {
+    if (!this._settings.singleSelection) {
+      if (this._settings.limitSelection > 0) {
+        return false;
+      }
+      // this._settings.enableCheckAll = this._settings.limitSelection === -1 ? true : false;
+      return true; // !this._settings.singleSelection && this._settings.enableCheckAll && this._data.length > 0;
+    } else {
+      // should be disabled in single selection mode
+      return false;
+    }
+  }
+
+  itemShowRemaining(): number {
+    return this.selectedItems.length - this._settings.itemsShowLimit;
   }
 
   addSelected(item: ListItem) {
@@ -285,11 +295,19 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
     if (this.disabled && this._settings.singleSelection) {
       return;
     }
-    this.isDropdownOpen = !this.isDropdownOpen;
+    this._settings.defaultOpen = !this._settings.defaultOpen;
+    if (!this._settings.defaultOpen) {
+      this.onDropDownClose.emit();
+    }
   }
 
   closeDropdown() {
-    this.isDropdownOpen = false;
+    this._settings.defaultOpen = false;
+    // clear search text
+    if (this._settings.clearSearchFilter) {
+      this.filter.text = '';
+    }
+    this.onDropDownClose.emit();
   }
 
   toggleSelectAll() {

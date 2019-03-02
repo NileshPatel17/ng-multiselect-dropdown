@@ -3,8 +3,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { TabsModule, ButtonsModule } from 'ngx-bootstrap';
-// import { Ng2MultiSelectDropDownModule } from '../ng-multiselect-dropdown/src';
-import { Ng2MultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { NgMultiSelectDropDownModule } from '../ng-multiselect-dropdown/src';
+// import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { SelectSectionComponent } from './components/select-section';
 import { SampleSectionComponent } from './components/sample-section.component';
@@ -15,20 +15,14 @@ import { ShCodeViewer } from '../code-viewer/code-viewer.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    SelectSectionComponent,
-    SampleSectionComponent,
-    SingleDemoComponent,
-    MultipleDemoComponent,
-    AppComponent
-  ],
+  declarations: [SelectSectionComponent, SampleSectionComponent, SingleDemoComponent, MultipleDemoComponent, AppComponent],
   imports: [
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
     TabsModule.forRoot(),
     ButtonsModule.forRoot(),
-    Ng2MultiSelectDropDownModule,
+    NgMultiSelectDropDownModule.forRoot(),
     ShCodeViewer
   ],
   providers: [],
