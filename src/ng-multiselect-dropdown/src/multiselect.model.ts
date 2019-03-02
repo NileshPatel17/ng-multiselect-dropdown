@@ -1,7 +1,7 @@
 export class ListItem {
   id: String;
   text: String;
-
+  isLabel: boolean;
   public constructor(source: any) {
     if (typeof source === 'string') {
       this.id = this.text = source;
@@ -9,6 +9,7 @@ export class ListItem {
     if (typeof source === 'object') {
       this.id = source.id;
       this.text = source.text;
+      this.isLabel = source.isLabel;
     }
   }
 }
