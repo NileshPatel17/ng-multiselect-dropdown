@@ -30,7 +30,6 @@ export class MultiSelectComponent implements ControlValueAccessor {
   public _data: Array<ListItem> = [];
   public selectedItems: Array<ListItem> = [];
   public isDropdownOpen = true;
-  _placeholder = 'Select';
   filter: ListItem = new ListItem(this.data);
   defaultSettings: IDropdownSettings = {
     singleSelection: false,
@@ -48,17 +47,10 @@ export class MultiSelectComponent implements ControlValueAccessor {
     noDataAvailablePlaceholderText: 'No data available',
     closeDropDownOnSelection: false,
     showSelectedItemsAtTop: false,
-    defaultOpen: false
+    defaultOpen: false,
+    customPlaceholder: 'Select'
   };
 
-  @Input()
-  public set placeholder(value: string) {
-    if (value) {
-      this._placeholder = value;
-    } else {
-      this._placeholder = 'Select';
-    }
-  }
   @Input()
   disabled = false;
 

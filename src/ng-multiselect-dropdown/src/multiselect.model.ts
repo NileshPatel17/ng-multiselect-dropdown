@@ -15,6 +15,7 @@ export interface IDropdownSettings {
   closeDropDownOnSelection?: boolean;
   showSelectedItemsAtTop?: boolean;
   defaultOpen?: boolean;
+  customPlaceholder?: string;
 }
 
 export class ListItem {

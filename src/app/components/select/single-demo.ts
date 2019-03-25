@@ -42,7 +42,8 @@ export class SingleDemoComponent implements OnInit {
                 selectAllText: 'Select All',
                 unSelectAllText: 'UnSelect All',
                 allowSearchFilter: true,
-                closeDropDownOnSelection: this.closeDropdownSelection
+                closeDropDownOnSelection: this.closeDropdownSelection,
+                customPlaceholder: 'Select City'
             };
         }
 
@@ -66,7 +67,8 @@ export class SingleDemoComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       allowSearchFilter: true,
-      closeDropDownOnSelection: this.closeDropdownSelection
+      closeDropDownOnSelection: this.closeDropdownSelection,
+      customPlaceholder: 'Select City'
     };
     this.selectedItem = ['Mumbai'];
   }
