@@ -148,7 +148,9 @@ export class MultiSelectComponent implements ControlValueAccessor {
       this.closeDropdown();
     }
   }
-
+  setDisabledState(isDisabled: boolean) {
+    this.disabled = isDisabled;
+  }
   writeValue(value: any) {
     if (value !== undefined && value !== null && value.length > 0) {
       if (this._settings.singleSelection) {
@@ -298,7 +300,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   toggleDropdown(evt) {
     evt.preventDefault();
 
-    if (this.disabled && this._settings.singleSelection) {
+    if (this.disabled) {
       return;
     }
     this._settings.defaultOpen = !this._settings.defaultOpen;
@@ -315,14 +317,16 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
   }
   public toggleDropdownExternal() {
-    if (!this._settings.defaultOpen) {
-      setTimeout(() => {
-        if (this.dropdownbtn) {
-          this.dropdownbtn.nativeElement.click();
-        }
-      }, 100);
-    } else {
-      this.closeDropdown();
+    if (!this.disabled) {
+      if (!this._settings.defaultOpen) {
+        setTimeout(() => {
+          if (this.dropdownbtn) {
+            this.dropdownbtn.nativeElement.click();
+          }
+        }, 100);
+      } else {
+        this.closeDropdown();
+      }
     }
   }
 
