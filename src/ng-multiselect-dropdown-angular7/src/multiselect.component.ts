@@ -315,11 +315,15 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
   }
   public toggleDropdownExternal() {
-    setTimeout(() => {
-      if (this.dropdownbtn) {
-        this.dropdownbtn.nativeElement.click();
-      }
-    }, 100);
+    if (!this._settings.defaultOpen) {
+      setTimeout(() => {
+        if (this.dropdownbtn) {
+          this.dropdownbtn.nativeElement.click();
+        }
+      }, 100);
+    } else {
+      this.closeDropdown();
+    }
   }
 
   closeDropdown() {
