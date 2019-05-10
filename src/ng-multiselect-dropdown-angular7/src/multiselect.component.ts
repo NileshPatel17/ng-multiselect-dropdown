@@ -6,7 +6,9 @@ import {
   Output,
   EventEmitter,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { ListItem, IDropdownSettings } from './multiselect.model';
@@ -30,6 +32,9 @@ export class MultiSelectComponent implements ControlValueAccessor {
   public _data: Array<ListItem> = [];
   public selectedItems: Array<ListItem> = [];
   public isDropdownOpen = true;
+  @ViewChild('dropdownBtn') dropdownbtn: ElementRef;
+  @ViewChild('Section') Section: ElementRef;
+
   _placeholder = 'Select';
   filter: ListItem = new ListItem(this.data);
   defaultSettings: IDropdownSettings = {
@@ -292,25 +297,33 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   toggleDropdown(evt) {
     evt.preventDefault();
+
     if (this.disabled && this._settings.singleSelection) {
       return;
     }
     this._settings.defaultOpen = !this._settings.defaultOpen;
+    if (this._settings.defaultOpen) {
+      setTimeout(() => {
+        const temp = this.Section.nativeElement.querySelectorAll('.filter-textbox');
+        if (temp && temp.length > 0 && temp[0].childNodes && temp[0].childNodes[0]) {
+          temp[0].childNodes[0].focus();
+        }
+      }, 100);
+    }
     if (!this._settings.defaultOpen) {
       this.onDropDownClose.emit();
     }
   }
-  toggleDropdownExternal() {
-    if (this.disabled && this._settings.singleSelection) {
-      return;
-    }
-    this._settings.defaultOpen = !this._settings.defaultOpen;
-    if (!this._settings.defaultOpen) {
-      this.onDropDownClose.emit();
-    }
+  public toggleDropdownExternal() {
+    setTimeout(() => {
+      if (this.dropdownbtn) {
+        this.dropdownbtn.nativeElement.click();
+      }
+    }, 100);
   }
 
   closeDropdown() {
+
     this._settings.defaultOpen = false;
     // clear search text
     if (this._settings.clearSearchFilter) {

@@ -5,6 +5,7 @@ import { MultiSelectComponent } from './multiselect.component';
 import { ClickOutsideDirective } from './click-outside.directive';
 import { ListFilterPipe } from './list-filter.pipe';
 
+
 @NgModule({
   imports: [CommonModule, FormsModule],
   declarations: [MultiSelectComponent, ClickOutsideDirective, ListFilterPipe],

@@ -1,6 +1,6 @@
 <div tabindex="=0" (blur)="onTouched()" class="multiselect-dropdown" (clickOutside)="closeDropdown()">
   <div [class.disabled]="disabled">
-    <span tabindex="-1" class="dropdown-btn" (click)="toggleDropdown($event);">
+    <span #dropdownBtn tabindex="-1" class="dropdown-btn" (click)="toggleDropdown($event);">
       <span *ngIf="selectedItems.length == 0">{{_placeholder}}</span>
       <span class="selected-item" *ngFor="let item of selectedItems;trackBy: trackByFn;let k = index" [hidden]="k > _settings.itemsShowLimit-1">
         {{item.text}}
@@ -12,7 +12,7 @@
       </span>
     </span>
   </div>
-  <div class="dropdown-list" [hidden]="!_settings.defaultOpen">
+  <div class="dropdown-list" [hidden]="!_settings.defaultOpen" #Section>
     <ul class="item1">
       <li (click)="toggleSelectAll()" *ngIf="_data.length > 0 && !_settings.singleSelection && _settings.enableCheckAll && _settings.limitSelection===-1" class="multiselect-item-checkbox" style="border-bottom: 1px solid #ccc;padding:10px">
         <input type="checkbox" aria-label="multiselect-select-all" [checked]="isAllItemsSelected()" [disabled]="disabled || isLimitSelectionReached()" />

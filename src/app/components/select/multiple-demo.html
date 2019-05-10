@@ -3,7 +3,8 @@
     <div class="col-md-4">
       <h3>Select Multiple Cities</h3>
       <form [formGroup]="myForm">
-        <ng-multiselect-dropdown-angular7 name="city" [placeholder]="'Select City'" [data]="cities" formControlName="city" [disabled]="disabled" [settings]="dropdownSettings" (onDropDownClose)="onDropDownClose()" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+        <button (click)="mul.toggleDropdownExternal()" >External Click</button>
+        <ng-multiselect-dropdown-angular7 #mul name="city" [placeholder]="'Select City'" [data]="cities" formControlName="city" [disabled]="disabled" [settings]="dropdownSettings" (onDropDownClose)="onDropDownClose()" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
         </ng-multiselect-dropdown-angular7>
       </form>
       <p></p>
