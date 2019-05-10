@@ -81,7 +81,7 @@ export class AppComponent implements OnInit {
 ```
 
 ```html
-<ng-multiselect-dropdown
+<ng-multiselect-dropdown-angular7
   [placeholder]="'custom placeholder'"
   [data]="dropdownList"
   [(ngModel)]="selectedItems"
@@ -89,7 +89,7 @@ export class AppComponent implements OnInit {
   (onSelect)="onItemSelect($event)"
   (onSelectAll)="onSelectAll($event)"
 >
-</ng-multiselect-dropdown>
+</ng-multiselect-dropdown-angular7>
 ```
 
 ### Settings
