@@ -28,7 +28,7 @@ class Ng2MultiSelectDropdownMultipleSelect {
         closeDropDownOnSelection: true,
     };
 }
-// https://github.com/NileshPatel17/ng-multiselect-dropdown/issues/67
+// https://github.com/demonking99/ng-multiselect-dropdown-angular7/issues/67
 describe('ng-multiselect-component: Issue No: 67( Option with value = 0 does not work)', function () {
     let fixture: ComponentFixture<Ng2MultiSelectDropdownMultipleSelect>;
     beforeEach(
@@ -36,11 +36,11 @@ describe('ng-multiselect-component: Issue No: 67( Option with value = 0 does not
             fixture = createTestingModule(
                 Ng2MultiSelectDropdownMultipleSelect,
                 `<div class='container'>
-          <ng-multiselect-dropdown name="city" [data]="cities"
+          <ng-multiselect-dropdown-angular7 name="city" [data]="cities"
       [(ngModel)]="selectedItem" [settings]="dropdownSettings"
       (onSelect)="onItemSelect($event)"
       [disabled]="disabled">
-    </ng-multiselect-dropdown>
+    </ng-multiselect-dropdown-angular7>
     </div>`
             );
         })

@@ -1,6 +1,6 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { IDropdownSettings } from '../../../ng-multiselect-dropdown/src';
+import { IDropdownSettings } from '../../../ng-multiselect-dropdown-angular7/src';
 
 @Component({
   selector: 'multiple-demo',
@@ -17,7 +17,7 @@ export class MultipleDemoComponent implements OnInit {
   dropdownSettings: IDropdownSettings = {};
   htmlCode = `
     &lt;form [formGroup]="myForm"&gt;
-        &lt;ng-multiselect-dropdown
+        &lt;ng-multiselect-dropdown-angular7
             name="city"
             [placeholder]="'Select City'"
             [data]="cities"
@@ -25,7 +25,7 @@ export class MultipleDemoComponent implements OnInit {
             [disabled]="disabled"
             [settings]="dropdownSettings"
             (onSelect)="onItemSelect($event)"&gt;
-        &lt;/ng-multiselect-dropdown&gt;
+        &lt;/ng-multiselect-dropdown-angular7&gt;
    &lt;/form&gt;
 `;
   typescriptCode = `

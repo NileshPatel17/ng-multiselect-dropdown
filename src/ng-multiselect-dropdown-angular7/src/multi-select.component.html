@@ -1,6 +1,6 @@
 <div tabindex="=0" (blur)="onTouched()" class="multiselect-dropdown" (clickOutside)="closeDropdown()">
   <div [class.disabled]="disabled">
-    <span tabindex="-1" class="dropdown-btn" (click)="toggleDropdown($event)">
+    <span tabindex="-1" class="dropdown-btn" (click)="toggleDropdown($event);">
       <span *ngIf="selectedItems.length == 0">{{_placeholder}}</span>
       <span class="selected-item" *ngFor="let item of selectedItems;trackBy: trackByFn;let k = index" [hidden]="k > _settings.itemsShowLimit-1">
         {{item.text}}
@@ -19,7 +19,7 @@
         <div>{{!isAllItemsSelected() ? _settings.selectAllText : _settings.unSelectAllText}}</div>
       </li>
       <li class="filter-textbox" *ngIf="_data.length>0 && _settings.allowSearchFilter">
-        <input type="text" aria-label="multiselect-search" [readOnly]="disabled" [placeholder]="_settings.searchPlaceholderText" [(ngModel)]="filter.text" (ngModelChange)="onFilterTextChange($event)">
+        <input type="text" #searchTextBox aria-label="multiselect-search" autofocus [readOnly]="disabled" [placeholder]="_settings.searchPlaceholderText" [(ngModel)]="filter.text" (ngModelChange)="onFilterTextChange($event)">
       </li>
     </ul>
     <ul class="item2" [style.maxHeight]="_settings.maxHeight+'px'">

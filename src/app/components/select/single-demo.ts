@@ -11,14 +11,14 @@ export class SingleDemoComponent implements OnInit {
   closeDropdownSelection = false;
   disabled = false;
   htmlCode = `
-   &lt;ng-multiselect-dropdown
+   &lt;ng-multiselect-dropdown-angular7
        name="city"
        [data]="cities"
        [(ngModel)]="selectedItem"
        [settings]="dropdownSettings"
        (onSelect)="onItemSelect($event)"
        [disabled]="disabled"
-   &lt;/ng-multiselect-dropdown&gt;
+   &lt;/ng-multiselect-dropdown-angular7&gt;
 `;
   typescriptCode = `
     import { Component, OnInit } from '@angular/core';

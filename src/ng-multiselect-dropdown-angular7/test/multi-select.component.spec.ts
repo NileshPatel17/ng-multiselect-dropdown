@@ -67,11 +67,11 @@ describe('ng-multiselect-component', function() {
       fixture = createTestingModule(
         Ng2MultiSelectDropdownSingleSelect,
         `<div class='container'>
-          <ng-multiselect-dropdown name="city" [data]="cities"
+          <ng-multiselect-dropdown-angular7 name="city" [data]="cities"
       [(ngModel)]="selectedItem" [settings]="dropdownSettings"
       (onSelect)="onItemSelect($event)"
       [disabled]="disabled">
-    </ng-multiselect-dropdown>
+    </ng-multiselect-dropdown-angular7>
     </div>`
       );
     }));
@@ -164,11 +164,11 @@ describe('ng-multiselect-component', function() {
       fixture = createTestingModule(
         Ng2MultiSelectDropdownMultipleSelect,
         `<div class='container'>
-          <ng-multiselect-dropdown name="city" [data]="cities"
+          <ng-multiselect-dropdown-angular7 name="city" [data]="cities"
       [(ngModel)]="selectedItem" [settings]="dropdownSettings"
       (onSelect)="onItemSelect($event)"
       [disabled]="disabled">
-    </ng-multiselect-dropdown>
+    </ng-multiselect-dropdown-angular7>
     </div>`
       );
     }));

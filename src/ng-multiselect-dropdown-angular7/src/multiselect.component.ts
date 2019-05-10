@@ -16,10 +16,10 @@ export const DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   useExisting: forwardRef(() => MultiSelectComponent),
   multi: true
 };
-const noop = () => {};
+const noop = () => { };
 
 @Component({
-  selector: 'ng-multiselect-dropdown',
+  selector: 'ng-multiselect-dropdown-angular7',
   templateUrl: './multi-select.component.html',
   styleUrls: ['./multi-select.component.scss'],
   providers: [DROPDOWN_CONTROL_VALUE_ACCESSOR],
@@ -86,9 +86,9 @@ export class MultiSelectComponent implements ControlValueAccessor {
           typeof item === 'string'
             ? new ListItem(item)
             : new ListItem({
-                id: item[this._settings.idField],
-                text: item[this._settings.textField]
-              })
+              id: item[this._settings.idField],
+              text: item[this._settings.textField]
+            })
       );
     }
   }
@@ -117,7 +117,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     this.onFilterChange.emit($event);
   }
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef) { }
 
   onItemClick($event: any, item: ListItem) {
     if (this.disabled) {
@@ -154,9 +154,9 @@ export class MultiSelectComponent implements ControlValueAccessor {
               typeof firstItem === 'string'
                 ? new ListItem(firstItem)
                 : new ListItem({
-                    id: firstItem[this._settings.idField],
-                    text: firstItem[this._settings.textField]
-                  })
+                  id: firstItem[this._settings.idField],
+                  text: firstItem[this._settings.textField]
+                })
             ];
           }
         } catch (e) {
@@ -168,9 +168,9 @@ export class MultiSelectComponent implements ControlValueAccessor {
             typeof item === 'string'
               ? new ListItem(item)
               : new ListItem({
-                  id: item[this._settings.idField],
-                  text: item[this._settings.textField]
-                })
+                id: item[this._settings.idField],
+                text: item[this._settings.textField]
+              })
         );
         if (this._settings.limitSelection > 0) {
           this.selectedItems = _data.splice(0, this._settings.limitSelection);
@@ -292,6 +292,15 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   toggleDropdown(evt) {
     evt.preventDefault();
+    if (this.disabled && this._settings.singleSelection) {
+      return;
+    }
+    this._settings.defaultOpen = !this._settings.defaultOpen;
+    if (!this._settings.defaultOpen) {
+      this.onDropDownClose.emit();
+    }
+  }
+  toggleDropdownExternal() {
     if (this.disabled && this._settings.singleSelection) {
       return;
     }

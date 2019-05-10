@@ -4,9 +4,9 @@
     <div class="col-md-4">
       <h3>Select a single city</h3>
       <form>
-        <ng-multiselect-dropdown name="city" [data]="cities" [(ngModel)]="selectedItem" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+        <ng-multiselect-dropdown-angular7 name="city" [data]="cities" [(ngModel)]="selectedItem" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
           [disabled]="disabled">
-        </ng-multiselect-dropdown>
+        </ng-multiselect-dropdown-angular7>
       </form>
     </div>
     <div class="col-md-8">

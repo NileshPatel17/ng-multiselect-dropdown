@@ -7,7 +7,7 @@
 
 ## Angular Multiselect Dropdown
 
-[![npm version](https://img.shields.io/npm/v/ng-multiselect-dropdown.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown)
-[![downloads](https://img.shields.io/npm/dt/ng-multiselect-dropdown.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown)
-[![npm](https://img.shields.io/npm/dm/localeval.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown)
-[![npm](https://img.shields.io/npm/dw/localeval.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown)
+[![npm version](https://img.shields.io/npm/v/ng-multiselect-dropdown-angular7.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown-angular7)
+[![downloads](https://img.shields.io/npm/dt/ng-multiselect-dropdown-angular7.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown-angular7)
+[![npm](https://img.shields.io/npm/dm/localeval.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown-angular7)
+[![npm](https://img.shields.io/npm/dw/localeval.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown-angular7)

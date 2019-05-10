@@ -49,11 +49,11 @@ describe('ng-multiselect-component: default placeholder when no data is availabl
             fixture = createTestingModule(
                 Ng2MultiSelectDropdownMultipleSelect_defaultPlaceHolderText,
                 `<div class='container'>
-          <ng-multiselect-dropdown name="city" [data]="cities"
+          <ng-multiselect-dropdown-angular7 name="city" [data]="cities"
       [(ngModel)]="selectedItem" [settings]="dropdownSettings"
       (onSelect)="onItemSelect($event)"
       [disabled]="disabled">
-    </ng-multiselect-dropdown>
+    </ng-multiselect-dropdown-angular7>
     </div>`
             );
         })
@@ -72,11 +72,11 @@ describe('ng-multiselect-component: custom placeholder when no data is available
             fixture = createTestingModule(
                 Ng2MultiSelectDropdownMultipleSelect_CustomPlaceHolderText,
                 `<div class='container'>
-          <ng-multiselect-dropdown name="city" [data]="cities"
+          <ng-multiselect-dropdown-angular7 name="city" [data]="cities"
       [(ngModel)]="selectedItem" [settings]="dropdownSettings"
       (onSelect)="onItemSelect($event)"
       [disabled]="disabled">
-    </ng-multiselect-dropdown>
+    </ng-multiselect-dropdown-angular7>
     </div>`
             );
         })

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-multiselect-dropdown-base": {
+    "ng-multiselect-dropdown-angular7-base": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -48,18 +48,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-multiselect-dropdown-base:build"
+            "browserTarget": "ng-multiselect-dropdown-angular7-base:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ng-multiselect-dropdown-base:build:production"
+              "browserTarget": "ng-multiselect-dropdown-angular7-base:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-multiselect-dropdown-base:build"
+            "browserTarget": "ng-multiselect-dropdown-angular7-base:build"
           }
         },
         "test": {
@@ -93,7 +93,7 @@
         }
       }
     },
-    "ng-multiselect-dropdown-base-e2e": {
+    "ng-multiselect-dropdown-angular7-base-e2e": {
       "root": "",
       "sourceRoot": "e2e",
       "projectType": "application",
@@ -102,7 +102,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "ng-multiselect-dropdown-base:serve"
+            "devServerTarget": "ng-multiselect-dropdown-angular7-base:serve"
           }
         },
         "lint": {
@@ -119,7 +119,7 @@
       }
     }
   },
-  "defaultProject": "ng-multiselect-dropdown-base",
+  "defaultProject": "ng-multiselect-dropdown-angular7-base",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "ng",
