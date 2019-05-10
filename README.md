@@ -1,13 +1,15 @@
 # Angular Multiselect Dropdown
 
-[![npm version](https://img.shields.io/npm/v/ng-multiselect-dropdown.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown-angular7)
-[![downloads](https://img.shields.io/npm/dt/ng-multiselect-dropdown.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown-angular7)
-[![downloads](https://img.shields.io/npm/dm/ng-multiselect-dropdown.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown-angular7)
+[![npm version](https://img.shields.io/npm/v/ng-multiselect-dropdown-angular7.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown-angular7)
+[![downloads](https://img.shields.io/npm/dt/ng-multiselect-dropdown-angular7.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown-angular7)
+[![downloads](https://img.shields.io/npm/dm/ng-multiselect-dropdown-angular7.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown-angular7)
 
 Angular multiselect dropdown component for web applications. Easy to integrate and use. It can be bind to any custom data source.
 
 ## DISCLAIMER
-![THIS PROJECT IN BETA STAGE USE AT YOUR OWN RISK.]
+--------------------
+## THIS PROJECT IN BETA STAGE USE AT YOUR OWN RISK
+
 ## Features
 
 - dropdown with single/multiple selction option
