@@ -91,7 +91,7 @@ export class MultipleDemoComponent implements OnInit {
     }
 `;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.cities = [
@@ -118,7 +118,7 @@ export class MultipleDemoComponent implements OnInit {
       allowSearchFilter: this.ShowFilter
     };
     this.myForm = this.fb.group({
-      city: [this.selectedItems]
+      city: [{ value: this.selectedItems, disabled: true }]
     });
   }
 
