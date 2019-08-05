@@ -36,6 +36,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     singleSelection: false,
     idField: 'id',
     textField: 'text',
+    disabledField: 'isDisabled',
     enableCheckAll: true,
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
@@ -87,7 +88,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
             ? new ListItem(item)
             : new ListItem({
                 id: item[this._settings.idField],
-                text: item[this._settings.textField]
+                text: item[this._settings.textField],
+                isDisabled: item[this._settings.disabledField]
               })
       );
     }
@@ -120,7 +122,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   constructor(private cdr: ChangeDetectorRef) {}
 
   onItemClick($event: any, item: ListItem) {
-    if (this.disabled) {
+    if (this.disabled || item.isDisabled) {
       return false;
     }
 
@@ -155,7 +157,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
                 ? new ListItem(firstItem)
                 : new ListItem({
                     id: firstItem[this._settings.idField],
-                    text: firstItem[this._settings.textField]
+                    text: firstItem[this._settings.textField],
+                    isDisabled: firstItem[this._settings.disabledField]
                   })
             ];
           }
@@ -169,7 +172,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
               ? new ListItem(item)
               : new ListItem({
                   id: item[this._settings.idField],
-                  text: item[this._settings.textField]
+                  text: item[this._settings.textField],
+                  isDisabled: item[this._settings.disabledField]
                 })
         );
         if (this._settings.limitSelection > 0) {
@@ -287,6 +291,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     const obj = {};
     obj[this._settings.idField] = val.id;
     obj[this._settings.textField] = val.text;
+    obj[this._settings.disabledField] = val.isDisabled;
     return obj;
   }
 

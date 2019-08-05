@@ -12,6 +12,7 @@ export class MultipleDemoComponent implements OnInit {
   ShowFilter = true;
   showAll = true;
   limitSelection = false;
+  disableBangalore = true;
   cities: Array<any> = [];
   selectedItems: Array<any> = [];
   dropdownSettings: IDropdownSettings = {};
@@ -97,7 +98,7 @@ export class MultipleDemoComponent implements OnInit {
     this.cities = [
       { item_id: 1, item_text: 'New Delhi' },
       { item_id: 2, item_text: 'Mumbai' },
-      { item_id: 3, item_text: 'Bangalore' },
+      { item_id: 3, item_text: 'Bangalore', isDisabled: this.disableBangalore },
       { item_id: 4, item_text: 'Pune' },
       { item_id: 5, item_text: 'Chennai' },
       { item_id: 6, item_text: 'Navsari' }
@@ -162,6 +163,11 @@ export class MultipleDemoComponent implements OnInit {
         limitSelection: -1
       });
     }
+  }
+
+  handleDisableBangalore() {
+    this.cities[2].isDisabled = this.disableBangalore;
+    this.cities = [...this.cities];
   }
 
   handleReset() {

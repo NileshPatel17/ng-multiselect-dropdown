@@ -14,7 +14,7 @@ class Ng2MultiSelectDropdownSingleSelect {
   cities = [
     { item_id: 1, item_text: 'Mumbai' },
     { item_id: 2, item_text: 'Bangalore' },
-    { item_id: 3, item_text: 'Pune' },
+    { item_id: 3, item_text: 'Pune', isDisabled: true },
     { item_id: 4, item_text: 'Navsari' },
     { item_id: 5, item_text: 'New Delhi' }
   ];
@@ -156,6 +156,20 @@ describe('ng-multiselect-component', function() {
       const el = de.nativeElement;
       tickAndDetectChanges(fixture);
       expect(fixture.componentInstance.select.isDropdownOpen).toBe(false);
+    }));
+
+    it('should not select disabled item', fakeAsync(() => {
+      const selectedItems = [...fixture.componentInstance.selectedItem]; // currently selected items
+      const index = 2;
+      let selCheckBoxes: HTMLLIElement[];
+      const sel = fixture.nativeElement.querySelectorAll(
+        '.multiselect-item-checkbox'
+      );
+      selCheckBoxes = Array.from(sel);
+      selCheckBoxes[index].click();
+      tickAndDetectChanges(fixture);
+      expect(fixture.componentInstance.select.isDropdownOpen).toBeTruthy();
+      expect(fixture.componentInstance.selectedItem).toEqual(selectedItems); // selected items must've not changed
     }));
   });
   describe('Multiple Selection', () => {

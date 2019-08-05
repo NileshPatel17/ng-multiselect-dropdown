@@ -24,7 +24,7 @@
     </ul>
     <ul class="item2" [style.maxHeight]="_settings.maxHeight+'px'">
       <li *ngFor="let item of _data | ng2ListFilter:filter; let i = index;" (click)="onItemClick($event,item)" class="multiselect-item-checkbox">
-        <input type="checkbox" aria-label="multiselect-item" [checked]="isSelected(item)" [disabled]="disabled || (isLimitSelectionReached() && !isSelected(item))" />
+        <input type="checkbox" aria-label="multiselect-item" [checked]="isSelected(item)" [disabled]="disabled || (isLimitSelectionReached() && !isSelected(item)) || item.isDisabled" />
         <div>{{item.text}}</div>
       </li>
       <li class='no-data' *ngIf="_data.length == 0">
