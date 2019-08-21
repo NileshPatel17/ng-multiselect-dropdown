@@ -49,7 +49,7 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.8",
     "@angular/animations": "5.2.9",
-    "@angular/cli": "^6.0.3",
+    "@angular/cli": "^8.2.2",
     "@angular/common": "5.2.9",
     "@angular/compiler": "5.2.9",
     "@angular/compiler-cli": "5.2.9",
