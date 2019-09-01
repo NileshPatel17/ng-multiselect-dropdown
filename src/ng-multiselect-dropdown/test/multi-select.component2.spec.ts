@@ -52,6 +52,31 @@ describe('ng-multiselect-component: Issue No: 67( Option with value = 0 does not
         expect(fixture.componentInstance.cities.length).toBe(5)
         expect(de.length).toBe(5)
         expect(fixture.componentInstance.selectedItem.length).toBe(1)
-    })
+    });
+
+    it('internal model correctly updates as multiple items are selected', fakeAsync(() => {
+      expect(fixture.componentInstance.selectedItem.length).toBe(1, "On initialization there should be one item selected");
+
+      let index = 2;
+      let selCheckBoxes: HTMLLIElement[];
+      const sel = fixture.nativeElement.querySelectorAll(
+        '.multiselect-item-checkbox'
+      );
+      selCheckBoxes = Array.from(sel);
+      selCheckBoxes[index].click();
+      tickAndDetectChanges(fixture);
+      expect(fixture.componentInstance.selectedItem.length).toBe(2);
+      let selItem = fixture.componentInstance.cities[index + 1];
+      expect(fixture.componentInstance.selectedItem[1]).toEqual(selItem);
+
+      index = 3;
+      selCheckBoxes[index].click();
+      tickAndDetectChanges(fixture);
+      expect(fixture.componentInstance.selectedItem.length).toBe(3);
+      selItem = fixture.componentInstance.cities[index + 1];
+      expect(fixture.componentInstance.selectedItem[2]).toEqual(selItem);
+    }));
 });
+
+
 
