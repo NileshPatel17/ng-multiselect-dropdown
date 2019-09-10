@@ -9,7 +9,7 @@ import { createTestingModule, tickAndDetectChanges } from './helper'
     template: ``
 })
 class Ng2MultiSelectDropdownMultipleSelect_defaultPlaceHolderText {
-    @ViewChild(MultiSelectComponent) select: MultiSelectComponent;
+    @ViewChild(MultiSelectComponent, { static: false }) select: MultiSelectComponent;
     cities = [];
     selectedItem = [];
     dropdownSettings: IDropdownSettings = {
@@ -28,7 +28,7 @@ const NO_DATA_AVAILABLE = 'NO DATA AVAILABLE'
     template: ``
 })
 class Ng2MultiSelectDropdownMultipleSelect_CustomPlaceHolderText {
-    @ViewChild(MultiSelectComponent) select: MultiSelectComponent;
+    @ViewChild(MultiSelectComponent, { static: false }) select: MultiSelectComponent;
     cities = [];
     selectedItem = [];
     dropdownSettings: IDropdownSettings = {

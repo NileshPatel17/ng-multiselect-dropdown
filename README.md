@@ -46,6 +46,7 @@ export class AppModule {}
 
 ```ts
 import { Component, OnInit } from '@angular/core';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
 export class AppComponent implements OnInit {
   dropdownList = [];
@@ -63,7 +64,7 @@ export class AppComponent implements OnInit {
       { item_id: 3, item_text: 'Pune' },
       { item_id: 4, item_text: 'Navsari' }
     ];
-    this.dropdownSettings = {
+    this.dropdownSettings:IDropdownSettings = {
       singleSelection: false,
       idField: 'item_id',
       textField: 'item_text',

@@ -1,6 +1,6 @@
 {
   "name": "ng-multiselect-dropdown",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "private": true,
   "description": "Angular Multi-Select Dropdown",
   "author": "Nilesh Patel",
@@ -25,14 +25,14 @@
     "deployOnly": "angular-cli-ghpages --no-silent --repo=https://github.com/NileshPatel17/ng-multiselect-dropdown.git --name=\"Nilesh Patel\" --email=nilesh.nvs@hotmail.com"
   },
   "keywords": [
-    "angular2",
     "angular4",
+    "angular8",
     "angular multiselect dropdown",
-    "angular2 multiselect dropdown",
     "angular4 multiselect dropdown",
+    "angular8 multiselect dropdown",
     "ng multiselect dropdown",
-    "ng2 multiselect dropdown",
-    "ng4 multiselect dropdown"
+    "ng4 multiselect dropdown",
+    "ng8 multiselect dropdown"
   ],
   "repository": {
     "type": "git",
@@ -43,7 +43,8 @@
   },
   "homepage": "https://github.com/nileshpatel17/ng-multiselect-dropdown#readme",
   "peerDependencies": {
-    "@angular/core": "^4.0.0 || ^8.2.2"
+    "@angular/common": ">=2.0.0",
+    "@angular/core": ">=2.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.802.2",
@@ -52,7 +53,7 @@
     "@angular/common": "8.2.2",
     "@angular/compiler": "8.2.2",
     "@angular/compiler-cli": "8.2.2",
-    "@angular/core": "5.2.9",
+    "@angular/core": "8.2.2",
     "@angular/forms": "8.2.2",
     "@angular/http": "7.2.15",
     "@angular/language-service": "8.2.2",
