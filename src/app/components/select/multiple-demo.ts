@@ -20,7 +20,6 @@ export class MultipleDemoComponent implements OnInit {
     &lt;form [formGroup]="myForm"&gt;
         &lt;ng-multiselect-dropdown
             name="city"
-            [placeholder]="'Select City'"
             [data]="cities"
             formControlName="city"
             [disabled]="disabled"
@@ -64,7 +63,8 @@ export class MultipleDemoComponent implements OnInit {
                 selectAllText: 'Select All',
                 unSelectAllText: 'UnSelect All',
                 itemsShowLimit: 3,
-                allowSearchFilter: this.ShowFilter
+                allowSearchFilter: this.ShowFilter,
+                customPlaceholder: 'Select City'
             };
             this.myForm = this.fb.group({
                 city: [this.selectedItems]
@@ -116,7 +116,8 @@ export class MultipleDemoComponent implements OnInit {
       unSelectAllText: 'UnSelect All',
       enableCheckAll: this.showAll,
       itemsShowLimit: 3,
-      allowSearchFilter: this.ShowFilter
+      allowSearchFilter: this.ShowFilter,
+      customPlaceholder: 'Select City'
     };
     this.myForm = this.fb.group({
       city: [this.selectedItems]
