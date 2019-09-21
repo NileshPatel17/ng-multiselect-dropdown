@@ -1,13 +1,4 @@
-import {
-  Component,
-  HostListener,
-  forwardRef,
-  Input,
-  Output,
-  EventEmitter,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef
-} from '@angular/core';
+import { Component, HostListener, forwardRef, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { ListItem, IDropdownSettings } from './multiselect.model';
 
@@ -82,15 +73,14 @@ export class MultiSelectComponent implements ControlValueAccessor {
       //     return item;
       //   }
       // });
-      this._data = value.map(
-        (item: any) =>
-          typeof item === 'string'
-            ? new ListItem(item)
-            : new ListItem({
-                id: item[this._settings.idField],
-                text: item[this._settings.textField],
-                isDisabled: item[this._settings.disabledField]
-              })
+      this._data = value.map((item: any) =>
+        typeof item === 'string'
+          ? new ListItem(item)
+          : new ListItem({
+              id: item[this._settings.idField],
+              text: item[this._settings.textField],
+              isDisabled: item[this._settings.disabledField]
+            })
       );
     }
   }
@@ -127,10 +117,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
 
     const found = this.isSelected(item);
-    const allowAdd =
-      this._settings.limitSelection === -1 ||
-      (this._settings.limitSelection > 0 &&
-        this.selectedItems.length < this._settings.limitSelection);
+    const allowAdd = this._settings.limitSelection === -1 || (this._settings.limitSelection > 0 && this.selectedItems.length < this._settings.limitSelection);
     if (!found) {
       if (allowAdd) {
         this.addSelected(item);
@@ -138,10 +125,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     } else {
       this.removeSelected(item);
     }
-    if (
-      this._settings.singleSelection &&
-      this._settings.closeDropDownOnSelection
-    ) {
+    if (this._settings.singleSelection && this._settings.closeDropDownOnSelection) {
       this.closeDropdown();
     }
   }
@@ -166,15 +150,14 @@ export class MultiSelectComponent implements ControlValueAccessor {
           // console.error(e.body.msg);
         }
       } else {
-        const _data = value.map(
-          (item: any) =>
-            typeof item === 'string'
-              ? new ListItem(item)
-              : new ListItem({
-                  id: item[this._settings.idField],
-                  text: item[this._settings.textField],
-                  isDisabled: item[this._settings.disabledField]
-                })
+        const _data = value.map((item: any) =>
+          typeof item === 'string'
+            ? new ListItem(item)
+            : new ListItem({
+                id: item[this._settings.idField],
+                text: item[this._settings.textField],
+                isDisabled: item[this._settings.disabledField]
+              })
         );
         if (this._settings.limitSelection > 0) {
           this.selectedItems = _data.splice(0, this._settings.limitSelection);
@@ -224,7 +207,10 @@ export class MultiSelectComponent implements ControlValueAccessor {
   }
 
   isAllItemsSelected(): boolean {
-    return this._data.length === this.selectedItems.length;
+    // get disabld item count
+    const itemDisabledCount = this._data.filter(item => item.isDisabled).length;
+    // take disabled items into consideration when checking
+    return this._data.length === this.selectedItems.length + itemDisabledCount;
   }
 
   showButton(): boolean {
@@ -320,7 +306,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
       return false;
     }
     if (!this.isAllItemsSelected()) {
-      this.selectedItems = this._data.slice();
+      // filter out disabled item first before slicing
+      this.selectedItems = this._data.filter(item => !item.isDisabled).slice();
       this.onSelectAll.emit(this.emittedValue(this.selectedItems));
     } else {
       this.selectedItems = [];
