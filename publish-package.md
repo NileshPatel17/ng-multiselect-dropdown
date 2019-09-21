@@ -2,9 +2,10 @@
 
 1.  yarn build:lib
 2.  navigate to dist-lib folder
-3.  login to npm registry (npm login)
-4.  yarn publish
-5.  yarn deployOnly
+3.  mark private to false
+4.  login to npm registry (npm login)
+5.  yarn publish
+6.  yarn deployOnly
 
 ## Angular Multiselect Dropdown
 
