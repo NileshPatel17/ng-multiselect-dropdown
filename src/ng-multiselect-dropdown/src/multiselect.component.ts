@@ -74,7 +74,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
       //   }
       // });
       this._data = value.map((item: any) =>
-        typeof item === 'string'
+        typeof item === 'string' || typeof item === 'number'
           ? new ListItem(item)
           : new ListItem({
               id: item[this._settings.idField],
