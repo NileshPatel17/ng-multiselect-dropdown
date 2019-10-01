@@ -137,7 +137,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
           if (value.length >= 1) {
             const firstItem = value[0];
             this.selectedItems = [
-              typeof firstItem === 'string'
+              typeof firstItem === 'string' || typeof firstItem === 'number'
                 ? new ListItem(firstItem)
                 : new ListItem({
                     id: firstItem[this._settings.idField],
@@ -151,7 +151,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
         }
       } else {
         const _data = value.map((item: any) =>
-          typeof item === 'string'
+          typeof item === 'string' || typeof item === 'number'
             ? new ListItem(item)
             : new ListItem({
                 id: item[this._settings.idField],
