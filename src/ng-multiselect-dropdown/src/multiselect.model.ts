@@ -19,8 +19,8 @@ export interface IDropdownSettings {
 }
 
 export class ListItem {
-  id: String;
-  text: String;
+  id: String | number;
+  text: String | number;
   isDisabled?: boolean;
 
   public constructor(source: any) {
