@@ -24,7 +24,7 @@ export class ListItem {
   isDisabled?: boolean;
 
   public constructor(source: any) {
-    if (typeof source === 'string') {
+    if (typeof source === 'string' || typeof source == 'number') {
       this.id = this.text = source;
       this.isDisabled = false;
     }
