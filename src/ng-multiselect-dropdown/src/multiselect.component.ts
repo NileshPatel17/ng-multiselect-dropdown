@@ -1,6 +1,7 @@
-import { Component, HostListener, forwardRef, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, HostListener, forwardRef, Inject, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { ListItem, IDropdownSettings } from './multiselect.model';
+import { NgMultiSelectDefaultConfig } from './ng-multiselect-default-config';
 
 export const DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -23,25 +24,6 @@ export class MultiSelectComponent implements ControlValueAccessor {
   public isDropdownOpen = true;
   _placeholder = 'Select';
   filter: ListItem = new ListItem(this.data);
-  defaultSettings: IDropdownSettings = {
-    singleSelection: false,
-    idField: 'id',
-    textField: 'text',
-    disabledField: 'isDisabled',
-    enableCheckAll: true,
-    selectAllText: 'Select All',
-    unSelectAllText: 'UnSelect All',
-    allowSearchFilter: false,
-    limitSelection: -1,
-    clearSearchFilter: true,
-    maxHeight: 197,
-    itemsShowLimit: 999999999999,
-    searchPlaceholderText: 'Search',
-    noDataAvailablePlaceholderText: 'No data available',
-    closeDropDownOnSelection: false,
-    showSelectedItemsAtTop: false,
-    defaultOpen: false
-  };
 
   @Input()
   public set placeholder(value: string) {
@@ -109,7 +91,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     this.onFilterChange.emit($event);
   }
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef, @Inject(NgMultiSelectDefaultConfig) private defaultSettings: IDropdownSettings) {}
 
   onItemClick($event: any, item: ListItem) {
     if (this.disabled || item.isDisabled) {
