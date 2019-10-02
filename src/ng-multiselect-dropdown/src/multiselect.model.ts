@@ -19,12 +19,12 @@ export interface IDropdownSettings {
 }
 
 export class ListItem {
-  id: String;
-  text: String;
+  id: String | number;
+  text: String | number;
   isDisabled?: boolean;
 
   public constructor(source: any) {
-    if (typeof source === 'string') {
+    if (typeof source === 'string' || typeof source == 'number') {
       this.id = this.text = source;
       this.isDisabled = false;
     }
