@@ -22,7 +22,9 @@
     "prepublish": "npm run build:prod",
     "publish": "ngh --no-silent false --name=\"nileshpatel17\" --email=\"nilesh.nvs@hotmail.com\"",
     "deploy": "ng build --prod --bh /ng-multiselect-dropdown/ && angular-cli-ghpages --no-silent --repo=https://github.com/NileshPatel17/ng-multiselect-dropdown.git --name=\"Nilesh Patel\" --email=nilesh.nvs@hotmail.com",
-    "deployOnly": "angular-cli-ghpages --no-silent --repo=https://github.com/NileshPatel17/ng-multiselect-dropdown.git --name=\"Nilesh Patel\" --email=nilesh.nvs@hotmail.com"
+    "deployOnly": "angular-cli-ghpages --no-silent --repo=https://github.com/NileshPatel17/ng-multiselect-dropdown.git --name=\"Nilesh Patel\" --email=nilesh.nvs@hotmail.com",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "keywords": [
     "angular4",
@@ -60,12 +62,19 @@
     "@angular/platform-browser": "8.2.2",
     "@angular/platform-browser-dynamic": "8.2.2",
     "@angular/router": "8.2.2",
+    "@babel/core": "^7.6.2",
+    "@storybook/addon-knobs": "^5.2.3",
+    "@storybook/addon-links": "^5.2.1",
+    "@storybook/addon-notes": "^5.2.1",
+    "@storybook/addons": "^5.2.1",
+    "@storybook/angular": "^5.2.1",
     "@types/jasmine": "~3.4.0",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~12.7.2",
     "angular-cli-ghpages": "^0.6.0-rc.2",
     "angular-library-builder": "^1.5.12",
     "angular2-markdown": "^2.2.3",
+    "babel-loader": "^8.0.6",
     "codelyzer": "~5.1.0",
     "copyfiles": "^2.0.0",
     "core-js": "^3.2.1",
@@ -90,5 +99,6 @@
     "tslint": "~5.19.0",
     "typescript": "3.5.3",
     "zone.js": "^0.10.2"
-  }
+  },
+  "dependencies": {}
 }

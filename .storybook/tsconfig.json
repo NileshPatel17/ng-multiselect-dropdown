@@ -1,0 +1,9 @@
+{
+  "extends": "../src/tsconfig.app.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "exclude": ["../src/test.ts", "../src/**/*.spec.ts", "../src/ng-multiselect-dropdown/**/*"],
+  "include": ["../src/**/*", "../projects/**/*"],
+  "files": ["./typings.d.ts"]
+}
