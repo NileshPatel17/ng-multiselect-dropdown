@@ -255,19 +255,11 @@ export class MultiSelectComponent implements ControlValueAccessor {
     const selected = [];
     if (Array.isArray(val)) {
       val.map(item => {
-        if (item.id === item.text) {
-          selected.push(item.text);
-        } else {
-          selected.push(this.objectify(item));
-        }
+        selected.push(this.objectify(item));
       });
     } else {
       if (val) {
-        if (val.id === val.text) {
-          return val.text;
-        } else {
-          return this.objectify(val);
-        }
+        return this.objectify(val);
       }
     }
     return selected;
