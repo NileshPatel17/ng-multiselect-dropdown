@@ -1,6 +1,6 @@
-import { Component, HostListener, forwardRef, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { ListItem, IDropdownSettings } from './multiselect.model';
+import { Component, HostListener, forwardRef, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
+import { ListItem, IDropdownSettings } from "./multiselect.model";
 
 export const DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -10,9 +10,9 @@ export const DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
 const noop = () => {};
 
 @Component({
-  selector: 'ng-multiselect-dropdown',
-  templateUrl: './multi-select.component.html',
-  styleUrls: ['./multi-select.component.scss'],
+  selector: "ng-multiselect-dropdown",
+  templateUrl: "./multi-select.component.html",
+  styleUrls: ["./multi-select.component.scss"],
   providers: [DROPDOWN_CONTROL_VALUE_ACCESSOR],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -21,23 +21,25 @@ export class MultiSelectComponent implements ControlValueAccessor {
   public _data: Array<ListItem> = [];
   public selectedItems: Array<ListItem> = [];
   public isDropdownOpen = true;
-  _placeholder = 'Select';
+  _placeholder = "Select";
+  private _sourceDataType = null; // to keep note of the source data type. could be array of string/number/object
+  private _sourceDataFields: Array<String> = []; // store source data fields names
   filter: ListItem = new ListItem(this.data);
   defaultSettings: IDropdownSettings = {
     singleSelection: false,
-    idField: 'id',
-    textField: 'text',
-    disabledField: 'isDisabled',
+    idField: "id",
+    textField: "text",
+    disabledField: "isDisabled",
     enableCheckAll: true,
-    selectAllText: 'Select All',
-    unSelectAllText: 'UnSelect All',
+    selectAllText: "Select All",
+    unSelectAllText: "UnSelect All",
     allowSearchFilter: false,
     limitSelection: -1,
     clearSearchFilter: true,
     maxHeight: 197,
     itemsShowLimit: 999999999999,
-    searchPlaceholderText: 'Search',
-    noDataAvailablePlaceholderText: 'No data available',
+    searchPlaceholderText: "Search",
+    noDataAvailablePlaceholderText: "No data available",
     closeDropDownOnSelection: false,
     showSelectedItemsAtTop: false,
     defaultOpen: false
@@ -48,7 +50,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     if (value) {
       this._placeholder = value;
     } else {
-      this._placeholder = 'Select';
+      this._placeholder = "Select";
     }
   }
   @Input()
@@ -68,13 +70,11 @@ export class MultiSelectComponent implements ControlValueAccessor {
     if (!value) {
       this._data = [];
     } else {
-      // const _items = value.filter((item: any) => {
-      //   if (typeof item === 'string' || (typeof item === 'object' && item && item[this._settings.idField] && item[this._settings.textField])) {
-      //     return item;
-      //   }
-      // });
+      const firstItem = value[0];
+      this._sourceDataType = typeof firstItem;
+      this._sourceDataFields = this.getFields(firstItem);
       this._data = value.map((item: any) =>
-        typeof item === 'string' || typeof item === 'number'
+        typeof item === "string" || typeof item === "number"
           ? new ListItem(item)
           : new ListItem({
               id: item[this._settings.idField],
@@ -85,21 +85,21 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
   }
 
-  @Output('onFilterChange')
+  @Output("onFilterChange")
   onFilterChange: EventEmitter<ListItem> = new EventEmitter<any>();
-  @Output('onDropDownClose')
+  @Output("onDropDownClose")
   onDropDownClose: EventEmitter<ListItem> = new EventEmitter<any>();
 
-  @Output('onSelect')
+  @Output("onSelect")
   onSelect: EventEmitter<ListItem> = new EventEmitter<any>();
 
-  @Output('onDeSelect')
+  @Output("onDeSelect")
   onDeSelect: EventEmitter<ListItem> = new EventEmitter<any>();
 
-  @Output('onSelectAll')
+  @Output("onSelectAll")
   onSelectAll: EventEmitter<Array<ListItem>> = new EventEmitter<Array<any>>();
 
-  @Output('onDeSelectAll')
+  @Output("onDeSelectAll")
   onDeSelectAll: EventEmitter<Array<ListItem>> = new EventEmitter<Array<any>>();
 
   private onTouchedCallback: () => void = noop;
@@ -137,7 +137,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
           if (value.length >= 1) {
             const firstItem = value[0];
             this.selectedItems = [
-              typeof firstItem === 'string' || typeof firstItem === 'number'
+              typeof firstItem === "string" || typeof firstItem === "number"
                 ? new ListItem(firstItem)
                 : new ListItem({
                     id: firstItem[this._settings.idField],
@@ -151,7 +151,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
         }
       } else {
         const _data = value.map((item: any) =>
-          typeof item === 'string' || typeof item === 'number'
+          typeof item === "string" || typeof item === "number"
             ? new ListItem(item)
             : new ListItem({
                 id: item[this._settings.idField],
@@ -182,7 +182,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   }
 
   // Set touched on blur
-  @HostListener('blur')
+  @HostListener("blur")
   public onTouched() {
     this.closeDropdown();
     this.onTouchedCallback();
@@ -266,11 +266,20 @@ export class MultiSelectComponent implements ControlValueAccessor {
   }
 
   objectify(val: ListItem) {
-    const obj = {};
-    obj[this._settings.idField] = val.id;
-    obj[this._settings.textField] = val.text;
-    obj[this._settings.disabledField] = val.isDisabled;
-    return obj;
+    if (this._sourceDataType === 'object') {
+      const obj = {};
+      obj[this._settings.idField] = val.id;
+      obj[this._settings.textField] = val.text;
+      if (this._sourceDataFields.includes(this._settings.disabledField)) {
+        obj[this._settings.disabledField] = val.isDisabled;
+      }
+      return obj;
+    }
+    if (this._sourceDataType === 'number') {
+      return Number(val.id);
+    } else {
+      return val.text;
+    }
   }
 
   toggleDropdown(evt) {
@@ -288,7 +297,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     this._settings.defaultOpen = false;
     // clear search text
     if (this._settings.clearSearchFilter) {
-      this.filter.text = '';
+      this.filter.text = "";
     }
     this.onDropDownClose.emit();
   }
@@ -306,5 +315,17 @@ export class MultiSelectComponent implements ControlValueAccessor {
       this.onDeSelectAll.emit(this.emittedValue(this.selectedItems));
     }
     this.onChangeCallback(this.emittedValue(this.selectedItems));
+  }
+
+  getFields(inputData) {
+    const fields = [];
+    if (typeof inputData !== "object") {
+      return fields;
+    }
+    // tslint:disable-next-line:forin
+    for (const prop in inputData) {
+      fields.push(prop);
+    }
+    return fields;
   }
 }
