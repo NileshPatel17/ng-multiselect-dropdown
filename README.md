@@ -149,10 +149,6 @@ Run `yarn build:lib` to build the library and generate an NPM package. The build
 
 Run `yarn test` to execute the unit tests.
 
-## Development
-
-This project was generated with Angular CLI version 1.7.1.
-
 ## Contributions
 
 Contributions are welcome, please open an issue and preferrably file a pull request.
