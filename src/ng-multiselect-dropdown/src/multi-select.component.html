@@ -14,11 +14,11 @@
   </div>
   <div class="dropdown-list" [hidden]="!_settings.defaultOpen">
     <ul class="item1">
-      <li (click)="toggleSelectAll()" *ngIf="_data.length > 0 && !_settings.singleSelection && _settings.enableCheckAll && _settings.limitSelection===-1" class="multiselect-item-checkbox" style="border-bottom: 1px solid #ccc;padding:10px">
+      <li (click)="toggleSelectAll()" *ngIf="(_data.length > 0 || _settings.allowRemoteDataSearch) && !_settings.singleSelection && _settings.enableCheckAll && _settings.limitSelection===-1" class="multiselect-item-checkbox" style="border-bottom: 1px solid #ccc;padding:10px">
         <input type="checkbox" aria-label="multiselect-select-all" [checked]="isAllItemsSelected()" [disabled]="disabled || isLimitSelectionReached()" />
         <div>{{!isAllItemsSelected() ? _settings.selectAllText : _settings.unSelectAllText}}</div>
       </li>
-      <li class="filter-textbox" *ngIf="_data.length>0 && _settings.allowSearchFilter">
+      <li class="filter-textbox" *ngIf="(_data.length>0 || _settings.allowRemoteDataSearch) && _settings.allowSearchFilter">
         <input type="text" aria-label="multiselect-search" [readOnly]="disabled" [placeholder]="_settings.searchPlaceholderText" [(ngModel)]="filter.text" (ngModelChange)="onFilterTextChange($event)">
       </li>
     </ul>
@@ -27,7 +27,7 @@
         <input type="checkbox" aria-label="multiselect-item" [checked]="isSelected(item)" [disabled]="disabled || (isLimitSelectionReached() && !isSelected(item)) || item.isDisabled" />
         <div>{{item.text}}</div>
       </li>
-      <li class='no-data' *ngIf="_data.length == 0">
+      <li class='no-data' *ngIf="_data.length == 0 && !_settings.allowRemoteDataSearch">
         <h5>{{_settings.noDataAvailablePlaceholderText}}</h5>
       </li>
     </ul>
