@@ -118,6 +118,8 @@ export class AppComponent implements OnInit {
 | noDataAvailablePlaceholderText | String     | Custom text when no data is available.                                                                                                                                                                                                                                                                                                                   | 'No data available' |
 | closeDropDownOnSelection       | Boolean    | Closes the dropdown when item is selected. applicable only in cas of single selection                                                                                                                                                                                                                                                                    | false               |
 | defaultOpen                    | Boolean    | open state of dropdown                                                                                                                                                                                                                                                                                                                                   | false               |
+| allowRemoteDataSearch                    | Boolean    | allow search remote api if no data is present.                                                                                                                                                                                                                                                                                                                                   | false               |
+
 
 ### Callback Methods
 
