@@ -1,6 +1,7 @@
 import { Component, HostListener, forwardRef, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
 import { ListItem, IDropdownSettings } from "./multiselect.model";
+import { ListFilterPipe } from "./list-filter.pipe";
 
 export const DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -110,7 +111,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     this.onFilterChange.emit($event);
   }
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef,private listFilterPipe:ListFilterPipe) {}
 
   onItemClick($event: any, item: ListItem) {
     if (this.disabled || item.isDisabled) {
@@ -209,12 +210,13 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   isAllItemsSelected(): boolean {
     // get disabld item count
-    const itemDisabledCount = this._data.filter(item => item.isDisabled).length;
+    let filteredItems = this.listFilterPipe.transform(this._data,this.filter);
+    const itemDisabledCount = filteredItems.filter(item => item.isDisabled).length;
     // take disabled items into consideration when checking
     if ((!this.data || this.data.length === 0) && this._settings.allowRemoteDataSearch) {
       return false;
     }
-    return this._data.length === this.selectedItems.length + itemDisabledCount;
+    return filteredItems.length === this.selectedItems.length + itemDisabledCount;
   }
 
   showButton(): boolean {
@@ -312,7 +314,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
     if (!this.isAllItemsSelected()) {
       // filter out disabled item first before slicing
-      this.selectedItems = this._data.filter(item => !item.isDisabled).slice();
+      this.selectedItems = this.listFilterPipe.transform(this._data,this.filter).filter(item => !item.isDisabled).slice();
       this.onSelectAll.emit(this.emittedValue(this.selectedItems));
     } else {
       this.selectedItems = [];

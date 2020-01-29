@@ -8,6 +8,7 @@ import { ListFilterPipe } from './list-filter.pipe';
 @NgModule({
   imports: [CommonModule, FormsModule],
   declarations: [MultiSelectComponent, ClickOutsideDirective, ListFilterPipe],
+  providers: [ListFilterPipe],
   exports: [MultiSelectComponent]
 })
 
