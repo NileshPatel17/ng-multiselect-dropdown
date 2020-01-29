@@ -1,4 +1,7 @@
 # Angular Multiselect Dropdown
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![npm version](https://img.shields.io/npm/v/ng-multiselect-dropdown.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown)
 [![downloads](https://img.shields.io/npm/dt/ng-multiselect-dropdown.svg)](https://www.npmjs.com/package/ng-multiselect-dropdown)
@@ -164,3 +167,27 @@ Please share sample code using codesandbox.com or stackblitz.com to help me re-p
 ## License
 
 MIT License.
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="http://blog.techotom.com"><img src="https://avatars0.githubusercontent.com/u/1773838?v=4" width="100px;" alt=""/><br /><sub><b>Tom Saleeba</b></sub></a><br /><a href="https://github.com/Nilesh Patel/ng-multiselect-dropdown/commits?author=tomsaleeba" title="Code">💻</a></td>
+    <td align="center"><a href="https://overtrack.gg"><img src="https://avatars0.githubusercontent.com/u/2515062?v=4" width="100px;" alt=""/><br /><sub><b>Simon Pinfold</b></sub></a><br /><a href="https://github.com/Nilesh Patel/ng-multiselect-dropdown/commits?author=synap5e" title="Code">💻</a></td>
+    <td align="center"><a href="http://helpfordeveloper.blogspot.in"><img src="https://avatars0.githubusercontent.com/u/32981723?v=4" width="100px;" alt=""/><br /><sub><b>Sushil Suthar</b></sub></a><br /><a href="https://github.com/Nilesh Patel/ng-multiselect-dropdown/commits?author=sushil-suthar" title="Code">💻</a></td>
+    <td align="center"><a href="http://sacgro.com"><img src="https://avatars1.githubusercontent.com/u/1292182?v=4" width="100px;" alt=""/><br /><sub><b>Sachin Grover</b></sub></a><br /><a href="https://github.com/Nilesh Patel/ng-multiselect-dropdown/commits?author=sacgrover" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/WWL-MikeRoberts"><img src="https://avatars3.githubusercontent.com/u/9750056?v=4" width="100px;" alt=""/><br /><sub><b>Mike Roberts</b></sub></a><br /><a href="https://github.com/Nilesh Patel/ng-multiselect-dropdown/commits?author=WWL-MikeRoberts" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/DsosaV"><img src="https://avatars2.githubusercontent.com/u/3926475?v=4" width="100px;" alt=""/><br /><sub><b>David Sosa</b></sub></a><br /><a href="https://github.com/Nilesh Patel/ng-multiselect-dropdown/commits?author=DsosaV" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

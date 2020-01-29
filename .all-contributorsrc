@@ -1,0 +1,69 @@
+{
+  "projectName": "ng-multiselect-dropdown",
+  "projectOwner": "Nilesh Patel",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "tomsaleeba",
+      "name": "Tom Saleeba",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1773838?v=4",
+      "profile": "http://blog.techotom.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "synap5e",
+      "name": "Simon Pinfold",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/2515062?v=4",
+      "profile": "https://overtrack.gg",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "sushil-suthar",
+      "name": "Sushil Suthar",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/32981723?v=4",
+      "profile": "http://helpfordeveloper.blogspot.in",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "sacgrover",
+      "name": "Sachin Grover",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1292182?v=4",
+      "profile": "http://sacgro.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "WWL-MikeRoberts",
+      "name": "Mike Roberts",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/9750056?v=4",
+      "profile": "https://github.com/WWL-MikeRoberts",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "DsosaV",
+      "name": "David Sosa",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/3926475?v=4",
+      "profile": "https://github.com/DsosaV",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
