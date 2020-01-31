@@ -44,7 +44,11 @@ export class MultiSelectComponent implements ControlValueAccessor {
     closeDropDownOnSelection: false,
     showSelectedItemsAtTop: false,
     defaultOpen: false,
-    allowRemoteDataSearch: false
+    allowRemoteDataSearch: false,
+    selectedAllLabel: "All UnSelected",
+    unSelectedAllLabel: "All Selected",
+    enableSelectedAllLabel: false,
+    enableUnSelectedAllLabel: false
   };
 
   @Input()
@@ -193,6 +197,14 @@ export class MultiSelectComponent implements ControlValueAccessor {
   trackByFn(index, item) {
     return item.id;
   }
+
+  // isAllSelected(): boolean {
+  //   return this.selectedItems.length === this._data.filter(i => !i[this._settings.disabledField]).length;
+  // }
+
+  // isAllUnselected(): boolean {
+  //   return this.selectedItems.length === 0;
+  // }
 
   isSelected(clickedItem: ListItem) {
     let found = false;
