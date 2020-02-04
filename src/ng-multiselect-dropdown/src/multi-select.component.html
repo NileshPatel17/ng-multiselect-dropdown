@@ -1,8 +1,9 @@
 <div tabindex="=0" (blur)="onTouched()" class="multiselect-dropdown" (clickOutside)="closeDropdown()">
   <div [class.disabled]="disabled">
     <span tabindex="-1" class="dropdown-btn" (click)="toggleDropdown($event)">
-      <span *ngIf="selectedItems.length == 0">{{_placeholder}}</span>
-      <span class="selected-item" *ngFor="let item of selectedItems;trackBy: trackByFn;let k = index" [hidden]="k > _settings.itemsShowLimit-1">
+      <span [ngClass]="{ 'selected-item' : _settings.enableUnSelectedAllLabel }" *ngIf="selectedItems.length == 0">{{_settings.enableUnSelectedAllLabel ? _settings.unSelectedAllLabel : _placeholder}}</span>
+      <span class="selected-item" *ngIf="isAllItemsSelected() && _settings.enableSelectedAllLabel">{{_settings.selectedAllLabel}}</span>
+      <span class="selected-item" *ngFor="let item of selectedItems;trackBy: trackByFn;let k = index" [hidden]="k > _settings.itemsShowLimit-1 || (isAllItemsSelected() && _settings.enableSelectedAllLabel)">
         {{item.text}}
         <a style="padding-top:2px;padding-left:2px;color:white" (click)="onItemClick($event,item)">x</a>
       </span>

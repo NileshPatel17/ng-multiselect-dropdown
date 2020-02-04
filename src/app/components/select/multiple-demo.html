@@ -37,6 +37,11 @@
       </div>
       <div class="checkbox">
         <label>
+          <input type="checkbox" [checked]="enableAllSelectedUnSelectedLabel" [(ngModel)]="enableAllSelectedUnSelectedLabel" (change)="toogleAllSelectedUnSelectedLabel()"> Enable Selected/UnSelected All Label
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
           <input type="button" (click)="handleReset()" value="reset">
         </label>
       </div>
