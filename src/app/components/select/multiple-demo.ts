@@ -96,10 +96,12 @@ export class MultipleDemoComponent implements OnInit {
 
   ngOnInit() {
     this.cities = [
+      { item_id: -1, item_text: 'Group 1', item_is_header: true },
       { item_id: 1, item_text: 'New Delhi' },
       { item_id: 2, item_text: 'Mumbai' },
       { item_id: 3, item_text: 'Bangalore', isDisabled: this.disableBangalore },
       { item_id: 4, item_text: 'Pune' },
+      { item_id: -1, item_text: 'Group 2', item_is_header: true },
       { item_id: 5, item_text: 'Chennai' },
       { item_id: 6, item_text: 'Navsari' }
     ];
@@ -112,6 +114,7 @@ export class MultipleDemoComponent implements OnInit {
       defaultOpen: false,
       idField: 'item_id',
       textField: 'item_text',
+      headerField: 'item_is_header',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       enableCheckAll: this.showAll,
