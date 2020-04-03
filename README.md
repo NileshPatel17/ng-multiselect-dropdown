@@ -57,20 +57,21 @@ export class AppComponent implements OnInit {
   dropdownSettings = {};
   ngOnInit() {
     this.dropdownList = [
-      { item_id: 1, item_text: 'Mumbai' },
-      { item_id: 2, item_text: 'Bangaluru' },
-      { item_id: 3, item_text: 'Pune' },
+      { item_id: 1, item_text: 'Mumbai', item_icon: 'fa fa-home' },
+      { item_id: 2, item_text: 'Bangaluru', item_icon: 'fa fa-truck' },
+      { item_id: 3, item_text: 'Pune', item_icon: 'fa fa-wifi' },
       { item_id: 4, item_text: 'Navsari' },
       { item_id: 5, item_text: 'New Delhi' }
     ];
     this.selectedItems = [
-      { item_id: 3, item_text: 'Pune' },
+      { item_id: 3, item_text: 'Pune', item_icon: 'fa fa-wifi' },
       { item_id: 4, item_text: 'Navsari' }
     ];
     this.dropdownSettings:IDropdownSettings = {
       singleSelection: false,
       idField: 'item_id',
       textField: 'item_text',
+      iconField: 'item_icon',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 3,
@@ -108,6 +109,7 @@ export class AppComponent implements OnInit {
 | data                           | Array<any> | Array of items from which to select. Should be an array of objects with id and `text` properties. You can also use custom properties. In that case you need to map idField and `textField` properties. As convenience, you may also pass an array of strings, in which case the same string is used for both the ID and the text(no mapping is required) | n/a                 |
 | idField                        | String     | map id field in case of custom array of object                                                                                                                                                                                                                                                                                                           | 'id'                |
 | textField                      | String     | map text field in case of custom array of object                                                                                                                                                                                                                                                                                                         | 'text'              |
+| iconField                      | String     | map icon field in case of custom array of object                                                                                                                                                                                                                                                                                                         | 'icon'              |
 | enableCheckAll                 | Boolean    | Enable the option to select all items in list                                                                                                                                                                                                                                                                                                            | false               |
 | selectAllText                  | String     | Text to display as the label of select all option                                                                                                                                                                                                                                                                                                        | Select All          |
 | unSelectAllText                | String     | Text to display as the label of unSelect option                                                                                                                                                                                                                                                                                                          | UnSelect All        |
@@ -183,6 +185,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://sacgro.com"><img src="https://avatars1.githubusercontent.com/u/1292182?v=4" width="100px;" alt=""/><br /><sub><b>Sachin Grover</b></sub></a><br /><a href="https://github.com/Nilesh Patel/ng-multiselect-dropdown/commits?author=sacgrover" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/WWL-MikeRoberts"><img src="https://avatars3.githubusercontent.com/u/9750056?v=4" width="100px;" alt=""/><br /><sub><b>Mike Roberts</b></sub></a><br /><a href="https://github.com/Nilesh Patel/ng-multiselect-dropdown/commits?author=WWL-MikeRoberts" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/DsosaV"><img src="https://avatars2.githubusercontent.com/u/3926475?v=4" width="100px;" alt=""/><br /><sub><b>David Sosa</b></sub></a><br /><a href="https://github.com/Nilesh Patel/ng-multiselect-dropdown/commits?author=DsosaV" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/victor-valencia"><img src="https://avatars1.githubusercontent.com/u/3579937?s=460&u=7135c485e2ff1b62fd195e5ebe38a6ccf03799ef&v=4" width="100px;" alt=""/><br /><sub><b>Victor Valencia</b></sub></a><br /><a href="https://github.com/Nilesh Patel/ng-multiselect-dropdown/commits?author=victor-valencia" title="Code">💻</a></td>
   </tr>
 </table>
 
