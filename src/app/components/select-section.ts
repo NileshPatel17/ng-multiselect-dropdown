@@ -8,6 +8,10 @@ const tabDesc: any = {
   multiple1: {
     heading: 'Multiple-Example1'
   }
+  ,
+  customTemplate: {
+    heading: 'Custom-Template'
+  }
 };
 
 @Component({
@@ -22,6 +26,9 @@ const tabDesc: any = {
       </tab>
       <tab heading="Single">
         <sample-section [desc]="tabDesc.single"><single-demo></single-demo></sample-section>
+      </tab>
+      <tab heading="Custom template">
+        <sample-section [desc]="tabDesc.customTemplate"><custom-template-demo></custom-template-demo></sample-section>
       </tab>
     </tabset>
     </div>

@@ -1,0 +1,64 @@
+<div style="margin-bottom: 20px;">
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Select Multiple Cities</h3>
+      <form [formGroup]="myForm">
+        <ng-template #itemTemplate let-item="item">
+          <strong>{{item.text}}</strong>
+        </ng-template>
+        <ng-multiselect-dropdown name="city" [placeholder]="'Select City'" [data]="cities" formControlName="city" [disabled]="disabled" [itemTemplate]="itemTemplate" [settings]="dropdownSettings" (onDropDownClose)="onDropDownClose()" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+      </form>
+      <p></p>
+    </div>
+    <div class="col-md-8">
+      <h3>Option</h3>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [checked]="showAll" (change)="toogleShowAll()"> Show Select All
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [checked]="ShowFilter" (change)="toogleShowFilter()"> Show Search filter
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [checked]="disabled" [(ngModel)]="disabled"> Disabled
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [checked]="limitSelection" [(ngModel)]="limitSelection" (change)="handleLimitSelection()"> Limit Selection to 2
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [checked]="disableBangalore" [(ngModel)]="disableBangalore" (change)="handleDisableBangalore()"> Disable Bangalore
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="button" (click)="handleReset()" value="reset">
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Settings</div>
+    <div class="panel-body">
+      <pre>
+       {{dropdownSettings | json}}
+      </pre>
+    </div>
+  </div>
+  <tabset>
+    <tab heading="Html">
+      <sh-code-viewer [code]="htmlCode" [language]="'html'"></sh-code-viewer>
+    </tab>
+    <tab heading="Typescript">
+      <sh-code-viewer [code]="typescriptCode" [language]="'typescript'"></sh-code-viewer>
+    </tab>
+  </tabset>
+</div>

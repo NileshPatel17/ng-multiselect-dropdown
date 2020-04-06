@@ -10,12 +10,20 @@ import { SelectSectionComponent } from './components/select-section';
 import { SampleSectionComponent } from './components/sample-section.component';
 import { SingleDemoComponent } from './components/select/single-demo';
 import { MultipleDemoComponent } from './components/select/multiple-demo';
+import { CustomTemplateDemoComponent } from './components/select/custom-template-demo';
 import { ShCodeViewer } from '../code-viewer/code-viewer.module';
 
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [SelectSectionComponent, SampleSectionComponent, SingleDemoComponent, MultipleDemoComponent, AppComponent],
+  declarations: [
+    SelectSectionComponent,
+    SampleSectionComponent,
+    SingleDemoComponent,
+    MultipleDemoComponent,
+    CustomTemplateDemoComponent,
+    AppComponent
+  ],
   imports: [
     FormsModule,
     ReactiveFormsModule,

@@ -87,6 +87,9 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
   }
 
+  @Input()
+  itemTemplate;
+
   @Output("onFilterChange")
   onFilterChange: EventEmitter<ListItem> = new EventEmitter<any>();
   @Output("onDropDownClose")
