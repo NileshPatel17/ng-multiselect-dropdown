@@ -98,6 +98,24 @@ export class AppComponent implements OnInit {
 </ng-multiselect-dropdown>
 ```
 
+#### Usage with custom item template
+
+```html
+<ng-template #itemTemplate let-item="item">
+  <strong>{{item.text}}</strong>
+</ng-template>
+<ng-multiselect-dropdown
+  [placeholder]="'custom placeholder'"
+  [data]="dropdownList"
+  [(ngModel)]="selectedItems"
+  [settings]="dropdownSettings"
+  [itemTemplate]="itemTemplate"
+  (onSelect)="onItemSelect($event)"
+  (onSelectAll)="onSelectAll($event)"
+>
+</ng-multiselect-dropdown>
+```
+
 ### Settings
 
 | Setting                        | Type       | Description                                                                                                                                                                                                                                                                                                                                              | Default Value       |
