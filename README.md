@@ -56,8 +56,6 @@ export class AppComponent implements OnInit {
   selectedItems = [];
   dropdownSettings = {};
   ngOnInit() {
-    
-    
 
     this.cities = [
         { item_id: 1, item_text: 'New Delhi' },
