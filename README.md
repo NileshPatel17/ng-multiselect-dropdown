@@ -56,17 +56,23 @@ export class AppComponent implements OnInit {
   selectedItems = [];
   dropdownSettings = {};
   ngOnInit() {
-    this.dropdownList = [
-      { item_id: 1, item_text: 'Mumbai' },
-      { item_id: 2, item_text: 'Bangaluru' },
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' },
-      { item_id: 5, item_text: 'New Delhi' }
-    ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' }
-    ];
+    
+    
+
+    this.cities = [
+        { item_id: 1, item_text: 'New Delhi' },
+        { item_id: 2, item_text: 'Mumbai' },
+        { item_id: 3, item_text: 'Bangalore', isDisabled: this.disableBangalore },
+        { item_id: 4, item_text: 'Pune' },
+        { item_id: 5, item_text: 'Chennai' },
+        { item_id: 6, item_text: 'Navsari' },
+        { item_id: 7, item_text: 'Corral' }
+      ];
+      this.selectedItems = [
+        { item_id: 4, item_text: 'Pune' },
+        { item_id: 6, item_text: 'Navsari' }
+      ];
+          
     this.dropdownSettings:IDropdownSettings = {
       singleSelection: false,
       idField: 'item_id',
@@ -106,13 +112,13 @@ export class AppComponent implements OnInit {
 | placeholder                    | String     | Text to be show in the dropdown, when no items are selected.                                                                                                                                                                                                                                                                                             | 'Select'            |
 | disabled                       | Boolean    | Disable the dropdown                                                                                                                                                                                                                                                                                                                                     | false               |
 | data                           | Array<any> | Array of items from which to select. Should be an array of objects with id and `text` properties. You can also use custom properties. In that case you need to map idField and `textField` properties. As convenience, you may also pass an array of strings, in which case the same string is used for both the ID and the text(no mapping is required) | n/a                 |
-| idField                        | String     | map id field in case of custom array of object                                                                                                                                                                                                                                                                                                           | 'id'                |
-| textField                      | String     | map text field in case of custom array of object                                                                                                                                                                                                                                                                                                         | 'text'              |
+| idField                        | String     | Map id field in case of custom array of object                                                                                                                                                                                                                                                                                                           | 'id'                |
+| textField                      | String     | Map text field in case of custom array of object                                                                                                                                                                                                                                                                                                         | 'text'              |
 | enableCheckAll                 | Boolean    | Enable the option to select all items in list                                                                                                                                                                                                                                                                                                            | false               |
 | selectAllText                  | String     | Text to display as the label of select all option                                                                                                                                                                                                                                                                                                        | Select All          |
 | unSelectAllText                | String     | Text to display as the label of unSelect option                                                                                                                                                                                                                                                                                                          | UnSelect All        |
 | allowSearchFilter              | Boolean    | Enable filter option for the list.                                                                                                                                                                                                                                                                                                                       | false               |
-| searchPlaceholderText          | String     | custom search placeholder                                                                                                                                                                                                                                                                                                                                | Search              |
+| searchPlaceholderText          | String     | Custom search placeholder                                                                                                                                                                                                                                                                                                                                | Search              |
 | clearSearchFilter              | Boolean    | clear search filter on dropdown close                                                                                                                                                                                                                                                                                                                    | true                |
 | maxHeight                      | Number     | Set maximum height of the dropdown list in px.                                                                                                                                                                                                                                                                                                           | 197                 |
 | itemsShowLimit                 | Number     | Limit the number of items to show in the input field. If not set will show all selected.                                                                                                                                                                                                                                                                 | All                 |
@@ -120,9 +126,12 @@ export class AppComponent implements OnInit {
 | searchPlaceholderText          | String     | Custom text for the search placeholder text. Default value would be 'Search'                                                                                                                                                                                                                                                                             | 'Search'            |
 | noDataAvailablePlaceholderText | String     | Custom text when no data is available.                                                                                                                                                                                                                                                                                                                   | 'No data available' |
 | closeDropDownOnSelection       | Boolean    | Closes the dropdown when item is selected. applicable only in cas of single selection                                                                                                                                                                                                                                                                    | false               |
-| defaultOpen                    | Boolean    | open state of dropdown                                                                                                                                                                                                                                                                                                                                   | false               |
-| allowRemoteDataSearch                    | Boolean    | allow search remote api if no data is present.                                                                                                                                                                                                                                                                                                                                   | false               |
-
+| defaultOpen                    | Boolean    | Open state of dropdown                                                                                                                                                                                                                                                                                                                                   | false               |
+| allowRemoteDataSearch          | Boolean    | Allow search remote api if no data is present.                                                                                                                                                                                                                                                                                                           | false               |
+| selectedAllLabel               | String     | Alternate `selectAllText` Label styled as a `selected-item` when enabled.                                                                                                                                                                                                                                                                                | 'All Selected'      |
+| unSelectedAllLabel             | String     | Alternate `unSelectAllText` Label styled as a `selected-item` when enabled.                                                                                                                                                                                                                                                                              | 'All UnSelected'    |
+| enableSelectedAllLabel         | Boolean    | If set to `true`, this option will show the `selectedAllLabel` string using the `selected-item` styling when all items in list are selected. This provides a consistent UX to when any item is selected.                                                                                                                                                 | false               |
+| enableUnSelectedAllLabel       | Boolean    | If set to `true`, this option will show the `unSelectedAllLabel` string using the `selected-item` styling when all items in list are unselected. This provides a consistent UX to when any item are selected.                                                                                                                                            | false               |
 
 ### Callback Methods
 
