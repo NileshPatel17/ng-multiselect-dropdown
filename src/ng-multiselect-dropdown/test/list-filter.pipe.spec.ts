@@ -1,9 +1,9 @@
-import { ListFilterPipe } from '../src/list-filter.pipe'
+import { ListFilterPipe } from '../src/list-filter.pipe';
 describe('multiSelectFilter', () => {
     let pipe: ListFilterPipe;
     beforeEach(() => {
         pipe = new ListFilterPipe();
-    })
+    });
     it('should create an instance', () => {
         expect(pipe).toBeTruthy();
     });
@@ -24,7 +24,7 @@ describe('multiSelectFilter', () => {
                 id: 2, text: 'Pune'
             }];
         const filterData = { id: 1, text: 'Nav' };
-        const expectedData = [{ id: 1, text: 'Navsari' }]
+        const expectedData = [{ id: 1, text: 'Navsari' }];
         expect(pipe.transform(sourceData, filterData)).toEqual(expectedData);
     })
     it('transform numbers data', () => {
@@ -35,7 +35,7 @@ describe('multiSelectFilter', () => {
                 id: 2222, text: 2222
             }];
         const filterData = { id: 1111, text: 1111 };
-        const expectedData = [{ id: 1111, text: 1111 }]
+        const expectedData = [{ id: 1111, text: 1111 }];
         expect(pipe.transform(sourceData, filterData)).toEqual(expectedData);
-    })
-})
+    });
+});

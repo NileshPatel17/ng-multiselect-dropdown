@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { ComponentFixture, fakeAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { MultiSelectComponent, IDropdownSettings } from './../src';
-import { createTestingModule, tickAndDetectChanges } from './helper'
+import { createTestingModule, tickAndDetectChanges } from './helper';
 
 @Component({
     template: ``
@@ -49,9 +49,9 @@ describe('ng-multiselect-component: Issue No: 67( Option with value = 0 does not
     it('should have 5 total items', () => {
         let selCheckBoxes: HTMLLIElement[];
         const de: DebugElement[] = fixture.debugElement.queryAll(By.css('.item2>li'));
-        expect(fixture.componentInstance.cities.length).toBe(5)
-        expect(de.length).toBe(5)
-        expect(fixture.componentInstance.selectedItem.length).toBe(1)
-    })
+        expect(fixture.componentInstance.cities.length).toBe(5);
+        expect(de.length).toBe(5);
+        expect(fixture.componentInstance.selectedItem.length).toBe(1);
+    });
 });
 

@@ -5,7 +5,7 @@
       <span class="selected-item" *ngIf="isAllItemsSelected() && _settings.enableSelectedAllLabel">{{_settings.selectedAllLabel}}</span>
       <span class="selected-item" *ngFor="let item of selectedItems;trackBy: trackByFn;let k = index" [hidden]="k > _settings.itemsShowLimit-1 || (isAllItemsSelected() && _settings.enableSelectedAllLabel)">
         {{item.text}}
-        <a style="padding-top:2px;padding-left:2px;color:white" (click)="onItemClick($event,item)">x</a>
+        <a class="selected-item-close" (click)="onItemClick($event,item)">x</a>
       </span>
       <span style="float:right !important;padding-right:4px">
         <span style="padding-right: 6px;" *ngIf="itemShowRemaining()>0">+{{itemShowRemaining()}}</span>
@@ -15,11 +15,11 @@
   </div>
   <div class="dropdown-list" [hidden]="!_settings.defaultOpen">
     <ul class="item1">
-      <li (click)="toggleSelectAll()" *ngIf="(_data.length > 0 || _settings.allowRemoteDataSearch) && !_settings.singleSelection && _settings.enableCheckAll && _settings.limitSelection===-1" class="multiselect-item-checkbox" style="border-bottom: 1px solid #ccc;padding:10px">
+      <li (click)="toggleSelectAll()" *ngIf="(_data.length > 0 || _settings.allowRemoteDataSearch) && !_settings.singleSelection && _settings.enableCheckAll && _settings.limitSelection===-1 && !!!disabled" class="multiselect-item-checkbox" style="border-bottom: 1px solid #ccc;padding:10px">
         <input type="checkbox" aria-label="multiselect-select-all" [checked]="isAllItemsSelected()" [disabled]="disabled || isLimitSelectionReached()" />
         <div>{{!isAllItemsSelected() ? _settings.selectAllText : _settings.unSelectAllText}}</div>
       </li>
-      <li class="filter-textbox" *ngIf="(_data.length>0 || _settings.allowRemoteDataSearch) && _settings.allowSearchFilter">
+      <li class="filter-textbox" *ngIf="(_data.length>0 || _settings.allowRemoteDataSearch) && _settings.allowSearchFilter && !!!disabled">
         <input type="text" aria-label="multiselect-search" [readOnly]="disabled" [placeholder]="_settings.searchPlaceholderText" [(ngModel)]="filter.text" (ngModelChange)="onFilterTextChange($event)">
       </li>
     </ul>

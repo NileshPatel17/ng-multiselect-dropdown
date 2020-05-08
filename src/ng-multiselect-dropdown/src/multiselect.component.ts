@@ -115,7 +115,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     this.onFilterChange.emit($event);
   }
 
-  constructor(private cdr: ChangeDetectorRef,private listFilterPipe:ListFilterPipe) {}
+  constructor(private cdr: ChangeDetectorRef, private listFilterPipe: ListFilterPipe) {}
 
   onItemClick($event: any, item: ListItem) {
     if (this.disabled || item.isDisabled) {
@@ -221,7 +221,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   }
 
   isAllItemsSelected(): boolean {
-    // get disabld item count
+    // get disabled item count
     let filteredItems = this.listFilterPipe.transform(this._data,this.filter);
     const itemDisabledCount = filteredItems.filter(item => item.isDisabled).length;
     // take disabled items into consideration when checking
@@ -326,7 +326,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
     if (!this.isAllItemsSelected()) {
       // filter out disabled item first before slicing
-      this.selectedItems = this.listFilterPipe.transform(this._data,this.filter).filter(item => !item.isDisabled).slice();
+      this.selectedItems = this.listFilterPipe.transform(this._data, this.filter).filter(item => !item.isDisabled).slice();
       this.onSelectAll.emit(this.emittedValue(this.selectedItems));
     } else {
       this.selectedItems = [];

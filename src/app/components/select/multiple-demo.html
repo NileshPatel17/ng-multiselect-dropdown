@@ -37,7 +37,7 @@
       </div>
       <div class="checkbox">
         <label>
-          <input type="checkbox" [checked]="enableAllSelectedUnSelectedLabel" [(ngModel)]="enableAllSelectedUnSelectedLabel" (change)="toogleAllSelectedUnSelectedLabel()"> Enable Selected/UnSelected All Label
+          <input type="checkbox" [checked]="enableAllSelectedUnSelectedLabel" [(ngModel)]="enableAllSelectedUnSelectedLabel" (change)="handleAllSelectedUnSelectedLabel()"> Enable Selected/UnSelected All Label
         </label>
       </div>
       <div class="checkbox">
@@ -50,9 +50,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">Settings</div>
     <div class="panel-body">
-      <pre>
-       {{dropdownSettings | json}}
-      </pre>
+      <pre>{{dropdownSettings | json}}</pre>
     </div>
   </div>
   <tabset>

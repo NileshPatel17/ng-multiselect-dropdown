@@ -18,7 +18,7 @@ export class MultipleDemoComponent implements OnInit {
   selectedItems: Array<any> = [];
   dropdownSettings: IDropdownSettings = {};
   htmlCode = `
-    &lt;form [formGroup]="myForm"&gt;
+  &lt;form [formGroup]="myForm"&gt;
         &lt;ng-multiselect-dropdown
             name="city"
             [placeholder]="'Select City'"
@@ -57,7 +57,8 @@ export class MultipleDemoComponent implements OnInit {
         { item_id: 3, item_text: 'Bangalore', isDisabled: this.disableBangalore },
         { item_id: 4, item_text: 'Pune' },
         { item_id: 5, item_text: 'Chennai' },
-        { item_id: 6, item_text: 'Navsari' }
+        { item_id: 6, item_text: 'Navsari' },
+        { item_id: 7, item_text: 'Corral' }
       ];
       this.selectedItems = [
         { item_id: 4, item_text: 'Pune' },
@@ -82,11 +83,12 @@ export class MultipleDemoComponent implements OnInit {
         city: [this.selectedItems]
       });
     }
-  
+
     onItemSelect(item: any) {
       console.log('onItemSelect', item);
       console.log('form model', this.myForm.get('city').value);
     }
+
     onItemDeSelect(item: any) {
       console.log('onItem DeSelect', item);
       console.log('form model', this.myForm.get('city').value);
@@ -106,14 +108,15 @@ export class MultipleDemoComponent implements OnInit {
         enableCheckAll: this.showAll
       });
     }
+
     toogleShowFilter() {
       this.showFilter = !this.showFilter;
       this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
         allowSearchFilter: this.showFilter
       });
     }
-    toogleAllSelectedUnSelectedLabel() {
-      this.enableAllSelectedUnSelectedLabel = !this.enableAllSelectedUnSelectedLabel;
+
+    handleAllSelectedUnSelectedLabel() {
       this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
         enableSelectedAllLabel: this.enableAllSelectedUnSelectedLabel,
         enableUnSelectedAllLabel: this.enableAllSelectedUnSelectedLabel
@@ -152,7 +155,8 @@ export class MultipleDemoComponent implements OnInit {
       { item_id: 3, item_text: 'Bangalore', isDisabled: this.disableBangalore },
       { item_id: 4, item_text: 'Pune' },
       { item_id: 5, item_text: 'Chennai' },
-      { item_id: 6, item_text: 'Navsari' }
+      { item_id: 6, item_text: 'Navsari' },
+      { item_id: 7, item_text: 'Corral' }
     ];
     this.selectedItems = [
       { item_id: 4, item_text: 'Pune' },
@@ -207,8 +211,8 @@ export class MultipleDemoComponent implements OnInit {
       allowSearchFilter: this.showFilter
     });
   }
-  toogleAllSelectedUnSelectedLabel() {
-    this.enableAllSelectedUnSelectedLabel = !this.enableAllSelectedUnSelectedLabel;
+
+  handleAllSelectedUnSelectedLabel() {
     this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
       enableSelectedAllLabel: this.enableAllSelectedUnSelectedLabel,
       enableUnSelectedAllLabel: this.enableAllSelectedUnSelectedLabel
