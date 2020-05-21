@@ -2,7 +2,7 @@
   <div [class.disabled]="disabled">
     <span tabindex="-1" class="dropdown-btn" (click)="toggleDropdown($event)">
       <span *ngIf="selectedItems.length == 0">{{_placeholder}}</span>
-      <span class="selected-item" *ngFor="let item of selectedItems;trackBy: trackByFn;let k = index" [hidden]="k > _settings.itemsShowLimit-1">
+      <span class="selected-item" *ngFor="let item of selectedItems;trackBy: trackByFn;let k = index" [hidden]="k"> _settings.itemsShowLimit-1">
         {{item.text}}
         <a style="padding-top:2px;padding-left:2px;color:white" (click)="onItemClick($event,item)">x</a>
       </span>
