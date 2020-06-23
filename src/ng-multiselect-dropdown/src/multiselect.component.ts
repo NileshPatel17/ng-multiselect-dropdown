@@ -42,9 +42,9 @@ export class MultiSelectComponent implements ControlValueAccessor {
   @Input()
   public set settings(value: IDropdownSettings) {
     if (value) {
-      this._settings = Object.assign(this.defaultSettings, value);
+      this._settings = Object.assign({}, this.defaultSettings, value);
     } else {
-      this._settings = Object.assign(this.defaultSettings);
+      this._settings = Object.assign({}, this.defaultSettings);
     }
   }
 
