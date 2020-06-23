@@ -24,12 +24,14 @@ const DEFAULT_CONFIGS = {
   noDataAvailablePlaceholderText: 'No data available',
   closeDropDownOnSelection: false,
   showSelectedItemsAtTop: false,
-  defaultOpen: false
+  defaultOpen: false,
+  allowRemoteDataSearch: false
 };
 
 @NgModule({
   imports: [CommonModule, FormsModule],
   declarations: [MultiSelectComponent, ClickOutsideDirective, ListFilterPipe],
+  providers: [ListFilterPipe],
   exports: [MultiSelectComponent]
 })
 export class NgMultiSelectDropDownModule {

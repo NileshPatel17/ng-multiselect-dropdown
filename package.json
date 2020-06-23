@@ -1,6 +1,6 @@
 {
   "name": "ng-multiselect-dropdown",
-  "version": "0.2.5",
+  "version": "0.2.10",
   "private": true,
   "description": "Angular Multi-Select Dropdown",
   "author": "Nilesh Patel",
@@ -22,7 +22,9 @@
     "prepublish": "npm run build:prod",
     "publish": "ngh --no-silent false --name=\"nileshpatel17\" --email=\"nilesh.nvs@hotmail.com\"",
     "deploy": "ng build --prod --bh /ng-multiselect-dropdown/ && angular-cli-ghpages --no-silent --repo=https://github.com/NileshPatel17/ng-multiselect-dropdown.git --name=\"Nilesh Patel\" --email=nilesh.nvs@hotmail.com",
-    "deployOnly": "angular-cli-ghpages --no-silent --repo=https://github.com/NileshPatel17/ng-multiselect-dropdown.git --name=\"Nilesh Patel\" --email=nilesh.nvs@hotmail.com"
+    "deployOnly": "angular-cli-ghpages --no-silent --repo=https://github.com/NileshPatel17/ng-multiselect-dropdown.git --name=\"Nilesh Patel\" --email=nilesh.nvs@hotmail.com",
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate"
   },
   "keywords": [
     "angular4",
@@ -79,7 +81,7 @@
     "karma-coverage-istanbul-reporter": "^2.1.0",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
-    "ng-multiselect-dropdown": "^0.2.5",
+    "ng-multiselect-dropdown": "^0.2.10",
     "ng-packagr": "^5.5.0",
     "ngx-bootstrap": "^5.1.1",
     "protractor": "~5.4.2",

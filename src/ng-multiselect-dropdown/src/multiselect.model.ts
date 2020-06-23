@@ -16,6 +16,7 @@ export interface IDropdownSettings {
   closeDropDownOnSelection?: boolean;
   showSelectedItemsAtTop?: boolean;
   defaultOpen?: boolean;
+  allowRemoteDataSearch?: boolean;
 }
 
 export class ListItem {
@@ -24,7 +25,7 @@ export class ListItem {
   isDisabled?: boolean;
 
   public constructor(source: any) {
-    if (typeof source === 'string' || typeof source == 'number') {
+    if (typeof source === 'string' || typeof source === 'number') {
       this.id = this.text = source;
       this.isDisabled = false;
     }

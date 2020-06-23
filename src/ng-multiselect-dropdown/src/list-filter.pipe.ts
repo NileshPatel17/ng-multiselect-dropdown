@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { ListItem } from './multiselect.model';
 
 @Pipe({
-    name: 'ng2ListFilter',
+    name: 'multiSelectFilter',
     pure: false
 })
 export class ListFilterPipe implements PipeTransform {
@@ -15,6 +15,10 @@ export class ListFilterPipe implements PipeTransform {
     }
 
     applyFilter(item: ListItem, filter: ListItem): boolean {
-        return !(filter.text && item.text && item.text.toString().toLowerCase().indexOf(filter.text.toString().toLowerCase()) === -1);
+        if (typeof item.text === 'string' && typeof filter.text === 'string') {
+            return !(filter.text && item.text && item.text.toLowerCase().indexOf(filter.text.toLowerCase()) === -1);
+        } else {
+            return !(filter.text && item.text && item.text.toString().toLowerCase().indexOf(filter.text.toString().toLowerCase()) === -1);
+        }
     }
 }
