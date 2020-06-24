@@ -302,7 +302,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   closeDropdown() {
     // clear search text
     if (this._settings.clearSearchFilter) {
-      this.filter.text = '';
+      this.filter.text = "";
     }
     // Only emit the close dropdown event if the dropdown was open.
     if (this._settings.defaultOpen) {
