@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { TabsModule, ButtonsModule } from 'ngx-bootstrap';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { NgMultiSelectDropDownModule } from '../ng-multiselect-dropdown/src';
 // import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
