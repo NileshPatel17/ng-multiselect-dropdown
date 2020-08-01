@@ -1,14 +1,14 @@
-import { Component, HostListener, forwardRef, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
-import { ListItem, IDropdownSettings } from "./multiselect.model";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, forwardRef, HostListener, Input, Output } from "@angular/core";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { ListFilterPipe } from "./list-filter.pipe";
+import { IDropdownSettings, ListItem } from "./multiselect.model";
 
 export const DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => MultiSelectComponent),
   multi: true
 };
-const noop = () => {};
+const noop = () => { };
 
 @Component({
   selector: "ng-multiselect-dropdown",
@@ -79,10 +79,10 @@ export class MultiSelectComponent implements ControlValueAccessor {
         typeof item === "string" || typeof item === "number"
           ? new ListItem(item)
           : new ListItem({
-              id: item[this._settings.idField],
-              text: item[this._settings.textField],
-              isDisabled: item[this._settings.disabledField]
-            })
+            id: item[this._settings.idField],
+            text: item[this._settings.textField],
+            isDisabled: item[this._settings.disabledField]
+          })
       );
     }
   }
@@ -111,7 +111,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     this.onFilterChange.emit($event);
   }
 
-  constructor(private cdr: ChangeDetectorRef,private listFilterPipe:ListFilterPipe) {}
+  constructor(private cdr: ChangeDetectorRef, private listFilterPipe: ListFilterPipe) { }
 
   onItemClick($event: any, item: ListItem) {
     if (this.disabled || item.isDisabled) {
@@ -142,10 +142,10 @@ export class MultiSelectComponent implements ControlValueAccessor {
               typeof firstItem === "string" || typeof firstItem === "number"
                 ? new ListItem(firstItem)
                 : new ListItem({
-                    id: firstItem[this._settings.idField],
-                    text: firstItem[this._settings.textField],
-                    isDisabled: firstItem[this._settings.disabledField]
-                  })
+                  id: firstItem[this._settings.idField],
+                  text: firstItem[this._settings.textField],
+                  isDisabled: firstItem[this._settings.disabledField]
+                })
             ];
           }
         } catch (e) {
@@ -156,10 +156,10 @@ export class MultiSelectComponent implements ControlValueAccessor {
           typeof item === "string" || typeof item === "number"
             ? new ListItem(item)
             : new ListItem({
-                id: item[this._settings.idField],
-                text: item[this._settings.textField],
-                isDisabled: item[this._settings.disabledField]
-              })
+              id: item[this._settings.idField],
+              text: item[this._settings.textField],
+              isDisabled: item[this._settings.disabledField]
+            })
         );
         if (this._settings.limitSelection > 0) {
           this.selectedItems = _data.splice(0, this._settings.limitSelection);
@@ -196,11 +196,12 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   isSelected(clickedItem: ListItem) {
     let found = false;
-    this.selectedItems.forEach(item => {
+    for (const item of this.selectedItems) {
       if (clickedItem.id === item.id) {
         found = true;
+        break;
       }
-    });
+    }
     return found;
   }
 
@@ -209,8 +210,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
   }
 
   isAllItemsSelected(): boolean {
-    // get disabld item count
-    let filteredItems = this.listFilterPipe.transform(this._data,this.filter);
+    // get disabled item count
+    let filteredItems = this.listFilterPipe.transform(this._data, this.filter);
     const itemDisabledCount = filteredItems.filter(item => item.isDisabled).length;
     // take disabled items into consideration when checking
     if ((!this.data || this.data.length === 0) && this._settings.allowRemoteDataSearch) {
@@ -314,7 +315,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
     if (!this.isAllItemsSelected()) {
       // filter out disabled item first before slicing
-      this.selectedItems = this.listFilterPipe.transform(this._data,this.filter).filter(item => !item.isDisabled).slice();
+      this.selectedItems = this.listFilterPipe.transform(this._data, this.filter).filter(item => !item.isDisabled).slice();
       this.onSelectAll.emit(this.emittedValue(this.selectedItems));
     } else {
       this.selectedItems = [];
