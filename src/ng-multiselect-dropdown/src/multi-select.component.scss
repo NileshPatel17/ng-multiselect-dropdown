@@ -1,5 +1,6 @@
 $base-color: #337ab7;
 $disable-background-color: #eceeef;
+$onhover-background-color: #f5f5f5;
 .multiselect-dropdown {
   position: relative;
   width: 100%;
@@ -103,6 +104,10 @@ $disable-background-color: #eceeef;
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+.multiselect-item-checkbox:hover {
+  background-color: $onhover-background-color;
 }
 
 .multiselect-item-checkbox input[type='checkbox']:focus + div:before,
