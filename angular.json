@@ -21,7 +21,8 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/app/assets/vendor/font-awesome-4.7.0/css/font-awesome.min.css"
             ],
             "scripts": []
           },

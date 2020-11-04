@@ -49,18 +49,22 @@ export class MultipleDemoComponent implements OnInit {
 
         ngOnInit() {
             this.cities = [
-                { item_id: 1, item_text: 'New Delhi' },
-                { item_id: 2, item_text: 'Mumbai' },
-                { item_id: 3, item_text: 'Bangalore' },
-                { item_id: 4, item_text: 'Pune' },
-                { item_id: 5, item_text: 'Chennai' },
-                { item_id: 6, item_text: 'Navsari' }
+              { item_id: 1, item_text: 'New Delhi', item_icon: 'fa fa-home' },
+              { item_id: 2, item_text: 'Mumbai', item_icon: 'fa fa-floppy-o' },
+              { item_id: 3, item_text: 'Bangalore', item_icon: 'fa fa-trash' },
+              { item_id: 4, item_text: 'Pune', item_icon: 'fa fa-truck' },
+              { item_id: 5, item_text: 'Chennai', item_icon: 'fa fa-video-camera' },
+              { item_id: 6, item_text: 'Navsari', item_icon: 'fa fa-wifi' }
             ];
-            this.selectedItems = [{ item_id: 4, item_text: 'Pune' }, { item_id: 6, item_text: 'Navsari' }];
+            this.selectedItems = [
+              { item_id: 4, item_text: 'Pune', item_icon: 'fa fa-truck' },
+              { item_id: 6, item_text: 'Navsari', item_icon: 'fa fa-wifi' }
+            ];
             this.dropdownSettings = {
                 singleSelection: false,
                 idField: 'item_id',
                 textField: 'item_text',
+                iconField: 'item_icon',
                 selectAllText: 'Select All',
                 unSelectAllText: 'UnSelect All',
                 itemsShowLimit: 3,
@@ -96,22 +100,23 @@ export class MultipleDemoComponent implements OnInit {
 
   ngOnInit() {
     this.cities = [
-      { item_id: 1, item_text: 'New Delhi' },
-      { item_id: 2, item_text: 'Mumbai' },
-      { item_id: 3, item_text: 'Bangalore', isDisabled: this.disableBangalore },
-      { item_id: 4, item_text: 'Pune' },
-      { item_id: 5, item_text: 'Chennai' },
-      { item_id: 6, item_text: 'Navsari' }
+      { item_id: 1, item_text: 'New Delhi', item_icon: 'fa fa-home' },
+      { item_id: 2, item_text: 'Mumbai', item_icon: 'fa fa-floppy-o' },
+      { item_id: 3, item_text: 'Bangalore', isDisabled: this.disableBangalore, item_icon: 'fa fa-trash' },
+      { item_id: 4, item_text: 'Pune', item_icon: 'fa fa-truck' },
+      { item_id: 5, item_text: 'Chennai', item_icon: 'fa fa-video-camera' },
+      { item_id: 6, item_text: 'Navsari', item_icon: 'fa fa-wifi' }
     ];
     this.selectedItems = [
-      { item_id: 4, item_text: 'Pune' },
-      { item_id: 6, item_text: 'Navsari' }
+      { item_id: 4, item_text: 'Pune', item_icon: 'fa fa-truck' },
+      { item_id: 6, item_text: 'Navsari', item_icon: 'fa fa-wifi' }
     ];
     this.dropdownSettings = {
       singleSelection: false,
       defaultOpen: false,
       idField: 'item_id',
       textField: 'item_text',
+      iconField: 'item_icon',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       enableCheckAll: this.showAll,

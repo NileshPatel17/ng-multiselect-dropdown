@@ -30,6 +30,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     singleSelection: false,
     idField: "id",
     textField: "text",
+    iconField: "icon",
     disabledField: "isDisabled",
     enableCheckAll: true,
     selectAllText: "Select All",
@@ -81,6 +82,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
           : new ListItem({
               id: item[this._settings.idField],
               text: item[this._settings.textField],
+              icon: item[this._settings.iconField],
               isDisabled: item[this._settings.disabledField]
             })
       );
@@ -144,6 +146,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
                 : new ListItem({
                     id: firstItem[this._settings.idField],
                     text: firstItem[this._settings.textField],
+                    icon: firstItem[this._settings.iconField],
                     isDisabled: firstItem[this._settings.disabledField]
                   })
             ];
@@ -158,6 +161,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
             : new ListItem({
                 id: item[this._settings.idField],
                 text: item[this._settings.textField],
+                icon: item[this._settings.iconField],
                 isDisabled: item[this._settings.disabledField]
               })
         );
@@ -276,6 +280,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
       const obj = {};
       obj[this._settings.idField] = val.id;
       obj[this._settings.textField] = val.text;
+      obj[this._settings.iconField] = val.icon;
       if (this._sourceDataFields.includes(this._settings.disabledField)) {
         obj[this._settings.disabledField] = val.isDisabled;
       }
