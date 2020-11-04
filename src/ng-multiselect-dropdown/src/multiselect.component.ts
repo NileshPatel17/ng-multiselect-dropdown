@@ -81,7 +81,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
           : new ListItem({
               id: item[this._settings.idField],
               text: item[this._settings.textField],
-              isDisabled: item[this._settings.disabledField]
+              isDisabled: item[this._settings.disabledField],
+              isHeader: this._settings.headerField ? item[this._settings.headerField] : null
             })
       );
     }
@@ -114,7 +115,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   constructor(private cdr: ChangeDetectorRef,private listFilterPipe:ListFilterPipe) {}
 
   onItemClick($event: any, item: ListItem) {
-    if (this.disabled || item.isDisabled) {
+    if (this.disabled || item.isDisabled || item.isHeader) {
       return false;
     }
 
@@ -144,7 +145,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
                 : new ListItem({
                     id: firstItem[this._settings.idField],
                     text: firstItem[this._settings.textField],
-                    isDisabled: firstItem[this._settings.disabledField]
+                    isDisabled: firstItem[this._settings.disabledField],
+                    isHeader: this._settings.headerField ? firstItem[this._settings.headerField] : null
                   })
             ];
           }
