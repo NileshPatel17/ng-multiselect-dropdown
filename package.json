@@ -12,6 +12,7 @@
     "ng:test": "ng test",
     "lint": "ng lint",
     "test": "jest --watch",
+    "test-spec": "jest -t custom-template --watch",
     "test:ci": "jest --runInBand",
     "test:coverage": "jest --coverage",
     "build:prod": "ng build --prod --base-href https://nileshpatel17.github.io/ng-multiselect-dropdown/",
@@ -92,5 +93,8 @@
     "tslint": "~5.19.0",
     "typescript": "3.5.3",
     "zone.js": "^0.10.2"
+  },
+  "dependencies": {
+    "semantic-release-np": "1.2.3-beta.2"
   }
 }
