@@ -17,7 +17,7 @@
       </div>
       <div class="checkbox">
         <label>
-          <input type="checkbox" [checked]="ShowFilter" (change)="toogleShowFilter()"> Show Search filter
+          <input type="checkbox" [checked]="showFilter" (change)="toogleShowFilter()"> Show Search filter
         </label>
       </div>
       <div class="checkbox">
@@ -37,6 +37,11 @@
       </div>
       <div class="checkbox">
         <label>
+          <input type="checkbox" [checked]="enableAllSelectedUnSelectedLabel" [(ngModel)]="enableAllSelectedUnSelectedLabel" (change)="handleAllSelectedUnSelectedLabel()"> Enable Selected/UnSelected All Label
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
           <input type="button" (click)="handleReset()" value="reset">
         </label>
       </div>
@@ -45,9 +50,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">Settings</div>
     <div class="panel-body">
-      <pre>
-       {{dropdownSettings | json}}
-      </pre>
+      <pre>{{dropdownSettings | json}}</pre>
     </div>
   </div>
   <tabset>

@@ -17,6 +17,10 @@ export interface IDropdownSettings {
   showSelectedItemsAtTop?: boolean;
   defaultOpen?: boolean;
   allowRemoteDataSearch?: boolean;
+  selectedAllLabel?: string;
+  unSelectedAllLabel?: string;
+  enableSelectedAllLabel?: boolean;
+  enableUnSelectedAllLabel?: boolean;
 }
 
 export class ListItem {

@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { ComponentFixture, fakeAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { MultiSelectComponent, IDropdownSettings } from './../src';
-import { createTestingModule, tickAndDetectChanges } from './helper'
+import { createTestingModule, tickAndDetectChanges } from './helper';
 
 @Component({
     template: ``
@@ -62,8 +62,8 @@ describe('ng-multiselect-component: default placeholder when no data is availabl
     it('should have default placeholder when no data is available to show', () => {
         const de: DebugElement = fixture.debugElement.query(By.css('.no-data'));
         const el = de.nativeElement;
-        expect(el.textContent).toContain('No data available')
-    })
+        expect(el.textContent).toContain('No data available');
+    });
 });
 describe('ng-multiselect-component: custom placeholder when no data is available to show', function () {
     let fixture: ComponentFixture<Ng2MultiSelectDropdownMultipleSelect_CustomPlaceHolderText>;
@@ -85,6 +85,6 @@ describe('ng-multiselect-component: custom placeholder when no data is available
     it('should have custom placeholder when no data is available to show', () => {
         const de: DebugElement = fixture.debugElement.query(By.css('.no-data'));
         const el = de.nativeElement;
-        expect(el.textContent).toContain(NO_DATA_AVAILABLE)
-    })
+        expect(el.textContent).toContain(NO_DATA_AVAILABLE);
+    });
 });

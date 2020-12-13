@@ -33,6 +33,11 @@ $disable-background-color: #eceeef;
     .selected-item:hover {
       box-shadow: 1px 1px #959595;
     }
+    .selected-item-close {
+      padding-top:2px;
+      padding-left:2px;
+      color:white;
+    }
     .dropdown-down {
       display: inline-block;
       top: 10px;
@@ -54,6 +59,15 @@ $disable-background-color: #eceeef;
   .disabled {
     & > span {
       background-color: $disable-background-color;
+    }
+    .selected-item {
+      background-color: transparent;
+      border: 1px solid #adadad;
+      color: inherit;
+    }
+    .selected-item-close{
+      color: $disable-background-color;
+      display: none;
     }
   }
 }
