@@ -22,6 +22,7 @@ Angular multiselect dropdown component for web applications. Easy to integrate a
 - search item with custom placeholder text
 - limit selection
 - select/de-select all items
+- custom theme
 
 ### Installation
 
@@ -137,14 +138,21 @@ export class AppComponent implements OnInit {
 - `onDropDownClose`-
   Example : (onDropDownClose)="onDropDownClose()"
 
-## Run locally
+
+### Custom Theme
+
+- The component package has a themes folder in node_modules at `ng-multiselet-dropdown\themes\ng-multiselect-dropdown.theme.scss`
+- Include the `ng-multiselet-dropdown.theme.css` in `angular-cli.json` (for versions below angular 6) and `angular.json` (for version 6 or more).
+- [Refer this file](https://github.com/NileshPatel17/ng-multiselect-dropdown/custom-theme.md) on how to add the css file to your angular project.
+
+### Run locally
 
 - Clone the repository or downlod the .zip,.tar files.
 - Run `npm install`
 - Run `ng serve` for a dev server
 - Navigate to `http://localhost:4200/`
 
-## Library Build / NPM Package
+### Library Build / NPM Package
 
 Run `yarn build:lib` to build the library and generate an NPM package. The build artifacts will be stored in the dist-lib/ folder.
 
