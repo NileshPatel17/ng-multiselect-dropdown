@@ -158,9 +158,31 @@ export class AppComponent implements OnInit {
 
 - The component package has a themes folder in node_modules at `ng-multiselet-dropdown\themes\ng-multiselect-dropdown.theme.scss`
 - Include the `ng-multiselet-dropdown.theme.css` in `angular-cli.json` (for versions below angular 6) and `angular.json` (for version 6 or more).
-- [Refer this file](https://github.com/NileshPatel17/ng-multiselect-dropdown/blob/master/custom-theme.md) on how to add the css file to your angular project.
+- [Refer this file](https://github.com/NileshPatel17/ng-multiselect-dropdown/blob/master/custom-theme.md) on how to add the scss file to your angular project.
 <img src="Screenshots/theme-step-3.png" width="800">
 <!-- ![](Screenshots/theme-step-3.png) -->
+
+## Custom Template
+
+### Variables can be used in template
+
+1. id: return id as number
+2. option: return option text. return string
+3. isSelected: determine if item is selected or not. returns boolean
+
+Template for each item
+```
+<ng-template #optionsTemplate let-item let-option="option" let-id="id" let-isSelected="isSelected">
+  {{option}}
+</ng-template>
+```
+
+Template for selected item
+```
+<ng-template #optionSelectedTemplate optionSelectedTemplate let-option="option"  let-id="id">
+  {{option}}
+</ng-template>
+```
 
 ### Run locally
 

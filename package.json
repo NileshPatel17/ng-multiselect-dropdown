@@ -16,9 +16,9 @@
     "test:ci": "jest --runInBand",
     "test:coverage": "jest --coverage",
     "build:prod": "ng build --prod --base-href https://nileshpatel17.github.io/ng-multiselect-dropdown/",
-    "clear:lib": "rimraf dist-lib",
-    "postcopyfiles": "copyfiles -u 1 ./dist-lib/**/*.* node_modules/ng-multiselect-dropdown",
-    "copyfiles": "mkdir dist-lib/themes && copyfiles ng-multiselect-dropdown.theme.scss dist-lib/themes",
+    "clear:lib": "rimraf lib",
+    "postcopyfiles": "copyfiles -u 1 ./lib/**/*.* node_modules/ng-multiselect-dropdown",
+    "copyfiles": "mkdir lib/themes && copyfiles src/themes/ng-multiselect-dropdown.theme.scss lib/themes",
     "build:lib": "npm run clear:lib && ng-packagr -p ng-package.json",
     "postbuild:lib": "npm run copyfiles",
     "prepublish": "npm run build:prod",
@@ -84,17 +84,16 @@
     "karma-jasmine-html-reporter": "^1.4.2",
     "ng-multiselect-dropdown": "^0.2.11",
     "ng-packagr": "^5.5.0",
+    "semantic-release-np": "1.2.3-beta.2",
     "ngx-bootstrap": "^5.1.1",
     "protractor": "~5.4.2",
     "rimraf": "^3.0.0",
     "rxjs": "^6.2.1",
     "rxjs-compat": "^6.2.1",
+    "semantic-release": "^17.3.0",
     "ts-node": "~8.3.0",
     "tslint": "~5.19.0",
     "typescript": "3.5.3",
     "zone.js": "^0.10.2"
-  },
-  "dependencies": {
-    "semantic-release-np": "1.2.3-beta.2"
   }
 }
