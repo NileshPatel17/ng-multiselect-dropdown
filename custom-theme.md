@@ -3,8 +3,7 @@
 #### Step 1:
 
 1. copy 'ng-multiselect-dropdown.theme.scss' file located at `node_modules\ng-multiselet-dropdown\themes\ng-multiselect-dropdown.theme.scss`
-![](Screenshots/theme-step-1.png)
-
+<img src="Screenshots/theme-step-1.png" width="700">
 
 ** if you are using version below 0.2.11, you need to get it from https://github.com/NileshPatel17/ng-multiselect-dropdown/themes/ng-multiselet-dropdown.theme.css
 
