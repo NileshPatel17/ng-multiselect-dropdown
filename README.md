@@ -162,7 +162,7 @@ export class AppComponent implements OnInit {
 <img src="Screenshots/theme-step-3.png" width="800">
 <!-- ![](Screenshots/theme-step-3.png) -->
 
-## Custom Template
+## Custom Template:
 
 ### Variables can be used in template
 
