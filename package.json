@@ -1,7 +1,7 @@
 {
   "name": "ng-multiselect-dropdown",
   "version": "0.2.12",
-  "private": true,
+  "private": false,
   "description": "Angular Multi-Select Dropdown",
   "author": "Nilesh Patel",
   "license": "MIT",
