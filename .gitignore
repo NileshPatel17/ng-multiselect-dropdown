@@ -3,6 +3,7 @@
 # compiled output
 /dist
 /dist-lib
+/lib
 /tmp
 /out-tsc
 dist-lib.tgz

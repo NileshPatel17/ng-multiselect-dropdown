@@ -21,7 +21,8 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/themes/ng-multiselect-dropdown.theme.scss"
             ],
             "scripts": []
           },

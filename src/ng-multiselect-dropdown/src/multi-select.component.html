@@ -2,10 +2,14 @@
   <div [class.disabled]="disabled">
     <span tabindex="-1" class="dropdown-btn" (click)="toggleDropdown($event)">
       <span *ngIf="selectedItems.length == 0">{{_placeholder}}</span>
-      <span class="selected-item" *ngFor="let item of selectedItems;trackBy: trackByFn;let k = index" [hidden]="k > _settings.itemsShowLimit-1">
-        <span>{{item.text}}</span>
-        <a style="padding-left:2px;color:white" (click)="onItemClick($event,item)">x</a>
-      </span>
+      <div class="selected-item" *ngFor="let item of selectedItems;trackBy: trackByFn;let k = index" [hidden]="k > _settings.itemsShowLimit-1">
+        <ng-template #defaultOptionSelectedTemplate>
+         {{item.text}}
+        </ng-template>
+        <ng-container [ngTemplateOutlet]="optionSelectedTemplateRef || defaultOptionSelectedTemplate" [ngTemplateOutletContext]="{ $implicit:item, option: item.text, id: item.id }">
+        </ng-container>
+        <a (click)="onItemClick($event,item)">x</a>
+      </div>
       <span [ngClass]="{ 'dropdown-multiselect--active': _settings.defaultOpen }" style="float:right !important;padding-right:4px">
         <span style="padding-right: 15px;" *ngIf="itemShowRemaining()>0">+{{itemShowRemaining()}}</span>
         <span class="dropdown-multiselect__caret"></span>
@@ -24,8 +28,12 @@
     </ul>
     <ul class="item2" [style.maxHeight]="_settings.maxHeight+'px'">
       <li *ngFor="let item of _data | multiSelectFilter:filter; let i = index;" (click)="onItemClick($event,item)" class="multiselect-item-checkbox">
-        <input type="checkbox" [attr.aria-label]="item.text" [checked]="isSelected(item)" [disabled]="disabled || (isLimitSelectionReached() && !isSelected(item)) || item.isDisabled" />
-        <div>{{item.text}}</div>
+          <input type="checkbox" [attr.aria-label]="item.text" [checked]="isSelected(item)" [disabled]="disabled || (isLimitSelectionReached() && !isSelected(item)) || item.isDisabled" />
+          <ng-template #defaultOptionTemplate>
+            <div [ngClass]="{ 'selected': isSelected(item)}" [ngStyle]="{ 'color': disabled || (isLimitSelectionReached() && !isSelected(item)) || item.isDisabled ? '#cccccc': ''}">{{item.text}}</div>
+          </ng-template>
+          <ng-container [ngTemplateOutlet]="optionsTemplateRef || defaultOptionTemplate" [ngTemplateOutletContext]="{ $implicit:item, option: item.text, id: item.id, isSelected: isSelected(item) }">
+          </ng-container>
       </li>
       <li class='no-data' *ngIf="_data.length == 0 && !_settings.allowRemoteDataSearch">
         <h5>{{_settings.noDataAvailablePlaceholderText}}</h5>
