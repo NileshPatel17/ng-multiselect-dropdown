@@ -2,23 +2,42 @@ name: Release npm package
 
 on:
   push:
-    branches:
-      # - master
-      - beta
+    tags:
+      - 'v*'
 
 jobs:
-  release:
-    name: Release
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: install
+        run: npm install
+      - name: build
+        run: npm run build:lib
+      - name: upload
+        if: success()
+        uses: actions/upload-artifact@v2
+        with:
+          name: ng-multiselect-dropdown
+          path: dist-lib
+  publish-npm:
+    needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: download
+        uses: actions/download-artifact@v2
+        with:
+          name: ng-multiselect-dropdown
       - uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
-      - run: yarn
-      - run: yarn run build:lib
-      - run: yarn test:ci
-      - run: npx semantic-release
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - name: publish
+        run: npm publish --access public
+        continue-on-error: false
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
