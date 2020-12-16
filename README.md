@@ -147,6 +147,29 @@ export class AppComponent implements OnInit {
 <img src="Screenshots/theme-step-3.png" width="800">
 <!-- ![](Screenshots/theme-step-3.png) -->
 
+## Custom Template(in beta):
+
+### Variables can be used in template
+
+1. id: return id as number
+2. option: return option text. return string
+3. isSelected: determine if item is selected or not. returns boolean
+
+Template for each item
+```
+<ng-template #optionsTemplate let-item let-option="option" let-id="id" let-isSelected="isSelected">
+  {{option}}
+</ng-template>
+```
+
+Template for selected item
+```
+<ng-template #optionSelectedTemplate optionSelectedTemplate let-option="option"  let-id="id">
+  {{option}}
+</ng-template>
+```
+
+[Demo](https://codesandbox.io/s/custom-template-uyo0o?file=/src/app/app.component.html)
 ### Run locally
 
 - Clone the repository or downlod the .zip,.tar files.
