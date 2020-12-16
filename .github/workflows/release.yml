@@ -2,8 +2,12 @@ name: Release npm package
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - beta
+# on:
+#   push:
+#     tags:
+#       - 'v*'
 
 jobs:
   build:
@@ -23,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ng-multiselect-dropdown
-          path: dist/lib
+          path: dist-lib
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
