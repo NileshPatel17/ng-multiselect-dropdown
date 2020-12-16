@@ -21,7 +21,7 @@
     "test:coverage": "jest --coverage",
     "build:prod": "ng build --prod --base-href https://nileshpatel17.github.io/ng-multiselect-dropdown/",
     "clear:lib": "rimraf dist",
-    "copyfiles": "mkdir dist/lib/themes && copyfiles src/themes/ng-multiselect-dropdown.theme.scss dist/lib/themes",
+    "copyfiles": "mkdir dist/ng-multiselect-dropdown/themes && copyfiles -u src/themes/ng-multiselect-dropdown.theme.scss dist/ng-multiselect-dropdown/themes/",
     "build:lib": "yarn run clear:lib && ng-packagr -p ng-package.json",
     "postbuild:lib": "yarn run copyfiles",
     "prepublish1": "yarn run build:prod",
