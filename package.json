@@ -82,7 +82,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
     "ng-multiselect-dropdown": "^0.2.11",
-    "ng-packagr": "^11.0.3",
+    "ng-packagr": "^5.5.0",
     "ngx-bootstrap": "^5.1.1",
     "protractor": "~5.4.2",
     "rimraf": "^3.0.0",
