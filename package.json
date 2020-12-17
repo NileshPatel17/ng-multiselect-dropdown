@@ -22,7 +22,7 @@
     "postbuild:lib": "npm run copyfiles",
     "prepublish": "npm run build:prod",
     "publish": "ngh --no-silent false --name=\"nileshpatel17\" --email=\"nilesh.nvs@hotmail.com\"",
-    "deploy": "ng build --prod --bh /ng-multiselect-dropdown/ && angular-cli-ghpages --no-silent --repo=https://github.com/NileshPatel17/ng-multiselect-dropdown.git --name=\"Nilesh Patel\" --email=nilesh.nvs@hotmail.com",
+    "deploy": "ng build --prod --base-href /ng-multiselect-dropdown/ && npm run deployOnly",
     "deployOnly": "angular-cli-ghpages --no-silent --repo=https://github.com/NileshPatel17/ng-multiselect-dropdown.git --name=\"Nilesh Patel\" --email=nilesh.nvs@hotmail.com",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
