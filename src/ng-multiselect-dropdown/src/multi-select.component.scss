@@ -107,6 +107,9 @@ $disable-background-color: #eceeef;
   }
 }
 
+.multiselect-item-checkbox:hover{
+  background-color: #e4e3e3;
+}
 .multiselect-item-checkbox input[type='checkbox'] {
   border: 0;
   clip: rect(0 0 0 0);
