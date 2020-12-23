@@ -7,7 +7,7 @@
         <a style="padding-top:2px;padding-left:2px;color:white" (click)="onItemClick($event,item)">x</a>
       </span>
       <span [ngClass]="{ 'dropdown-multiselect--active': _settings.defaultOpen }" style="float:right !important;padding-right:4px">
-        <span style="padding-right: 6px;" *ngIf="itemShowRemaining()>0">+{{itemShowRemaining()}}</span>
+        <span style="padding-right: 15px;" *ngIf="itemShowRemaining()>0">+{{itemShowRemaining()}}</span>
         <span class="dropdown-multiselect__caret"></span>
       </span>
     </span>
