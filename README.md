@@ -90,9 +90,9 @@ export class AppComponent implements OnInit {
 ```html
 <ng-multiselect-dropdown
   [placeholder]="'custom placeholder'"
+  [settings]="dropdownSettings"
   [data]="dropdownList"
   [(ngModel)]="selectedItems"
-  [settings]="dropdownSettings"
   (onSelect)="onItemSelect($event)"
   (onSelectAll)="onSelectAll($event)"
 >
