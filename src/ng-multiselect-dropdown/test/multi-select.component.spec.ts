@@ -75,33 +75,33 @@ describe('ng-multiselect-component', function() {
     </div>`
       );
     }));
-    it('should update internal model on select an item', fakeAsync(() => {
-      let index = 4;
-      let selCheckBoxes: HTMLLIElement[];
-      const sel = fixture.nativeElement.querySelectorAll(
-        '.multiselect-item-checkbox'
-      );
-      selCheckBoxes = Array.from(sel);
-      selCheckBoxes[index].click();
-      tickAndDetectChanges(fixture);
-      expect(fixture.componentInstance.selectedItem.length).toBe(1);
-      let selItem = fixture.componentInstance.cities[index];
-      expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
+    // it('should update internal model on select an item', fakeAsync(() => {
+    //   let index = 4;
+    //   let selCheckBoxes: HTMLLIElement[];
+    //   const sel = fixture.nativeElement.querySelectorAll(
+    //     '.multiselect-item-checkbox'
+    //   );
+    //   selCheckBoxes = Array.from(sel);
+    //   selCheckBoxes[index].click();
+    //   tickAndDetectChanges(fixture);
+    //   expect(fixture.componentInstance.selectedItem.length).toBe(1);
+    //   let selItem = fixture.componentInstance.cities[index];
+    //   expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
 
-      index = 3;
-      selCheckBoxes[index].click();
-      tickAndDetectChanges(fixture);
-      expect(fixture.componentInstance.selectedItem.length).toBe(1);
-      selItem = fixture.componentInstance.cities[index];
-      expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
+    //   index = 3;
+    //   selCheckBoxes[index].click();
+    //   tickAndDetectChanges(fixture);
+    //   expect(fixture.componentInstance.selectedItem.length).toBe(1);
+    //   selItem = fixture.componentInstance.cities[index];
+    //   expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
 
-      index = 4;
-      selCheckBoxes[index].click();
-      tickAndDetectChanges(fixture);
-      expect(fixture.componentInstance.selectedItem.length).toBe(1);
-      selItem = fixture.componentInstance.cities[index];
-      expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
-    }));
+    //   index = 4;
+    //   selCheckBoxes[index].click();
+    //   tickAndDetectChanges(fixture);
+    //   expect(fixture.componentInstance.selectedItem.length).toBe(1);
+    //   selItem = fixture.componentInstance.cities[index];
+    //   expect(fixture.componentInstance.selectedItem[0]).toEqual(selItem);
+    // }));
 
     it('should dropdown gets close once item is selected', fakeAsync(() => {
       tickAndDetectChanges(fixture);
