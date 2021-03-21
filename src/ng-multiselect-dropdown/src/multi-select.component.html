@@ -23,10 +23,20 @@
       </li>
     </ul>
     <ul class="item2" [style.maxHeight]="_settings.maxHeight+'px'">
-      <li *ngFor="let item of _data | multiSelectFilter:filter; let i = index;" (click)="onItemClick($event,item)" class="multiselect-item-checkbox">
-        <input type="checkbox" [attr.aria-label]="item.text" [checked]="isSelected(item)" [disabled]="disabled || (isLimitSelectionReached() && !isSelected(item)) || item.isDisabled" />
-        <div>{{item.text}}</div>
-      </li>
+      <ng-container *ngIf="_settings.singleSelection; else multipleSelection">
+        <li *ngFor="let item of _data | multiSelectFilter:filter; let i = index;" (click)="onItemClick($event,item)" class="multiselect-item-checkbox">
+          <div style="display: flex; align-items: flex-start;">
+            <input type="radio" [checked]="isSelected(item)" [attr.aria-label]="item.text" [value]="item.value" [disabled]="disabled || (isLimitSelectionReached() && !isSelected(item)) || item.isDisabled" />
+            <span style="margin-left: 6px;">{{item.text}}</span>
+          </div>
+        </li>
+      </ng-container>
+      <ng-template #multipleSelection>
+        <li *ngFor="let item of _data | multiSelectFilter:filter; let i = index;" (click)="onItemClick($event,item)" class="multiselect-item-checkbox">
+          <input type="checkbox" [attr.aria-label]="item.text" [checked]="isSelected(item)" [disabled]="disabled || (isLimitSelectionReached() && !isSelected(item)) || item.isDisabled" />
+          <div>{{item.text}}</div>
+        </li>
+      </ng-template>
       <li class='no-data' *ngIf="_data.length == 0 && !_settings.allowRemoteDataSearch">
         <h5>{{_settings.noDataAvailablePlaceholderText}}</h5>
       </li>

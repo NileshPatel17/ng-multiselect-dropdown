@@ -8,7 +8,7 @@ export const DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   useExisting: forwardRef(() => MultiSelectComponent),
   multi: true
 };
-const noop = () => {};
+const noop = () => { };
 
 @Component({
   selector: "ng-multiselect-dropdown",
@@ -21,6 +21,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   public _settings: IDropdownSettings;
   public _data: Array<ListItem> = [];
   public selectedItems: Array<ListItem> = [];
+  public selectedItem: number | String;
   public isDropdownOpen = true;
   _placeholder = "Select";
   private _sourceDataType = null; // to keep note of the source data type. could be array of string/number/object
@@ -79,10 +80,10 @@ export class MultiSelectComponent implements ControlValueAccessor {
         typeof item === "string" || typeof item === "number"
           ? new ListItem(item)
           : new ListItem({
-              id: item[this._settings.idField],
-              text: item[this._settings.textField],
-              isDisabled: item[this._settings.disabledField]
-            })
+            id: item[this._settings.idField],
+            text: item[this._settings.textField],
+            isDisabled: item[this._settings.disabledField]
+          })
       );
     }
   }
@@ -111,22 +112,27 @@ export class MultiSelectComponent implements ControlValueAccessor {
     this.onFilterChange.emit($event);
   }
 
-  constructor(private listFilterPipe:ListFilterPipe) {}
+  constructor(private listFilterPipe: ListFilterPipe) { }
 
   onItemClick($event: any, item: ListItem) {
     if (this.disabled || item.isDisabled) {
       return false;
     }
-
-    const found = this.isSelected(item);
-    const allowAdd = this._settings.limitSelection === -1 || (this._settings.limitSelection > 0 && this.selectedItems.length < this._settings.limitSelection);
-    if (!found) {
-      if (allowAdd) {
-        this.addSelected(item);
-      }
+    if (this._settings.singleSelection) {
+      this.selectedItem = item.id;
+      this.selectedItems = [item]
     } else {
-      this.removeSelected(item);
+      const found = this.isSelected(item);
+      const allowAdd = this._settings.limitSelection === -1 || (this._settings.limitSelection > 0 && this.selectedItems.length < this._settings.limitSelection);
+      if (!found) {
+        if (allowAdd) {
+          this.addSelected(item);
+        }
+      } else {
+        this.removeSelected(item);
+      }
     }
+
     if (this._settings.singleSelection && this._settings.closeDropDownOnSelection) {
       this.closeDropdown();
     }
@@ -142,12 +148,13 @@ export class MultiSelectComponent implements ControlValueAccessor {
               typeof firstItem === "string" || typeof firstItem === "number"
                 ? new ListItem(firstItem)
                 : new ListItem({
-                    id: firstItem[this._settings.idField],
-                    text: firstItem[this._settings.textField],
-                    isDisabled: firstItem[this._settings.disabledField]
-                  })
+                  id: firstItem[this._settings.idField],
+                  text: firstItem[this._settings.textField],
+                  isDisabled: firstItem[this._settings.disabledField]
+                })
             ];
           }
+          this.selectedItem = this.selectedItems[0].id;
         } catch (e) {
           // console.error(e.body.msg);
         }
@@ -156,10 +163,10 @@ export class MultiSelectComponent implements ControlValueAccessor {
           typeof item === "string" || typeof item === "number"
             ? new ListItem(item)
             : new ListItem({
-                id: item[this._settings.idField],
-                text: item[this._settings.textField],
-                isDisabled: item[this._settings.disabledField]
-              })
+              id: item[this._settings.idField],
+              text: item[this._settings.textField],
+              isDisabled: item[this._settings.disabledField]
+            })
         );
         if (this._settings.limitSelection > 0) {
           this.selectedItems = _data.splice(0, this._settings.limitSelection);
@@ -210,7 +217,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   isAllItemsSelected(): boolean {
     // get disabld item count
-    let filteredItems = this.listFilterPipe.transform(this._data,this.filter);
+    let filteredItems = this.listFilterPipe.transform(this._data, this.filter);
     const itemDisabledCount = filteredItems.filter(item => item.isDisabled).length;
     // take disabled items into consideration when checking
     if ((!this.data || this.data.length === 0) && this._settings.allowRemoteDataSearch) {
@@ -240,6 +247,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     if (this._settings.singleSelection) {
       this.selectedItems = [];
       this.selectedItems.push(item);
+      this.selectedItem = item.id
     } else {
       this.selectedItems.push(item);
     }
@@ -314,7 +322,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
     if (!this.isAllItemsSelected()) {
       // filter out disabled item first before slicing
-      this.selectedItems = this.listFilterPipe.transform(this._data,this.filter).filter(item => !item.isDisabled).slice();
+      this.selectedItems = this.listFilterPipe.transform(this._data, this.filter).filter(item => !item.isDisabled).slice();
       this.onSelectAll.emit(this.emittedValue(this.selectedItems));
     } else {
       this.selectedItems = [];
