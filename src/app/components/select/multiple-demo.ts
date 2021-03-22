@@ -25,7 +25,8 @@ export class MultipleDemoComponent implements OnInit {
             formControlName="city"
             [disabled]="disabled"
             [settings]="dropdownSettings"
-            (onSelect)="onItemSelect($event)"&gt;
+            (onSelect)="onItemSelect($event)"
+            (onDeSelect)="onItemDeSelect($event)"&gt;
         &lt;/ng-multiselect-dropdown&gt;
    &lt;/form&gt;
 `;
