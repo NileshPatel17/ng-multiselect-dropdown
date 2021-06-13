@@ -187,7 +187,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   // Set touched on blur
   @HostListener("blur")
   public onTouched() {
-    this.closeDropdown();
+    // this.closeDropdown();
     this.onTouchedCallback();
   }
 
