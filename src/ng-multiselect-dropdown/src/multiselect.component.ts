@@ -41,6 +41,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     itemsShowLimit: 999999999999,
     searchPlaceholderText: "Search",
     noDataAvailablePlaceholderText: "No data available",
+    noFilteredDataAvailablePlaceholderText: "No filtered data available",
     closeDropDownOnSelection: false,
     showSelectedItemsAtTop: false,
     defaultOpen: false,
