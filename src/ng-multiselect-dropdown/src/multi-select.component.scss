@@ -18,22 +18,25 @@ $disable-background-color: #eceeef;
     cursor: pointer;
     background-image: none;
     border-radius: 4px;
-    .selected-item {
-      border: 1px solid $base-color;
-      margin-right: 4px;
-      background: $base-color;
-      padding: 0px 5px;
-      color: #fff;
-      border-radius: 2px;
-      float: left;
+    .selected-item-container {
       display: flex;
-      max-width: 100px;
-      span {
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      a {
-        text-decoration: none;
+      float: left;
+      .selected-item{
+        border: 1px solid $base-color;
+        margin-right: 4px;
+        background: $base-color;
+        padding: 0px 5px;
+        color: #fff;
+        border-radius: 2px;
+        float: left;        
+        max-width: 100px;      
+        span {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        a {
+          text-decoration: none;
+        }
       }
     }
     .selected-item:hover {
