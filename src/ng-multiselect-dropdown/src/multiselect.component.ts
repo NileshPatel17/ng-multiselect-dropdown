@@ -334,4 +334,5 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
     return fields;
   }
+
 }

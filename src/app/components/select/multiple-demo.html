@@ -33,6 +33,11 @@
       </div>
       <div class="checkbox">
         <label>
+          <input type="checkbox" [checked]="limitShow" [(ngModel)]="limitShow" (change)="handleLimitShow()"> Limit Items Shown to 3
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
           <input type="checkbox" [checked]="disableBangalore" [(ngModel)]="disableBangalore" (change)="handleDisableBangalore()"> Disable Bangalore
         </label>
       </div>
