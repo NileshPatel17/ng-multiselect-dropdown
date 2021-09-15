@@ -111,7 +111,10 @@ export class MultiSelectComponent implements ControlValueAccessor {
     this.onFilterChange.emit($event);
   }
 
-  constructor(private listFilterPipe:ListFilterPipe) {}
+  constructor(
+    private listFilterPipe:ListFilterPipe,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   onItemClick($event: any, item: ListItem) {
     if (this.disabled || item.isDisabled) {
@@ -171,6 +174,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
       this.selectedItems = [];
     }
     this.onChangeCallback(value);
+
+    this.cdr.markForCheck();
   }
 
   // From ControlValueAccessor interface
