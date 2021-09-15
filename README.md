@@ -216,6 +216,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://sacgro.com"><img src="https://avatars1.githubusercontent.com/u/1292182?v=4" width="100px;" alt=""/><br /><sub><b>Sachin Grover</b></sub></a><br /><a href="https://github.com/Nilesh Patel/ng-multiselect-dropdown/commits?author=sacgrover" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/WWL-MikeRoberts"><img src="https://avatars3.githubusercontent.com/u/9750056?v=4" width="100px;" alt=""/><br /><sub><b>Mike Roberts</b></sub></a><br /><a href="https://github.com/Nilesh Patel/ng-multiselect-dropdown/commits?author=WWL-MikeRoberts" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/DsosaV"><img src="https://avatars2.githubusercontent.com/u/3926475?v=4" width="100px;" alt=""/><br /><sub><b>David Sosa</b></sub></a><br /><a href="https://github.com/Nilesh Patel/ng-multiselect-dropdown/commits?author=DsosaV" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/gserg"><img src="https://avatars.githubusercontent.com/u/687825?v=4" width="100px;" alt=""/><br /><sub><b>Sergiy Gedeon</b></sub></a><br /><a href="https://github.com/Nilesh Patel/ng-multiselect-dropdown/commits?author=gserg" title="Code">💻</a></td>
   </tr>
 </table>
 
