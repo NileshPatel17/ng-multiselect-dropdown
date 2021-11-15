@@ -8,11 +8,12 @@ import { ListFilterPipe } from './list-filter.pipe';
 @NgModule({
   imports: [CommonModule, FormsModule],
   declarations: [MultiSelectComponent, ClickOutsideDirective, ListFilterPipe],
+  providers: [ListFilterPipe],
   exports: [MultiSelectComponent]
 })
 
 export class NgMultiSelectDropDownModule {
-    static forRoot(): ModuleWithProviders {
+    static forRoot(): ModuleWithProviders<NgMultiSelectDropDownModule> {
       return {
         ngModule: NgMultiSelectDropDownModule
       };

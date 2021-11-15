@@ -1,14 +1,17 @@
-<div tabindex="=0" (blur)="onTouched()" class="multiselect-dropdown" (clickOutside)="closeDropdown()">
+<div tabindex="0" (blur)="onTouched()" class="multiselect-dropdown" (clickOutside)="closeDropdown()">
   <div [class.disabled]="disabled">
     <span tabindex="-1" class="dropdown-btn" (click)="toggleDropdown($event)">
       <span *ngIf="selectedItems.length == 0">{{_placeholder}}</span>
-      <span class="selected-item" *ngFor="let item of selectedItems;trackBy: trackByFn;let k = index" [hidden]="k > _settings.itemsShowLimit-1">
-        {{item.text}}
-        <a style="padding-top:2px;padding-left:2px;color:white" (click)="onItemClick($event,item)">x</a>
+      <span *ngFor="let item of selectedItems; trackBy: trackByFn;let k = index" class="selected-item-container" >
+        <span class="selected-item"  [hidden]="k  > (this._settings.itemsShowLimit-1)">
+          <span >{{item.text}}&nbsp;</span>
+          <a style="padding-left:2px;color:white" (click)="onItemClick($event,item)">x</a>
+        </span>
+       
       </span>
-      <span style="float:right !important;padding-right:4px">
-        <span style="padding-right: 6px;" *ngIf="itemShowRemaining()>0">+{{itemShowRemaining()}}</span>
-        <span [ngClass]="_settings.defaultOpen ? 'dropdown-up' : 'dropdown-down'"></span>
+      <span [ngClass]="{ 'dropdown-multiselect--active': _settings.defaultOpen }" style="float:right !important;padding-right:4px">
+        <span style="padding-right: 15px;" *ngIf="itemShowRemaining()>0">+{{itemShowRemaining()}}</span>
+        <span class="dropdown-multiselect__caret"></span>
       </span>
     </span>
   </div>
@@ -24,7 +27,7 @@
     </ul>
     <ul class="item2" [style.maxHeight]="_settings.maxHeight+'px'">
       <li *ngFor="let item of _data | multiSelectFilter:filter; let i = index;" (click)="onItemClick($event,item)" class="multiselect-item-checkbox">
-        <input type="checkbox" aria-label="multiselect-item" [checked]="isSelected(item)" [disabled]="disabled || (isLimitSelectionReached() && !isSelected(item)) || item.isDisabled" />
+        <input type="checkbox" [attr.aria-label]="item.text" [checked]="isSelected(item)" [disabled]="disabled || (isLimitSelectionReached() && !isSelected(item)) || item.isDisabled" />
         <div>{{item.text}}</div>
       </li>
       <li class='no-data' *ngIf="_data.length == 0 && !_settings.allowRemoteDataSearch">

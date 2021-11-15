@@ -3,7 +3,8 @@
     <div class="col-md-4">
       <h3>Select Multiple Cities</h3>
       <form [formGroup]="myForm">
-        <ng-multiselect-dropdown name="city" [placeholder]="'Select City'" [data]="cities" formControlName="city" [disabled]="disabled" [settings]="dropdownSettings" (onDropDownClose)="onDropDownClose()" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+        <ng-multiselect-dropdown 
+          name="city" [placeholder]="'Select City'" [data]="cities" formControlName="city" [disabled]="disabled" [settings]="dropdownSettings" (onDropDownClose)="onDropDownClose()" (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)" (onSelectAll)="onSelectAll($event)">
         </ng-multiselect-dropdown>
       </form>
       <p></p>
@@ -28,6 +29,11 @@
       <div class="checkbox">
         <label>
           <input type="checkbox" [checked]="limitSelection" [(ngModel)]="limitSelection" (change)="handleLimitSelection()"> Limit Selection to 2
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [checked]="limitShow" [(ngModel)]="limitShow" (change)="handleLimitShow()"> Limit Items Shown to 3
         </label>
       </div>
       <div class="checkbox">
