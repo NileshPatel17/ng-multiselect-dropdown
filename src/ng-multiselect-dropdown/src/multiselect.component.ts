@@ -213,6 +213,11 @@ export class MultiSelectComponent implements ControlValueAccessor {
     return this._settings.limitSelection === this.selectedItems.length;
   }
 
+  isFilterResultEmpty(): boolean {
+    const filteredItems = this.listFilterPipe.transform(this._data, this.filter);
+    return filteredItems.length === 0;
+  }
+
   isAllItemsSelected(): boolean {
     // get disabld item count
     let filteredItems = this.listFilterPipe.transform(this._data,this.filter);
@@ -221,6 +226,11 @@ export class MultiSelectComponent implements ControlValueAccessor {
     if ((!this.data || this.data.length === 0) && this._settings.allowRemoteDataSearch) {
       return false;
     }
+
+    if (this.selectedItems.length === 0 && filteredItems.length === 0) {
+      return false;
+    }
+
     return filteredItems.length === this.selectedItems.length + itemDisabledCount;
   }
 
@@ -314,7 +324,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   }
 
   toggleSelectAll() {
-    if (this.disabled) {
+    if (this.disabled || this.isFilterResultEmpty()) {
       return false;
     }
     if (!this.isAllItemsSelected()) {
