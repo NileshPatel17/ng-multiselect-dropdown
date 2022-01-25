@@ -2,9 +2,12 @@
   <div [class.disabled]="disabled">
     <span tabindex="-1" class="dropdown-btn" (click)="toggleDropdown($event)">
       <span *ngIf="selectedItems.length == 0">{{_placeholder}}</span>
-      <span class="selected-item" *ngFor="let item of selectedItems;trackBy: trackByFn;let k = index" [hidden]="k > _settings.itemsShowLimit-1">
-        <span>{{item.text}}</span>
-        <a style="padding-left:2px;color:white" (click)="onItemClick($event,item)">x</a>
+      <span *ngFor="let item of selectedItems; trackBy: trackByFn;let k = index" class="selected-item-container" >
+        <span class="selected-item"  [hidden]="k  > (this._settings.itemsShowLimit-1)">
+          <span >{{item.text}}&nbsp;</span>
+          <a style="padding-left:2px;color:white" (click)="onItemClick($event,item)">x</a>
+        </span>
+       
       </span>
       <span [ngClass]="{ 'dropdown-multiselect--active': _settings.defaultOpen }" style="float:right !important;padding-right:4px">
         <span style="padding-right: 15px;" *ngIf="itemShowRemaining()>0">+{{itemShowRemaining()}}</span>
@@ -26,6 +29,9 @@
       <li *ngFor="let item of _data | multiSelectFilter:filter; let i = index;" (click)="onItemClick($event,item)" class="multiselect-item-checkbox">
         <input type="checkbox" [attr.aria-label]="item.text" [checked]="isSelected(item)" [disabled]="disabled || (isLimitSelectionReached() && !isSelected(item)) || item.isDisabled" />
         <div>{{item.text}}</div>
+      </li>
+      <li class='no-filtered-data' *ngIf="_data.length != 0 && (_data | multiSelectFilter:filter).length == 0 && !_settings.allowRemoteDataSearch">
+        <h5>{{_settings.noFilteredDataAvailablePlaceholderText}}</h5>
       </li>
       <li class='no-data' *ngIf="_data.length == 0 && !_settings.allowRemoteDataSearch">
         <h5>{{_settings.noDataAvailablePlaceholderText}}</h5>
