@@ -12,6 +12,7 @@ export class MultipleDemoComponent implements OnInit {
   ShowFilter = true;
   showAll = true;
   limitSelection = false;
+  limitShow = false;
   disableBangalore = true;
   cities: Array<any> = [];
   selectedItems: Array<any> = [];
@@ -43,6 +44,7 @@ export class MultipleDemoComponent implements OnInit {
         disabled = false;
         ShowFilter = false;
         limitSelection = false;
+        limitShow = false;
         cities: Array<any> = [];
         selectedItems: Array<any> = [];
         dropdownSettings: any = {};
@@ -64,7 +66,7 @@ export class MultipleDemoComponent implements OnInit {
                 textField: 'item_text',
                 selectAllText: 'Select All',
                 unSelectAllText: 'UnSelect All',
-                itemsShowLimit: 3,
+                itemsShowLimit: 99999,
                 allowSearchFilter: this.ShowFilter
             };
             this.myForm = this.fb.group({
@@ -89,6 +91,19 @@ export class MultipleDemoComponent implements OnInit {
             } else {
                 this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: null });
             }
+        }
+
+        handleLimitShow() {
+          if (this.limitShow) {
+            this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
+              itemsShowLimit: 3
+            });
+          } else {
+            this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
+              itemsShowLimit: 999999
+            });
+          }
+          console.log()
         }
     }
 `;
@@ -116,7 +131,7 @@ export class MultipleDemoComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       enableCheckAll: this.showAll,
-      itemsShowLimit: 3,
+      itemsShowLimit: 999999,
       allowSearchFilter: this.ShowFilter
     };
     this.myForm = this.fb.group({
@@ -165,6 +180,22 @@ export class MultipleDemoComponent implements OnInit {
       });
     }
   }
+
+  handleLimitShow() {
+    if (this.limitShow) {
+      this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
+        itemsShowLimit: 3
+      });
+    } else {
+      this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
+        itemsShowLimit: 999999
+      });
+    }
+    console.log()
+  }
+
+
+
 
   handleDisableBangalore() {
     this.cities[2].isDisabled = this.disableBangalore;

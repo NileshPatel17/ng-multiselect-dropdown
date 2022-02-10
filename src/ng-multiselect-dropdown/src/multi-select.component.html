@@ -35,6 +35,9 @@
           <ng-container [ngTemplateOutlet]="optionsTemplateRef || defaultOptionTemplate" [ngTemplateOutletContext]="{ $implicit:item, option: item.text, id: item.id, isSelected: isSelected(item) }">
           </ng-container>
       </li>
+      <li class='no-filtered-data' *ngIf="_data.length != 0 && (_data | multiSelectFilter:filter).length == 0 && !_settings.allowRemoteDataSearch">
+        <h5>{{_settings.noFilteredDataAvailablePlaceholderText}}</h5>
+      </li>
       <li class='no-data' *ngIf="_data.length == 0 && !_settings.allowRemoteDataSearch">
         <h5>{{_settings.noDataAvailablePlaceholderText}}</h5>
       </li>
