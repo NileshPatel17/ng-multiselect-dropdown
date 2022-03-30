@@ -18,6 +18,7 @@ export interface IDropdownSettings {
   showSelectedItemsAtTop?: boolean;
   defaultOpen?: boolean;
   allowRemoteDataSearch?: boolean;
+  focused?: boolean;
 }
 
 export class ListItem {
