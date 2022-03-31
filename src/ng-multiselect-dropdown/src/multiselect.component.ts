@@ -45,7 +45,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
     closeDropDownOnSelection: false,
     showSelectedItemsAtTop: false,
     defaultOpen: false,
-    allowRemoteDataSearch: false
+    allowRemoteDataSearch: false,
+    focused: false
   };
 
   @Input()
@@ -296,13 +297,20 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   toggleDropdown(evt) {
     evt.preventDefault();
+    let element = document.querySelector<HTMLInputElement>(`#${this._settings.idField}-search-input`);
     if (this.disabled && this._settings.singleSelection) {
       return;
     }
     this._settings.defaultOpen = !this._settings.defaultOpen;
     if (!this._settings.defaultOpen) {
+      element.blur();
       this.onDropDownClose.emit();
     }
+    setTimeout(() => {
+      if (typeof(element) !== 'undefined' && element !== null && this._settings.focused && this._settings.defaultOpen) {
+        element.focus();
+      }
+    }, 500);
   }
 
   closeDropdown() {

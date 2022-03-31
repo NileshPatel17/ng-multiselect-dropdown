@@ -66,7 +66,8 @@ export class SingleDemoComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       allowSearchFilter: true,
-      closeDropDownOnSelection: this.closeDropdownSelection
+      closeDropDownOnSelection: this.closeDropdownSelection,
+      focused: true
     };
     this.selectedItem = ['Mumbai'];
   }
