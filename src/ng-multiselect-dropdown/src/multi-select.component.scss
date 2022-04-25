@@ -1,5 +1,6 @@
-$base-color: #337ab7;
-$disable-background-color: #eceeef;
+$base-color: #337ab7 !default;
+$disable-background-color: #eceeef !default;
+
 .multiselect-dropdown {
   position: relative;
   width: 100%;
