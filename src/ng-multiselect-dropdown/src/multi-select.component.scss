@@ -21,15 +21,16 @@ $disable-background-color: #eceeef;
     .selected-item-container {
       display: flex;
       float: left;
+      max-width: 93%;
       .selected-item{
         border: 1px solid $base-color;
         margin-right: 4px;
+        margin-bottom: 4px;
         background: $base-color;
         padding: 0px 5px;
         color: #fff;
         border-radius: 2px;
-        float: left;        
-        max-width: 100px;      
+        float: left;
         span {
           overflow: hidden;
           text-overflow: ellipsis;
