@@ -101,10 +101,10 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
   }
 
-  @ContentChild("optionsTemplate", { static: false })
+  @ContentChild("optionsTemplate")
   optionsTemplateRef: TemplateRef<any>;
 
-  @ContentChild("optionSelectedTemplate", { static: false })
+  @ContentChild("optionSelectedTemplate")
   optionSelectedTemplateRef: TemplateRef<any>;
 
   @Output("onFilterChange")
