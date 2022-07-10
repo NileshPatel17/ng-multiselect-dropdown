@@ -21,11 +21,11 @@ export class MultipleDemoComponent implements OnInit {
     &lt;form [formGroup]="myForm"&gt;
         &lt;ng-multiselect-dropdown
             name="city"
+            [settings]="dropdownSettings"
             [placeholder]="'Select City'"
             [data]="cities"
             formControlName="city"
             [disabled]="disabled"
-            [settings]="dropdownSettings"
             (onSelect)="onItemSelect($event)"
             (onDeSelect)="onItemDeSelect($event)"&gt;
         &lt;/ng-multiselect-dropdown&gt;

@@ -8,14 +8,14 @@ export class SingleDemoComponent implements OnInit {
   cities: Array<string> = [];
   selectedItem: Array<string> = [];
   dropdownSettings: any = {};
-  closeDropdownSelection = false;
+  closeDropdownSelection = true;
   disabled = false;
   htmlCode = `
    &lt;ng-multiselect-dropdown
        name="city"
+       [settings]="dropdownSettings"
        [data]="cities"
        [(ngModel)]="selectedItem"
-       [settings]="dropdownSettings"
        (onSelect)="onItemSelect($event)"
        [disabled]="disabled"
    &lt;/ng-multiselect-dropdown&gt;

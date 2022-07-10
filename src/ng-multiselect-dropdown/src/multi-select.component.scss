@@ -103,18 +103,23 @@ $disable-background-color: #eceeef !default;
     text-align: left;
   }
   .filter-textbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     border-bottom: 1px solid #ccc;
     position: relative;
     padding: 10px;
     input {
       border: 0px;
       width: 100%;
-      padding: 0px 0px 0px 26px;
     }
     input:focus {
       outline: none;
     }
   }
+   svg {
+    margin-left: 2px;
+   }
 }
 
 .multiselect-item-checkbox:hover{

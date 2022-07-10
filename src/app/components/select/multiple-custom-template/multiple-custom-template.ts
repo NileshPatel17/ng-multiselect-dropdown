@@ -20,11 +20,11 @@ export class MultipleCustomTempComponent implements OnInit {
     &lt;form [formGroup]="myForm"&gt;
         &lt;ng-multiselect-dropdown
             name="city"
+            [settings]="dropdownSettings"
             [placeholder]="'Select City'"
             [data]="cities"
             formControlName="city"
             [disabled]="disabled"
-            [settings]="dropdownSettings"
             (onSelect)="onItemSelect($event)"&gt;
         &lt;/ng-multiselect-dropdown&gt;
         &lt;ng-template #optionsTemplate let-item let-option="option" let-id="id" let-isSelected="isSelected"&gt

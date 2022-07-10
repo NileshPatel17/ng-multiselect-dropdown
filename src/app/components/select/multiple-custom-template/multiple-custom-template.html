@@ -3,7 +3,7 @@
     <div class="col-md-4">
       <h3>Select Multiple Cities</h3>
       <form [formGroup]="myForm">
-        <ng-multiselect-dropdown name="city" [placeholder]="'Select City'" [data]="cities" formControlName="city" [disabled]="disabled" [settings]="dropdownSettings" (onDropDownClose)="onDropDownClose()" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+        <ng-multiselect-dropdown name="city" [settings]="dropdownSettings" [placeholder]="'Select City'" [data]="cities" formControlName="city" [disabled]="disabled" (onDropDownClose)="onDropDownClose()" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
           <ng-template #optionsTemplate let-item let-option="option" let-id="id" let-isSelected="isSelected">
             <div style="padding:1px 10px;margin-right:10px;right:2px;top:-2px">
               <img [src]="getItems[id].image" style="width: 18px; margin: 0 20px;" />
