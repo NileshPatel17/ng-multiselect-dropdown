@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
 import { IDropdownSettings } from "../../../../ng-multiselect-dropdown/src";
 
@@ -7,7 +7,7 @@ import { IDropdownSettings } from "../../../../ng-multiselect-dropdown/src";
   templateUrl: "./multiple-custom-template.html",
 })
 export class MultipleCustomTempComponent implements OnInit {
-  myForm: FormGroup;
+  myForm: UntypedFormGroup;
   disabled = false;
   ShowFilter = true;
   showAll = true;
@@ -159,7 +159,7 @@ export class MultipleCustomTempComponent implements OnInit {
     }
 `;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: UntypedFormBuilder) {}
 
   ngOnInit() {
     this.cities = [
