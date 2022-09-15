@@ -112,8 +112,8 @@ export class MultipleDemoComponent implements OnInit {
 
   ngOnInit() {
     this.cities = [
-      { item_id: 1, item_text: 'New Delhi' },
-      { item_id: 2, item_text: 'Mumbai' },
+      { item_id: 1, item_text: 'New Delhi', poulation: 11_034_555 },
+      { item_id: 2, item_text: 'Mumbai', timezone: 'India Standard Time' },
       { item_id: 3, item_text: 'Bangalore', isDisabled: this.disableBangalore },
       { item_id: 4, item_text: 'Pune' },
       { item_id: 5, item_text: 'Chennai' },
@@ -191,7 +191,6 @@ export class MultipleDemoComponent implements OnInit {
         itemsShowLimit: 999999
       });
     }
-    console.log()
   }
 
 
