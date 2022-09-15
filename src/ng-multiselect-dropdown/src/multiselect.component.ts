@@ -85,7 +85,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
           : new ListItem({
             id: item[this._settings.idField],
             text: item[this._settings.textField],
-            sourceObj: {...this.getSourceObj(item)}, // keep other object props
+            sourceObj: Object.assign({}, this.getSourceObj(item)), // keep other object props
             isDisabled: item[this._settings.disabledField]
         })
     );
@@ -283,7 +283,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   objectify(val: ListItem) {
     if (this._sourceDataType === 'object') {
-      const obj = {...val.sourceObj};
+      const obj = Object.assign({}, val.sourceObj);
       obj[this._settings.idField] = val.id;
       obj[this._settings.textField] = val.text;
       if (this._sourceDataFields.includes(this._settings.disabledField)) {
