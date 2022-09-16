@@ -10,6 +10,7 @@ export class SingleDemoComponent implements OnInit {
   dropdownSettings: any = {};
   closeDropdownSelection = false;
   disabled = false;
+  radioButtons = false;
   htmlCode = `
    &lt;ng-multiselect-dropdown
        name="city"
@@ -42,7 +43,8 @@ export class SingleDemoComponent implements OnInit {
                 selectAllText: 'Select All',
                 unSelectAllText: 'UnSelect All',
                 allowSearchFilter: true,
-                closeDropDownOnSelection: this.closeDropdownSelection
+                closeDropDownOnSelection: this.closeDropdownSelection,
+                radioButtons
             };
         }
 
@@ -66,7 +68,8 @@ export class SingleDemoComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       allowSearchFilter: true,
-      closeDropDownOnSelection: this.closeDropdownSelection
+      closeDropDownOnSelection: this.closeDropdownSelection,
+      radioButtons: this.radioButtons
     };
     this.selectedItem = ['Mumbai'];
   }
@@ -79,6 +82,11 @@ export class SingleDemoComponent implements OnInit {
   toggleCloseDropdownSelection() {
     this.closeDropdownSelection = !this.closeDropdownSelection;
     this.dropdownSettings = Object.assign({}, this.dropdownSettings, { closeDropDownOnSelection: this.closeDropdownSelection });
+  }
+
+  toggleRadioButtons() {
+    this.radioButtons = !this.radioButtons;
+    this.dropdownSettings = Object.assign({}, this.dropdownSettings, { radioButtons: this.radioButtons });
   }
 
   handleReset() {

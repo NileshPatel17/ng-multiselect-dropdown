@@ -23,6 +23,11 @@
       </div>
       <div class="checkbox">
         <label>
+          <input type="checkbox" [checked]="radioButtons" (change)="toggleRadioButtons()"> Radio buttons
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
           <input type="button" (click)="handleReset()" value="reset">
         </label>
       </div>
