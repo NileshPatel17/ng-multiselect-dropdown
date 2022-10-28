@@ -24,6 +24,7 @@ export class ListItem {
   id: String | number;
   text: String | number;
   isDisabled?: boolean;
+  sourceObj?: {} | undefined;
 
   public constructor(source: any) {
     if (typeof source === 'string' || typeof source === 'number') {
@@ -33,6 +34,7 @@ export class ListItem {
     if (typeof source === 'object') {
       this.id = source.id;
       this.text = source.text;
+      this.sourceObj = source.sourceObj;
       this.isDisabled = source.isDisabled;
     }
   }
