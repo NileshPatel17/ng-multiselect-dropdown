@@ -38,9 +38,7 @@ describe('Multiple Selection:disable item', () => {
       Ng2MultiSelectDropdownMultipleSelectWithDisableItemComponent,
       `<div class='container'>
           <ng-multiselect-dropdown name="city" [data]="cities"
-      [(ngModel)]="selectedItem" [settings]="dropdownSettings"
-      (onSelect)="onItemSelect($event)"
-      [disabled]="disabled">
+      [(ngModel)]="selectedItem" [settings]="dropdownSettings">
     </ng-multiselect-dropdown>
     </div>`
     );
@@ -65,7 +63,7 @@ describe('Multiple Selection:disable item', () => {
     // New Delhi
     expect(selCheckBoxes[5].querySelector('div').textContent).toContain('New Delhi');
     expect(selCheckBoxes[5].querySelector('input').disabled).toBe(false);
-    
+
     expect(fixture.componentInstance.selectedItem.length).toEqual(2);
   }));
   it('should not select disabled item-Pune', fakeAsync(() => {

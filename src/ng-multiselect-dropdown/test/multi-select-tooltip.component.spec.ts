@@ -11,10 +11,10 @@ class Ng2MultiSelectDropdownMultipleSelectWithDisableItemComponent {
   select: MultiSelectComponent;
   cities = [
     { item_id: 1, item_text: 'Mumbai' },
-    { item_id: 2, item_text: 'Bangalore', tooltip_text: undefined },
-    { item_id: 3, item_text: 'Pune', tooltip_text: '' },
+    { item_id: 2, item_text: 'Bangalore', item_tooltip: undefined },
+    { item_id: 3, item_text: 'Pune', item_tooltip: '' },
     { item_id: 4, item_text: 'Navsari' },
-    { item_id: 5, item_text: 'New Delhi', tooltip_text: 'The capital of India!' }
+    { item_id: 5, item_text: 'New Delhi', item_tooltip: 'The capital of India!' }
   ];
   selectedItem = [{ item_id: 1, item_text: 'Mumbai' }, { item_id: 4, item_text: 'Navsari' }];
   dropdownSettings = {
@@ -37,9 +37,7 @@ describe('Multiple Selection:tooltip', () => {
       Ng2MultiSelectDropdownMultipleSelectWithDisableItemComponent,
       `<div class='container'>
           <ng-multiselect-dropdown name="city" [data]="cities"
-      [(ngModel)]="selectedItem" [settings]="dropdownSettings"
-      (onSelect)="onItemSelect($event)"
-      [disabled]="disabled">
+      [(ngModel)]="selectedItem" [settings]="dropdownSettings">
     </ng-multiselect-dropdown>
     </div>`
     );
@@ -59,10 +57,10 @@ describe('Multiple Selection:tooltip', () => {
     expect(selCheckBoxes[3].title).toBe('');
     // Navsari
     expect(selCheckBoxes[4].querySelector('div').textContent).toContain('Navsari');
-    expect(selCheckBoxes[4].title).toBe('The capital of India!');
+    expect(selCheckBoxes[4].title).toBe('');
     // New Delhi
     expect(selCheckBoxes[5].querySelector('div').textContent).toContain('New Delhi');
-    expect(selCheckBoxes[5].title).toBe('');
+    expect(selCheckBoxes[5].title).toBe('The capital of India!');
 
     expect(fixture.componentInstance.selectedItem.length).toEqual(2);
   }));
