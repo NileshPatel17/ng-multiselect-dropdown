@@ -68,9 +68,7 @@ describe('ng-multiselect-component', function() {
         Ng2MultiSelectDropdownSingleSelect,
         `<div class='container'>
           <ng-multiselect-dropdown name="city" [data]="cities"
-      [(ngModel)]="selectedItem" [settings]="dropdownSettings"
-      (onSelect)="onItemSelect($event)"
-      [disabled]="disabled">
+      [(ngModel)]="selectedItem" [settings]="dropdownSettings">
     </ng-multiselect-dropdown>
     </div>`
       );
@@ -179,9 +177,7 @@ describe('ng-multiselect-component', function() {
         Ng2MultiSelectDropdownMultipleSelect,
         `<div class='container'>
           <ng-multiselect-dropdown name="city" [data]="cities"
-      [(ngModel)]="selectedItem" [settings]="dropdownSettings"
-      (onSelect)="onItemSelect($event)"
-      [disabled]="disabled">
+      [(ngModel)]="selectedItem" [settings]="dropdownSettings">
     </ng-multiselect-dropdown>
     </div>`
       );
