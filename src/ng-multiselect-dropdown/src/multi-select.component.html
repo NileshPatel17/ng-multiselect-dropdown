@@ -22,7 +22,7 @@
         <div>{{!isAllItemsSelected() ? _settings.selectAllText : _settings.unSelectAllText}}</div>
       </li>
       <li class="filter-textbox" *ngIf="(_data.length>0 || _settings.allowRemoteDataSearch) && _settings.allowSearchFilter">
-        <input type="text" aria-label="multiselect-search" [readOnly]="disabled" [placeholder]="_settings.searchPlaceholderText" [(ngModel)]="filter.text" (ngModelChange)="onFilterTextChange($event)">
+        <input type="text" id="{{_settings.idField}}-search-input" name="{{_settings.idField}}-search-input" aria-label="multiselect-search" [readOnly]="disabled" [placeholder]="_settings.searchPlaceholderText" [(ngModel)]="filter.text" (ngModelChange)="onFilterTextChange($event)">
       </li>
     </ul>
     <ul class="item2" [style.maxHeight]="_settings.maxHeight+'px'">

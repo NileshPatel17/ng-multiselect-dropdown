@@ -134,7 +134,8 @@ export class MultipleDemoComponent implements OnInit {
       unSelectAllText: 'UnSelect All',
       enableCheckAll: this.showAll,
       itemsShowLimit: 999999,
-      allowSearchFilter: this.ShowFilter
+      allowSearchFilter: this.ShowFilter,
+      focused: true
     };
     this.myForm = this.fb.group({
       city: [this.selectedItems]
