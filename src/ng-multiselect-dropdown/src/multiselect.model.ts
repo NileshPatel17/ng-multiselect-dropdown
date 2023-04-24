@@ -8,6 +8,9 @@ export interface IDropdownSettings {
   selectAllText?: string;
   unSelectAllText?: string;
   allowSearchFilter?: boolean;
+  showSearchFilterCount?:boolean;
+  searchFilterCountColor?:string;
+  searchFilterCountBgcolor?:string;
   clearSearchFilter?: boolean;
   maxHeight?: number;
   itemsShowLimit?: number;

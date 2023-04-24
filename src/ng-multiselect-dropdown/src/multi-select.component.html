@@ -23,6 +23,7 @@
       </li>
       <li class="filter-textbox" *ngIf="(_data.length>0 || _settings.allowRemoteDataSearch) && _settings.allowSearchFilter">
         <input type="text" aria-label="multiselect-search" [readOnly]="disabled" [placeholder]="_settings.searchPlaceholderText" [(ngModel)]="filter.text" (ngModelChange)="onFilterTextChange($event)">
+        <span *ngIf="_settings.showSearchFilterCount && (filter.text && (_data | multiSelectFilter:filter).length !== 0)" class="badge" [ngStyle]="{'color': _settings.searchFilterCountColor,'background-color': _settings.searchFilterCountBgcolor}">{{(_data | multiSelectFilter:filter).length}}</span>
       </li>
     </ul>
     <ul class="item2" [style.maxHeight]="_settings.maxHeight+'px'">
