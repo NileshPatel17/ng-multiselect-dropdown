@@ -108,11 +108,15 @@ $disable-background-color: #eceeef;
     padding: 10px;
     input {
       border: 0px;
-      width: 100%;
+      width: 90%;
       padding: 0px 0px 0px 26px;
+      font-size:  1.6rem sans-serif;;
     }
     input:focus {
       outline: none;
+    }
+    input::placeholder {
+      font: 1.6rem sans-serif;
     }
   }
 }
