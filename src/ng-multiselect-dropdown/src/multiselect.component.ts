@@ -298,12 +298,15 @@ export class MultiSelectComponent implements ControlValueAccessor {
   }
 
   closeDropdown() {
-    this._settings.defaultOpen = false;
-    // clear search text
-    if (this._settings.clearSearchFilter) {
-      this.filter.text = "";
+    // If the dropdown isn't open, don't do anything.
+    if (this._settings.defaultOpen) {
+      this._settings.defaultOpen = false;
+      // clear search text.
+      if (this._settings.clearSearchFilter) {
+        this.filter.text = "";
+      }
+      this.onDropDownClose.emit();
     }
-    this.onDropDownClose.emit();
   }
 
   toggleSelectAll() {
