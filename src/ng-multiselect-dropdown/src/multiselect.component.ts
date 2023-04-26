@@ -198,7 +198,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     if ((!this.data || this.data.length === 0) && this._settings.allowRemoteDataSearch) {
       return false;
     }
-    return filteredItems.length === this.selectedItems.length + itemDisabledCount;
+    return filteredItems.length === this.selectedItems.filter(item => !item.isDisabled).length + itemDisabledCount;
   }
 
   showButton(): boolean {
@@ -310,12 +310,14 @@ export class MultiSelectComponent implements ControlValueAccessor {
     if (this.disabled) {
       return false;
     }
+    const selectedDisabledValues = this.selectedItems.filter(item => item.isDisabled);
     if (!this.isAllItemsSelected()) {
       // filter out disabled item first before slicing
       this.selectedItems = this.listFilterPipe.transform(this._data,this.filter).filter(item => !item.isDisabled).slice();
+      selectedDisabledValues.forEach(disabledSelectedItem => this.selectedItems.push(disabledSelectedItem));
       this.onSelectAll.emit(this.emittedValue(this.selectedItems));
     } else {
-      this.selectedItems = [];
+      this.selectedItems = selectedDisabledValues;
       this.onDeSelectAll.emit(this.emittedValue(this.selectedItems));
     }
     this.onChangeCallback(this.emittedValue(this.selectedItems));
