@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import {
   Component,
   OnInit,
@@ -35,6 +36,13 @@ export interface DropdownSettings {
   searchPlaceholderText?: String;
   closeDropDownOnSelection?: Boolean;
 }
+=======
+import { Component, HostListener, forwardRef, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
+import { ListItem, IDropdownSettings } from "./multiselect.model";
+import { ListFilterPipe } from "./list-filter.pipe";
+import { BehaviorSubject } from "rxjs";
+>>>>>>> Stashed changes
 
 export const DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -50,9 +58,16 @@ const noop = () => {};
   providers: [DROPDOWN_CONTROL_VALUE_ACCESSOR],
   changeDetection:ChangeDetectionStrategy.OnPush
 })
+<<<<<<< Updated upstream
 export class MultiSelectComponent implements OnInit, ControlValueAccessor {
   public _settings: DropdownSettings;
   public _data: Array<ListItem> = [];
+=======
+export class MultiSelectComponent implements ControlValueAccessor {
+  public datarr:any = [];
+  public _settings: IDropdownSettings;
+  public _data: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+>>>>>>> Stashed changes
   public selectedItems: Array<ListItem> = [];
   public isDropdownOpen = false;
 
@@ -86,8 +101,9 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
   @Input()
   public set data(value: Array<any>) {
     if (!value) {
-      this._data = [];
+      this._data.next([]);
     } else {
+<<<<<<< Updated upstream
       const _items = value.filter((item: any) => {
         if (
           typeof item === 'string' ||
@@ -108,6 +124,12 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
                 text: item[this._settings.textField]
               })
       );
+=======
+      const firstItem = value[0];
+      this._sourceDataType = typeof firstItem;
+      this._sourceDataFields = this.getFields(firstItem);
+      this._data.next(value.map(item => this.deobjectify(item)));
+>>>>>>> Stashed changes
     }
   }
 
@@ -124,8 +146,24 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
 
+<<<<<<< Updated upstream
   constructor() {}
   ngOnInit() {}
+=======
+  onFilterTextChange($event) {
+    this.onFilterChange.emit($event);
+  }
+
+  constructor(
+    private listFilterPipe:ListFilterPipe,
+    private cdr: ChangeDetectorRef
+  ) {
+    this._data.subscribe((res:any)=>{
+      this.datarr = res;
+    });
+  }
+
+>>>>>>> Stashed changes
   onItemClick($event: any, item: ListItem) {
     if (this.disabled) {
       return false;
@@ -223,7 +261,19 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   isAllItemsSelected(): boolean {
+<<<<<<< Updated upstream
     return this._data.length === this.selectedItems.length;
+=======
+    // get disabld item count
+    
+    let filteredItems = this.listFilterPipe.transform(this.datarr,this.filter);
+    const itemDisabledCount = filteredItems.filter(item => item.isDisabled).length;
+    // take disabled items into consideration when checking
+    if ((!this.data || this.data.length === 0) && this._settings.allowRemoteDataSearch) {
+      return false;
+    }
+    return filteredItems.length === this.selectedItems.length + itemDisabledCount;
+>>>>>>> Stashed changes
   }
 
   itemShowRemaining(): Number {
@@ -297,7 +347,12 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
       return false;
     }
     if (!this.isAllItemsSelected()) {
+<<<<<<< Updated upstream
       this.selectedItems = this._data.slice();
+=======
+      // filter out disabled item first before slicing
+      this.selectedItems = this.listFilterPipe.transform(this.datarr,this.filter).filter(item => !item.isDisabled).slice();
+>>>>>>> Stashed changes
       this.onSelectAll.emit(this.emittedValue(this.selectedItems));
     } else {
       this.selectedItems = [];
