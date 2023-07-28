@@ -5,6 +5,7 @@
 /dist-lib
 /tmp
 /out-tsc
+/.angular
 dist-lib.tgz
 
 # dependencies
