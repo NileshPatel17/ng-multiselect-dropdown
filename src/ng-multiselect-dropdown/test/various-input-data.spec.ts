@@ -11,7 +11,7 @@ const SELECTED_CITIES = ['Mumbai', 'Navsari'];
   template: ``
 })
 class SingleDimensionString {
-  @ViewChild(MultiSelectComponent, { static: false })
+  @ViewChild(MultiSelectComponent)
   select: MultiSelectComponent;
   cities: Array<string> = ALL_CITIES;
   selectedItem: Array<string> = SELECTED_CITIES;
@@ -61,7 +61,7 @@ const NUMBERS = [1, 3, 5, 6];
   template: ``
 })
 class SingleDimensionNumber {
-  @ViewChild(MultiSelectComponent, { static: false })
+  @ViewChild(MultiSelectComponent)
   select: MultiSelectComponent;
   cities: Array<number> = NUMBERS;
   selectedItem: Array<number> = [3];
@@ -126,7 +126,7 @@ const SEL_CITIES: Array<ICity> = [
   template: ``
 })
 class SingleDimensionObjectComponent {
-  @ViewChild(MultiSelectComponent, { static: false })
+  @ViewChild(MultiSelectComponent)
   select: MultiSelectComponent;
   cities: Array<ICity> = CITIES;
   selectedItem: Array<ICity> = SEL_CITIES;
