@@ -126,7 +126,6 @@
       }
     }
   },
-  "defaultProject": "ng-multiselect-dropdown-base",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "ng",
