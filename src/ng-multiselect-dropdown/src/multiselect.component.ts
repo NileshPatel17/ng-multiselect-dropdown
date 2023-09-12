@@ -30,6 +30,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     singleSelection: false,
     idField: "id",
     textField: "text",
+    tooltipField: "tooltip",
     disabledField: "isDisabled",
     enableCheckAll: true,
     selectAllText: "Select All",
@@ -76,15 +77,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
       const firstItem = value[0];
       this._sourceDataType = typeof firstItem;
       this._sourceDataFields = this.getFields(firstItem);
-      this._data = value.map((item: any) =>
-        typeof item === "string" || typeof item === "number"
-          ? new ListItem(item)
-          : new ListItem({
-              id: item[this._settings.idField],
-              text: item[this._settings.textField],
-              isDisabled: item[this._settings.disabledField]
-            })
-      );
+      this._data = value.map(item => this.deobjectify(item));
     }
   }
 
@@ -141,30 +134,13 @@ export class MultiSelectComponent implements ControlValueAccessor {
       if (this._settings.singleSelection) {
         try {
           if (value.length >= 1) {
-            const firstItem = value[0];
-            this.selectedItems = [
-              typeof firstItem === "string" || typeof firstItem === "number"
-                ? new ListItem(firstItem)
-                : new ListItem({
-                    id: firstItem[this._settings.idField],
-                    text: firstItem[this._settings.textField],
-                    isDisabled: firstItem[this._settings.disabledField]
-                  })
-            ];
+            this.selectedItems = [ this.deobjectify(value[0]) ];
           }
         } catch (e) {
           // console.error(e.body.msg);
         }
       } else {
-        const _data = value.map((item: any) =>
-          typeof item === "string" || typeof item === "number"
-            ? new ListItem(item)
-            : new ListItem({
-                id: item[this._settings.idField],
-                text: item[this._settings.textField],
-                isDisabled: item[this._settings.disabledField]
-              })
-        );
+        const _data = value.map((item: any) => this.deobjectify(item));
         if (this._settings.limitSelection > 0) {
           this.selectedItems = _data.splice(0, this._settings.limitSelection);
         } else {
@@ -285,12 +261,28 @@ export class MultiSelectComponent implements ControlValueAccessor {
       if (this._sourceDataFields.includes(this._settings.disabledField)) {
         obj[this._settings.disabledField] = val.isDisabled;
       }
+      if (this._sourceDataFields.includes(this._settings.tooltipField)) {
+        obj[this._settings.tooltipField] = val.tooltip;
+      }
       return obj;
     }
     if (this._sourceDataType === 'number') {
       return Number(val.id);
     } else {
       return val.text;
+    }
+  }
+
+  private deobjectify(item: any) {
+    if (typeof item === "string" || typeof item === "number") {
+      return new ListItem(item);
+    } else {
+      return new ListItem({
+        id: item[this._settings.idField],
+        text: item[this._settings.textField],
+        tooltip: item[this._settings.tooltipField],
+        isDisabled: item[this._settings.disabledField]
+      })
     }
   }
 

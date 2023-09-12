@@ -3,11 +3,11 @@
     <span tabindex="-1" class="dropdown-btn" (click)="toggleDropdown($event)">
       <span *ngIf="selectedItems.length == 0">{{_placeholder}}</span>
       <span *ngFor="let item of selectedItems; trackBy: trackByFn;let k = index" class="selected-item-container" >
-        <span class="selected-item"  [hidden]="k  > (this._settings.itemsShowLimit-1)">
+        <span class="selected-item"  [hidden]="k  > (this._settings.itemsShowLimit-1)" [attr.title]="item.tooltip">
           <span >{{item.text}}&nbsp;</span>
           <a style="padding-left:2px;color:white" (click)="onItemClick($event,item)">x</a>
         </span>
-       
+
       </span>
       <span [ngClass]="{ 'dropdown-multiselect--active': _settings.defaultOpen }" style="float:right !important;padding-right:4px">
         <span style="padding-right: 15px;" *ngIf="itemShowRemaining()>0">+{{itemShowRemaining()}}</span>
@@ -26,7 +26,7 @@
       </li>
     </ul>
     <ul class="item2" [style.maxHeight]="_settings.maxHeight+'px'">
-      <li *ngFor="let item of _data | multiSelectFilter:filter; let i = index;" (click)="onItemClick($event,item)" class="multiselect-item-checkbox">
+      <li *ngFor="let item of _data | multiSelectFilter:filter; let i = index;" (click)="onItemClick($event,item)" class="multiselect-item-checkbox" [attr.title]="item.tooltip">
         <input type="checkbox" [attr.aria-label]="item.text" [checked]="isSelected(item)" [disabled]="disabled || (isLimitSelectionReached() && !isSelected(item)) || item.isDisabled" />
         <div>{{item.text}}</div>
       </li>
