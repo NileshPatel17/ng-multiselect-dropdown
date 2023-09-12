@@ -52,7 +52,7 @@ export class MultipleDemoComponent implements OnInit {
 
         ngOnInit() {
             this.cities = [
-                { item_id: 1, item_text: 'New Delhi' },
+                { item_id: 1, item_text: 'New Delhi', item_tooltip: 'The capital of India!' },
                 { item_id: 2, item_text: 'Mumbai' },
                 { item_id: 3, item_text: 'Bangalore' },
                 { item_id: 4, item_text: 'Pune' },
@@ -64,6 +64,7 @@ export class MultipleDemoComponent implements OnInit {
                 singleSelection: false,
                 idField: 'item_id',
                 textField: 'item_text',
+                tooltipField: 'item_tooltip',
                 selectAllText: 'Select All',
                 unSelectAllText: 'UnSelect All',
                 itemsShowLimit: 99999,
@@ -112,7 +113,7 @@ export class MultipleDemoComponent implements OnInit {
 
   ngOnInit() {
     this.cities = [
-      { item_id: 1, item_text: 'New Delhi' },
+      { item_id: 1, item_text: 'New Delhi', item_tooltip: 'The capital of India!' },
       { item_id: 2, item_text: 'Mumbai' },
       { item_id: 3, item_text: 'Bangalore', isDisabled: this.disableBangalore },
       { item_id: 4, item_text: 'Pune' },
@@ -128,6 +129,7 @@ export class MultipleDemoComponent implements OnInit {
       defaultOpen: false,
       idField: 'item_id',
       textField: 'item_text',
+      tooltipField: 'item_tooltip',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       enableCheckAll: this.showAll,

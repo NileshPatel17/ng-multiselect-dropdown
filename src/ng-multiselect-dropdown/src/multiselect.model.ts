@@ -2,6 +2,7 @@ export interface IDropdownSettings {
   singleSelection?: boolean;
   idField?: string;
   textField?: string;
+  tooltipField?: string;
   disabledField?: string;
   enableCheckAll?: boolean;
   selectAllText?: string;
@@ -23,6 +24,7 @@ export interface IDropdownSettings {
 export class ListItem {
   id: String | number;
   text: String | number;
+  tooltip?: String | undefined;
   isDisabled?: boolean;
 
   public constructor(source: any) {
@@ -33,6 +35,7 @@ export class ListItem {
     if (typeof source === 'object') {
       this.id = source.id;
       this.text = source.text;
+      this.tooltip = source.tooltip;
       this.isDisabled = source.isDisabled;
     }
   }
