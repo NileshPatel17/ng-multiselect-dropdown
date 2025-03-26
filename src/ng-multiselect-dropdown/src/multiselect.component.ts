@@ -174,7 +174,6 @@ export class MultiSelectComponent implements ControlValueAccessor {
     } else {
       this.selectedItems = [];
     }
-    this.onChangeCallback(value);
 
     this.cdr.markForCheck();
   }
